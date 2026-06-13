@@ -1,0 +1,157 @@
+{
+  "vocabulary": "FastForex API Vocabulary",
+  "version": "2.3.2",
+  "description": "Domain vocabulary for the FastForex currency exchange rate API",
+  "terms": [
+    {
+      "term": "base",
+      "type": "string",
+      "description": "The source/base currency symbol used in a rate query or conversion"
+    },
+    {
+      "term": "result",
+      "type": "object",
+      "description": "Single exchange rate result keyed by target currency symbol"
+    },
+    {
+      "term": "results",
+      "type": "object",
+      "description": "Multiple exchange rate results keyed by target currency symbol"
+    },
+    {
+      "term": "updated",
+      "type": "datetime",
+      "description": "Timestamp when the exchange rate data was last updated"
+    },
+    {
+      "term": "ms",
+      "type": "integer",
+      "description": "Server-side response processing time in milliseconds"
+    },
+    {
+      "term": "pair",
+      "type": "string",
+      "description": "An FX trading pair in XXXYYY or XXX/YYY format (e.g. EURUSD or EUR/USD)"
+    },
+    {
+      "term": "pairs",
+      "type": "object",
+      "description": "A collection of trading pairs with metadata"
+    },
+    {
+      "term": "bid",
+      "type": "number",
+      "description": "The bid (buy) price for an FX trading pair"
+    },
+    {
+      "term": "ask",
+      "type": "number",
+      "description": "The ask (sell) price for an FX trading pair"
+    },
+    {
+      "term": "tsp",
+      "type": "integer",
+      "description": "Unix timestamp in milliseconds for the quote price"
+    },
+    {
+      "term": "size",
+      "type": "integer",
+      "description": "Quote size in units of the base currency (usually 1, but may be larger for minor currencies)"
+    },
+    {
+      "term": "interval",
+      "type": "string",
+      "description": "ISO8601 duration interval for time-series data (e.g. P1D=daily, PT1H=hourly, PT1M=minutely)"
+    },
+    {
+      "term": "dtmfmt",
+      "type": "string",
+      "description": "Desired datetime format for responses: ISO (ISO8601), TSP (Unix millisecond timestamp), UTCYMD (UTC date+time string)"
+    },
+    {
+      "term": "tzOffset",
+      "type": "string",
+      "description": "Timezone offset applied to datetime values in the response"
+    },
+    {
+      "term": "o",
+      "type": "number",
+      "description": "OHLC candle open price"
+    },
+    {
+      "term": "h",
+      "type": "number",
+      "description": "OHLC candle high price"
+    },
+    {
+      "term": "l",
+      "type": "number",
+      "description": "OHLC candle low price"
+    },
+    {
+      "term": "c",
+      "type": "number",
+      "description": "OHLC candle close price"
+    },
+    {
+      "term": "dtm",
+      "type": "datetime",
+      "description": "Datetime label for a time-series data point"
+    },
+    {
+      "term": "amount",
+      "type": "number",
+      "description": "Amount of source currency being converted"
+    },
+    {
+      "term": "rate",
+      "type": "number",
+      "description": "Exchange rate used in a currency conversion"
+    },
+    {
+      "term": "calls",
+      "type": "integer",
+      "description": "Number of API calls consumed by a request (some endpoints charge per pair returned)"
+    },
+    {
+      "term": "currencies",
+      "type": "object",
+      "description": "Map of currency symbols to their full names"
+    },
+    {
+      "term": "monthly_quota",
+      "type": "integer",
+      "description": "Total API call quota for the current billing month"
+    },
+    {
+      "term": "current_period",
+      "type": "object",
+      "description": "Current billing period details including start, end, usage, and remaining quota"
+    },
+    {
+      "term": "remaining_quota",
+      "type": "integer",
+      "description": "Number of API calls remaining in the current billing period"
+    },
+    {
+      "term": "usage",
+      "type": "object",
+      "description": "Historical API usage data keyed by date"
+    },
+    {
+      "term": "alt",
+      "type": "string",
+      "description": "Alternative trading pair identifier (e.g. EURUSD as alternate form of EUR/USD)"
+    },
+    {
+      "term": "price",
+      "type": "string",
+      "description": "Price type selector: bid or ask"
+    },
+    {
+      "term": "matrix",
+      "type": "object",
+      "description": "Two-dimensional map of from/to currency exchange rates"
+    }
+  ]
+}

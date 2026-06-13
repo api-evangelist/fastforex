@@ -1,0 +1,13 @@
+{
+  "summary": "Fetch multiple exchange rates from USD",
+  "description": "Example response from GET /fetch-multi?from=USD&to=EUR,GBP",
+  "value": {
+    "base": "USD",
+    "results": {
+      "EUR": 0.82791,
+      "GBP": 0.73605
+    },
+    "updated": "2021-01-16T16:34:29Z",
+    "ms": 8
+  }
+}

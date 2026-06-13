@@ -1,0 +1,160 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "fastforex": "https://www.fastforex.io/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "base": {
+      "@id": "fastforex:baseCurrency",
+      "@type": "xsd:string",
+      "@comment": "The source/base currency symbol for a rate query or conversion"
+    },
+    "result": {
+      "@id": "fastforex:exchangeRateResult",
+      "@type": "@json",
+      "@comment": "Single exchange rate result keyed by target currency symbol"
+    },
+    "results": {
+      "@id": "fastforex:exchangeRateResults",
+      "@type": "@json",
+      "@comment": "Multiple exchange rate results keyed by target currency symbol"
+    },
+    "updated": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "ms": {
+      "@id": "fastforex:responseTimeMs",
+      "@type": "xsd:integer",
+      "@comment": "Server response processing time in milliseconds"
+    },
+    "pair": {
+      "@id": "fastforex:tradingPair",
+      "@type": "xsd:string"
+    },
+    "pairs": {
+      "@id": "fastforex:tradingPairs",
+      "@type": "@json"
+    },
+    "bid": {
+      "@id": "fastforex:bidPrice",
+      "@type": "xsd:decimal"
+    },
+    "ask": {
+      "@id": "fastforex:askPrice",
+      "@type": "xsd:decimal"
+    },
+    "tsp": {
+      "@id": "fastforex:quoteTimestamp",
+      "@type": "xsd:long",
+      "@comment": "Unix timestamp in milliseconds for the quote price"
+    },
+    "size": {
+      "@id": "fastforex:quoteSize",
+      "@type": "xsd:integer",
+      "@comment": "Quote size in units of the base currency"
+    },
+    "interval": {
+      "@id": "fastforex:timeInterval",
+      "@type": "xsd:string",
+      "@comment": "ISO8601 duration for time-series granularity"
+    },
+    "dtmfmt": {
+      "@id": "fastforex:datetimeFormat",
+      "@type": "xsd:string"
+    },
+    "tzOffset": {
+      "@id": "fastforex:timezoneOffset",
+      "@type": "xsd:string"
+    },
+    "o": {
+      "@id": "fastforex:ohlcOpen",
+      "@type": "xsd:decimal"
+    },
+    "h": {
+      "@id": "fastforex:ohlcHigh",
+      "@type": "xsd:decimal"
+    },
+    "l": {
+      "@id": "fastforex:ohlcLow",
+      "@type": "xsd:decimal"
+    },
+    "c": {
+      "@id": "fastforex:ohlcClose",
+      "@type": "xsd:decimal"
+    },
+    "dtm": {
+      "@id": "fastforex:candleDatetime",
+      "@type": "xsd:string"
+    },
+    "amount": {
+      "@id": "fastforex:conversionAmount",
+      "@type": "xsd:decimal"
+    },
+    "rate": {
+      "@id": "fastforex:exchangeRate",
+      "@type": "xsd:decimal"
+    },
+    "calls": {
+      "@id": "fastforex:apiCallsConsumed",
+      "@type": "xsd:integer"
+    },
+    "currencies": {
+      "@id": "fastforex:currencyList",
+      "@type": "@json"
+    },
+    "monthly_quota": {
+      "@id": "fastforex:monthlyQuota",
+      "@type": "xsd:integer"
+    },
+    "current_period": {
+      "@id": "fastforex:currentBillingPeriod",
+      "@type": "@json"
+    },
+    "remaining_quota": {
+      "@id": "fastforex:remainingQuota",
+      "@type": "xsd:integer"
+    },
+    "usage": {
+      "@id": "fastforex:apiUsage",
+      "@type": "@json"
+    },
+    "matrix": {
+      "@id": "fastforex:rateMatrix",
+      "@type": "@json"
+    },
+    "alt": {
+      "@id": "fastforex:alternateIdentifier",
+      "@type": "xsd:string"
+    },
+    "price": {
+      "@id": "fastforex:priceType",
+      "@type": "xsd:string"
+    },
+    "start": {
+      "@id": "schema:startDate",
+      "@type": "xsd:string"
+    },
+    "end": {
+      "@id": "schema:endDate",
+      "@type": "xsd:string"
+    },
+    "limit": {
+      "@id": "fastforex:resultLimit",
+      "@type": "xsd:integer"
+    },
+    "date": {
+      "@id": "schema:Date",
+      "@type": "xsd:date"
+    },
+    "from": {
+      "@id": "fastforex:fromCurrency",
+      "@type": "@json"
+    },
+    "to": {
+      "@id": "fastforex:toCurrency",
+      "@type": "xsd:string"
+    }
+  }
+}

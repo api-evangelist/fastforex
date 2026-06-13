@@ -1,0 +1,21 @@
+{
+  "summary": "Live bid/ask FX quotes for EURUSD and GBPUSD",
+  "description": "Example response from GET /fx/quote?pairs=EURUSD,GBPUSD",
+  "value": {
+    "quotes": {
+      "EURUSD": {
+        "bid": 1.2145,
+        "ask": 1.2146,
+        "tsp": 1739305030072,
+        "size": 1
+      },
+      "GBPUSD": {
+        "bid": 1.4145,
+        "ask": 1.4146,
+        "tsp": 1739305029908,
+        "size": 1
+      }
+    },
+    "ms": 8
+  }
+}

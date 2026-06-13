@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/fastforex/main/json-schema/fetch-one-response.json",
+  "title": "FetchOneResponse",
+  "description": "Response schema for the /fetch-one endpoint - a single currency exchange rate",
+  "type": "object",
+  "properties": {
+    "base": {
+      "type": "string",
+      "pattern": "[A-Z0-9]{3,6}",
+      "description": "Base currency symbol (physical or digital)"
+    },
+    "result": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 1,
+      "additionalProperties": {
+        "type": "number",
+        "format": "float"
+      },
+      "description": "Single key-value pair of target currency to exchange rate"
+    },
+    "updated": {
+      "type": "string",
+      "description": "Datetime of last rate update"
+    },
+    "ms": {
+      "type": "number",
+      "format": "int32",
+      "description": "Server response time in milliseconds"
+    }
+  },
+  "required": ["base", "result", "updated", "ms"],
+  "example": {
+    "base": "USD",
+    "result": { "EUR": 0.82791 },
+    "updated": "2021-01-16T16:34:29Z",
+    "ms": 4
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "summary": "Convert 199.50 USD to EUR",
+  "description": "Example response from GET /convert?from=USD&to=EUR&amount=199.5",
+  "value": {
+    "base": "USD",
+    "amount": 199.5,
+    "result": {
+      "EUR": 164.29,
+      "rate": 0.82353
+    },
+    "ms": 7
+  }
+}

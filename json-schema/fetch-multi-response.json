@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/fastforex/main/json-schema/fetch-multi-response.json",
+  "title": "FetchMultiResponse",
+  "description": "Response schema for the /fetch-multi endpoint - multiple target exchange rates from a single source currency",
+  "type": "object",
+  "properties": {
+    "base": {
+      "type": "string",
+      "pattern": "[A-Z]{3}",
+      "description": "Base currency 3-letter symbol"
+    },
+    "results": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "number",
+        "format": "float"
+      },
+      "description": "Map of target currency symbols to exchange rates"
+    },
+    "updated": {
+      "type": "string",
+      "description": "Datetime of last rate update"
+    },
+    "ms": {
+      "type": "number",
+      "format": "int32",
+      "description": "Server response time in milliseconds"
+    }
+  },
+  "required": ["base", "results", "updated", "ms"],
+  "example": {
+    "base": "USD",
+    "results": {
+      "EUR": 0.82791,
+      "GBP": 0.73605
+    },
+    "updated": "2021-01-16T16:34:29Z",
+    "ms": 8
+  }
+}

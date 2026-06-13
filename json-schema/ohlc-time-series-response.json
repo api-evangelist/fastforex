@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/fastforex/main/json-schema/ohlc-time-series-response.json",
+  "title": "OhlcTimeSeriesResponse",
+  "description": "Response schema for the /fx/ohlc/time-series endpoint - OHLC candlestick data for FX trading pairs",
+  "type": "object",
+  "properties": {
+    "pair": {
+      "type": "string",
+      "pattern": "[A-Z0-9]{3,6}/?[A-Z0-9]{3,6}",
+      "description": "FX trading pair"
+    },
+    "interval": {
+      "type": "string",
+      "description": "ISO8601 Duration (e.g. P1D, PT1H, PT1M)"
+    },
+    "limit": {
+      "type": "number",
+      "format": "int32",
+      "description": "Maximum number of data points returned"
+    },
+    "dtmfmt": {
+      "type": "string",
+      "enum": ["ISO", "TSP", "UTCYMD"],
+      "description": "Datetime format of response values"
+    },
+    "start": {
+      "type": "string",
+      "description": "Start of the time series"
+    },
+    "end": {
+      "type": "string",
+      "description": "End of the time series"
+    },
+    "tzOffset": {
+      "type": "string",
+      "description": "Timezone offset, e.g. +00:00 or -05:00"
+    },
+    "size": {
+      "type": "number",
+      "format": "int32",
+      "description": "Quote size in units of the base currency"
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "dtm": {
+            "type": "string",
+            "description": "Datetime of the OHLC candle"
+          },
+          "o": {
+            "type": "number",
+            "format": "float",
+            "description": "Open price"
+          },
+          "h": {
+            "type": "number",
+            "format": "float",
+            "description": "High price"
+          },
+          "l": {
+            "type": "number",
+            "format": "float",
+            "description": "Low price"
+          },
+          "c": {
+            "type": "number",
+            "format": "float",
+            "description": "Close price"
+          }
+        },
+        "required": ["dtm", "o", "h", "l", "c"]
+      },
+      "description": "Array of OHLC data points"
+    },
+    "ms": {
+      "type": "number",
+      "format": "int32",
+      "description": "Server response time in milliseconds"
+    }
+  },
+  "required": ["pair", "interval", "results", "ms"],
+  "example": {
+    "pair": "EURUSD",
+    "interval": "P1D",
+    "limit": 3,
+    "dtmfmt": "ISO",
+    "end": "2021-01-26T00:00:00Z",
+    "tzOffset": "+00:00",
+    "size": 1,
+    "results": [
+      { "dtm": "2021-01-24T00:00:00Z", "o": 1.2145, "h": 1.2156, "l": 1.2134, "c": 1.2142 },
+      { "dtm": "2021-01-25T00:00:00Z", "o": 1.2142, "h": 1.2157, "l": 1.2139, "c": 1.2149 },
+      { "dtm": "2021-01-26T00:00:00Z", "o": 1.2149, "h": 1.2158, "l": 1.2137, "c": 1.2145 }
+    ],
+    "ms": 8
+  }
+}

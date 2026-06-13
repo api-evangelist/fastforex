@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/fastforex/main/json-schema/convert-response.json",
+  "title": "ConvertResponse",
+  "description": "Response schema for the /convert endpoint - currency conversion result",
+  "type": "object",
+  "properties": {
+    "base": {
+      "type": "string",
+      "pattern": "[A-Z0-9]{3,6}",
+      "description": "Source currency symbol"
+    },
+    "amount": {
+      "type": "number",
+      "format": "float",
+      "description": "Amount of source currency converted"
+    },
+    "result": {
+      "type": "object",
+      "minProperties": 2,
+      "maxProperties": 2,
+      "properties": {
+        "rate": {
+          "type": "number",
+          "format": "float",
+          "description": "Exchange rate used for conversion"
+        }
+      },
+      "additionalProperties": {
+        "type": "number",
+        "format": "float"
+      },
+      "description": "Conversion result containing target amount and rate"
+    },
+    "ms": {
+      "type": "number",
+      "format": "int32",
+      "description": "Server response time in milliseconds"
+    }
+  },
+  "required": ["base", "amount", "result", "ms"],
+  "example": {
+    "base": "USD",
+    "amount": 199.5,
+    "result": {
+      "EUR": 164.29,
+      "rate": 0.82353
+    },
+    "ms": 7
+  }
+}

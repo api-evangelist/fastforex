@@ -1,0 +1,21 @@
+{
+  "summary": "Historical exchange rates for a past date",
+  "description": "Example response from GET /historical?date=2021-01-16&from=USD",
+  "value": {
+    "date": "2021-01-16",
+    "base": "USD",
+    "results": {
+      "EUR": 0.82791,
+      "GBP": 0.73605,
+      "JPY": 103.87016,
+      "CAD": 1.27357,
+      "AUD": 1.29806,
+      "CHF": 0.8912,
+      "CNY": 6.48079,
+      "HKD": 7.75357,
+      "NZD": 1.40232,
+      "SEK": 8.39445
+    },
+    "ms": 13
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "summary": "Fetch single exchange rate USD to EUR",
+  "description": "Example response from GET /fetch-one?from=USD&to=EUR",
+  "value": {
+    "base": "USD",
+    "result": {
+      "EUR": 0.82791
+    },
+    "updated": "2021-01-16T16:34:29Z",
+    "ms": 4
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/fastforex/main/json-schema/currency.json",
+  "title": "Currency",
+  "description": "Three-letter ISO 4217 currency code",
+  "type": "string",
+  "pattern": "[A-Z]{3}"
+}
