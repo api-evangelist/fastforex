@@ -1,0 +1,94 @@
+name: FastForex Plans and Pricing
+description: Pricing plans for the FastForex currency exchange rate API, covering real-time rates, historical data, FX trading pairs, and cryptocurrency pricing.
+url: https://www.fastforex.io/hub/2026-new-plans-new-features-new-data
+plans:
+  - name: Free Trial
+    description: Fully-featured 7-day free trial with no credit card required. Provides access to all API endpoints and features.
+    price: 0
+    currency: USD
+    interval: trial
+    duration: 7 days
+    calls: 1000000
+    features:
+      - 160+ world currencies
+      - 500+ cryptocurrencies
+      - 2300+ FX trading pairs
+      - All API endpoints
+      - Real-time rates
+      - Historical data
+      - No credit card required
+
+  - name: One
+    description: Entry-level paid plan with 60-second midpoint rate updates for physical and crypto currencies. Does not include FX trading pair data.
+    price: 18
+    currency: USD
+    interval: monthly
+    calls: 1000000
+    update_frequency: 60 seconds
+    features:
+      - 160+ world currencies
+      - 500+ cryptocurrencies
+      - 60-second midpoint rate updates
+      - Currency conversion
+      - Historical rates
+      - Time-series data
+      - Single, multi, and all-rates endpoints
+    topup:
+      price: 18
+      currency: USD
+      calls: 1000000
+      description: Additional API calls available in 1 million-call blocks
+
+  - name: Extra
+    description: Mid-tier plan with 30-second midpoint rate updates and access to FX trading pair data including bid/ask pricing and OHLC candlestick data.
+    price: null
+    currency: USD
+    interval: monthly
+    calls: 1000000
+    update_frequency: 30 seconds
+    features:
+      - 160+ world currencies
+      - 500+ cryptocurrencies
+      - 2300+ FX trading pairs
+      - 30-second midpoint rate updates
+      - Bid/ask pricing
+      - OHLC candlestick data
+      - Currency conversion
+      - Historical rates
+      - Time-series data
+    topup:
+      price: 18
+      currency: USD
+      calls: 1000000
+      description: Additional API calls available in 1 million-call blocks
+
+  - name: Premium
+    description: Top-tier plan with 1-second midpoint rate updates, real-time FX trading pair data, and optional WebSocket streaming add-on for live streaming FX data.
+    price: null
+    currency: USD
+    interval: monthly
+    calls: 1000000
+    update_frequency: 1 second
+    features:
+      - 160+ world currencies
+      - 500+ cryptocurrencies
+      - 2300+ FX trading pairs
+      - 1-second midpoint rate updates
+      - Real-time bid/ask pricing
+      - OHLC candlestick data
+      - WebSocket streaming (add-on)
+      - Currency conversion
+      - Historical rates up to 55 years
+      - Time-series data
+      - Full endpoint access
+    topup:
+      price: 18
+      currency: USD
+      calls: 1000000
+      description: Additional API calls available in 1 million-call blocks
+
+billing:
+  annual_discount: true
+  annual_description: Save with annual billing - get two or more months free when paying yearly
+  topup_unit: 1000000
+  topup_price_usd: 18

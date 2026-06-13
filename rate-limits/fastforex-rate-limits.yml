@@ -1,0 +1,67 @@
+name: FastForex Rate Limits
+description: Rate limiting details for the FastForex currency exchange rate API. Limits are based on monthly API call quotas per plan, with each HTTP request counting as one call regardless of the number of currencies returned.
+url: https://www.fastforex.io/docs
+quotas:
+  - plan: All Plans
+    period: monthly
+    calls: 1000000
+    description: Each HTTP request to any endpoint counts as a single API call toward the monthly quota, regardless of the number of currencies or data points returned in the response.
+
+  - plan: Free Trial
+    period: 7-day trial
+    calls: 1000000
+    description: Fully-featured trial with the same call limit as paid plans. Trial expires after 7 days.
+
+limits:
+  - endpoint: /fetch-one
+    description: Single exchange rate pair lookup
+    calls_per_request: 1
+
+  - endpoint: /fetch-multi
+    description: Multiple target rates from a single source currency
+    calls_per_request: 1
+
+  - endpoint: /fetch-all
+    description: All exchange rates from a source currency
+    calls_per_request: 1
+
+  - endpoint: /fetch-many-to-one
+    description: Many source currencies to a single target currency
+    calls_per_request: 1
+
+  - endpoint: /convert
+    description: Currency amount conversion
+    calls_per_request: 1
+
+  - endpoint: /historical
+    description: Historical exchange rates for a given date
+    calls_per_request: 1
+
+  - endpoint: /time-series
+    description: Daily rate trends over a date interval
+    calls_per_request: 1
+
+  - endpoint: /crypto/prices
+    description: Live crypto prices, up to 10 pairs per request
+    calls_per_request: 1
+    pairs_per_request: 10
+
+  - endpoint: /fx/quotes
+    description: Real-time FX trading pair bid/ask quotes, up to 10 pairs per request
+    calls_per_request: 1
+    pairs_per_request: 10
+
+topup:
+  description: Additional API calls can be purchased in blocks of 1 million
+  block_size: 1000000
+  price_usd: 18
+
+authentication:
+  method: API Key
+  header: X-API-Key
+  description: Pass your API key via the X-API-Key HTTP header on every request
+
+notes:
+  - Monthly quotas reset at the start of each billing period
+  - No documented per-second or per-minute throttle; quota is monthly
+  - WebSocket streaming is available as an add-on on the Premium plan

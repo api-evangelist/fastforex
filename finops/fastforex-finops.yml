@@ -1,0 +1,70 @@
+name: FastForex FinOps
+description: Financial operations guidance for managing costs and usage of the FastForex currency exchange rate API. Covers cost optimization, quota monitoring, and budget planning.
+url: https://www.fastforex.io/
+cost_model:
+  type: subscription_plus_topup
+  description: Monthly subscription fee covers 1 million API calls. Additional calls available as top-up blocks at $18 per million.
+  base_calls_per_month: 1000000
+  topup_unit: 1000000
+  topup_price_usd: 18
+  billing_options:
+    - monthly
+    - annual
+
+pricing_reference:
+  one_plan_monthly_usd: 18
+  topup_per_million_usd: 18
+  free_trial_days: 7
+  annual_savings: Two or more months free compared to monthly billing
+
+cost_optimization:
+  - recommendation: Use the /fetch-all endpoint when you need rates for many currencies simultaneously, as it counts as a single API call regardless of how many currencies are returned.
+    impact: high
+    category: call_efficiency
+
+  - recommendation: Cache responses locally and set your polling interval to match the update frequency of your plan (60s for One, 30s for Extra, 1s for Premium) to avoid redundant calls.
+    impact: high
+    category: caching
+
+  - recommendation: Use the /fetch-multi endpoint when you need a subset of currencies from a source, rather than making multiple /fetch-one calls.
+    impact: medium
+    category: call_efficiency
+
+  - recommendation: Monitor your API usage via the /usage endpoint (API Usage Metrics) to track consumption and avoid unexpected top-up charges before the billing period ends.
+    impact: medium
+    category: monitoring
+
+  - recommendation: Start on the One plan ($18/month) if you only need currency and crypto rates without FX trading pair data, and upgrade to Extra or Premium only when you need bid/ask or OHLC data.
+    impact: medium
+    category: plan_selection
+
+  - recommendation: Choose annual billing to save the equivalent of two or more months per year compared to monthly billing.
+    impact: medium
+    category: billing
+
+  - recommendation: During development and testing, use the 7-day free trial to avoid consuming paid quota while prototyping.
+    impact: low
+    category: development
+
+budget_planning:
+  low_volume:
+    description: Applications with under 1 million API calls per month
+    recommended_plan: One
+    estimated_monthly_usd: 18
+    notes: All plans include 1 million calls; the One plan suffices for most low-to-medium volume use cases
+
+  medium_volume:
+    description: Applications approaching or slightly exceeding 1 million calls per month
+    recommended_plan: One with top-ups
+    estimated_monthly_usd: 36
+    notes: One base plan plus one top-up block covers up to 2 million calls at $36/month
+
+  high_volume:
+    description: Applications requiring millions of calls per month with FX data
+    recommended_plan: Premium with top-ups
+    notes: Contact FastForex for volume pricing; top-ups scale at $18 per million
+
+monitoring:
+  endpoint: /usage
+  description: The API Usage Metrics endpoint returns consumption data, quota status, and billing period details to support real-time cost monitoring.
+  recommended_action: Poll /usage periodically and set alerts when usage exceeds 80% of the monthly quota to avoid unexpected top-up charges.
