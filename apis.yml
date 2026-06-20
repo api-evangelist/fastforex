@@ -1,7 +1,7 @@
 aid: fastforex
 name: FastForex
 description: FastForex is a fast, reliable REST API providing real-time and historical currency exchange rates for 160+ world currencies, 500+ cryptocurrencies, and 2,300+ FX trading pairs. Features include currency conversion, many-to-one and multi-rate lookups, OHLC candlestick data, bid/ask pricing, WebSocket streaming, and up to 55 years of historical data. Average response time of 21ms with 100% uptime SLA.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/fastforex/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -20,7 +20,7 @@ apis:
   - aid: fastforex:fastforex-api
     name: FastForex API
     description: Real-time and historical currency exchange rate REST API supporting 160+ currencies, 500+ cryptocurrencies, and 2,300+ FX trading pairs. Provides single-rate lookups, multi-rate queries, currency conversion, time-series data, bid/ask quotes, OHLC data, and WebSocket streaming.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.fastforex.io/docs
     baseURL: https://api.fastforex.io
     tags:
