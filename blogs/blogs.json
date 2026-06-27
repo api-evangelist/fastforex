@@ -2,13 +2,19 @@
   "repo": "fastforex",
   "feeds": [
     {
-      "source": "https://github.com/fastforex",
-      "feed_url": "https://github.com/fastforex",
-      "title": "",
+      "source": "https://www.fastforex.io/blog",
+      "feed_url": "",
       "saved": 0,
-      "method": "none"
+      "method": "agent-scrape"
+    },
+    {
+      "source": "https://github.com/fastforex",
+      "feed_url": "",
+      "saved": 0,
+      "method": "agent-scrape"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T12:41:08Z",
+  "post_count": 12,
+  "agent_pulled": "2026-06-27"
 }
