@@ -1,0 +1,34 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/openapi.yaml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: api_key
+  type: apiKey
+  in: query
+  parameter: api_key
+  sources:
+  - openapi/openapi.yaml
+- name: apiKeyHeader
+  type: apiKey
+  in: header
+  parameter: X-API-KEY
+  sources:
+  - openapi/openapi.yaml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: api_key
+  sources:
+  - openapi/openapi.yaml
+- name: basicAuth
+  type: http
+  scheme: basic
+  sources:
+  - openapi/openapi.yaml

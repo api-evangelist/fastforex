@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.fastforex.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 29 15:59:34 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: api.fastforex.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  4 04:11:48 2026 GMT
+  hsts: null
+- host: api.beta.fastforex.io
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 14 08:55:10 2026 GMT
+  hsts: null
+domains:
+- domain: fastforex.io
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: false
