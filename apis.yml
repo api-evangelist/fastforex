@@ -45,6 +45,8 @@ apis:
       - FN: FastForex Support
         email: support@fastforex.io
 common:
+  - type: AgenticAccess
+    url: agentic-access/fastforex-agentic-access.yml
   - type: DomainSecurity
     url: security/fastforex-domain-security.yml
   - type: Authentication
