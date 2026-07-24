@@ -1,0 +1,1129 @@
+openapi: 3.0.3
+info:
+  title: fastFOREX.io admin currency API
+  version: 2.3.2
+  description: Foreign & cryptocurrency exchange rate API
+  termsOfService: https://www.fastforex.io/terms-of-sale
+  contact:
+    email: support@fastforex.io
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: https://api.fastforex.io
+  description: Production
+- url: https://api.beta.fastforex.io
+  description: Beta
+security:
+- api_key: []
+- apiKeyHeader: []
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: currency
+  description: Physical currencies, rates and conversions
+paths:
+  /fetch-one:
+    get:
+      tags:
+      - currency
+      description: Fetch a single currency exchange rate, from and to any supported physical or digital currency. Midpoint spot rate.
+      parameters:
+      - name: from
+        in: query
+        description: Base currency symbol (physical or digital), defaults to USD
+        required: false
+        allowEmptyValue: true
+        schema:
+          $ref: '#/components/schemas/AnyCurrency'
+      - name: to
+        in: query
+        description: Target currency symbol (physical or digital), defaults to USD
+        required: true
+        schema:
+          $ref: '#/components/schemas/AnyCurrency'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  base:
+                    $ref: '#/components/schemas/AnyCurrency'
+                  updated:
+                    $ref: '#/components/schemas/DateTimes'
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                  result:
+                    type: object
+                    minProperties: 1
+                    maxProperties: 1
+                    additionalProperties:
+                      type: number
+                      format: float
+              example:
+                base: USD
+                result:
+                  EUR: 0.82791
+                updated: '2021-01-16T16:34:29Z'
+                ms: 4
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
+  /fetch-multi:
+    get:
+      tags:
+      - currency
+      description: Fetch multiple target exchange rates from a single source currency. Midpoint spot rates.
+      parameters:
+      - name: from
+        in: query
+        description: Base currency 3-letter symbol, defaults to USD
+        required: false
+        allowEmptyValue: true
+        schema:
+          $ref: '#/components/schemas/Currency'
+      - name: to
+        in: query
+        description: Target currencies, comma separated list of 3-letter symbols
+        required: true
+        schema:
+          $ref: '#/components/schemas/CurrencyList'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  base:
+                    $ref: '#/components/schemas/Currency'
+                  updated:
+                    $ref: '#/components/schemas/DateTimes'
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                  results:
+                    type: object
+                    minProperties: 1
+                    additionalProperties:
+                      type: number
+                      format: float
+              example:
+                base: USD
+                results:
+                  EUR: 0.82791
+                  GBP: 0.73605
+                updated: '2021-01-16T16:34:29Z'
+                ms: 8
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
+  /fetch-all:
+    get:
+      tags:
+      - currency
+      description: Fetch all available currency rates for the supplied source currency. Midpoint spot rates.
+      parameters:
+      - name: from
+        in: query
+        description: Base currency 3-letter symbol, defaults to USD
+        required: false
+        allowEmptyValue: true
+        schema:
+          $ref: '#/components/schemas/Currency'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  base:
+                    $ref: '#/components/schemas/Currency'
+                  updated:
+                    $ref: '#/components/schemas/DateTimes'
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                  results:
+                    type: object
+                    minProperties: 130
+                    additionalProperties:
+                      type: number
+                      format: float
+              example:
+                base: USD
+                results:
+                  AED: 3.673
+                  AFN: 72.5642
+                  ALL: 88.59
+                  AMD: 391.07
+                  ANG: 1.788
+                  AOA: 912
+                  ARS: 1074.69
+                  AUD: 1.5892
+                  AWG: 1.81
+                  AZN: 1.7
+                  BAM: 1.7217
+                  BBD: 2
+                  BDT: 121.81
+                  BGN: 1.7219
+                  BHD: 0.37708
+                  BIF: 2923.15
+                  BMD: 1
+                  BND: 1.3194
+                  BOB: 6.94
+                  BRL: 5.8742
+                  BRX: 5.8734
+                  BSD: 1.003
+                  BWP: 14.0056
+                  BYN: 3.28
+                  BZD: 2.0178
+                  CAD: 1.38642
+                  CDF: 2859.46
+                  CHF: 0.81519
+                  CLF: 0.02495
+                  CLP: 971.76
+                  CNH: 7.28156
+                  CNY: 7.2916
+                  COP: 4277.27
+                  COU: 10.6753
+                  CRC: 508.43
+                  CUP: 24
+                  CVE: 96.88
+                  CZK: 22.1127
+                  DJF: 177.405
+                  DKK: 6.57264
+                  DOP: 61.33
+                  DZD: 131.969
+                  EGP: 51.3229
+                  ERN: 15.15
+                  ETB: 130.47
+                  EUR: 0.8799
+                  FJD: 2.283
+                  FKP: 0.7659
+                  GBP: 0.76423
+                  GEL: 2.7573
+                  GHS: 15.4527
+                  GIP: 0.7659
+                  GMD: 72
+                  GNF: 8664
+                  GTQ: 7.709
+                  GYD: 210.19
+                  HKD: 7.7537
+                  HNL: 25.7132
+                  HTG: 132.88
+                  HUF: 360.62
+                  HUX: 370.54
+                  IDR: 16794
+                  ILS: 3.704
+                  INR: 86.118
+                  IQD: 1310
+                  IRR: 42003
+                  ISK: 127.9
+                  JMD: 157.71
+                  JOD: 0.709
+                  JPY: 143.525
+                  KES: 129.78
+                  KGS: 87.45
+                  KHR: 4000
+                  KMF: 454.5
+                  KPW: 900
+                  KRW: 1421.365
+                  KWD: 0.307
+                  KYD: 0.82
+                  KZT: 518.06
+                  LAK: 21557
+                  LBP: 89600
+                  LKR: 298.1
+                  LRD: 199.926
+                  LSL: 19.37
+                  LYD: 5.5571
+                  MAD: 9.3176
+                  MDL: 17.7
+                  MGA: 4655
+                  MKD: 54.257
+                  MMK: 2098.68
+                  MNT: 3537.2
+                  MOP: 7.9863
+                  MRU: 39.9
+                  MUR: 43.7
+                  MVR: 15.46
+                  MWK: 1733.673
+                  MXN: 20.321
+                  MXV: 2.42005
+                  MYR: 4.423
+                  MZN: 63.56
+                  NAD: 19.1599
+                  NGN: 1597.115
+                  NIO: 36.6243
+                  NOK: 10.65512
+                  NPR: 137.673
+                  NZD: 1.7164
+                  OMR: 0.3851
+                  PAB: 1
+                  PEN: 3.7286
+                  PGK: 4.1144
+                  PHP: 57.241
+                  PKR: 280.34
+                  PLN: 3.7742
+                  PYG: 8027.64
+                  QAR: 3.641
+                  RON: 4.38927
+                  RSD: 103.229
+                  RUB: 83.3
+                  RWF: 1410.28
+                  SAR: 3.7542
+                  SBD: 8.3542
+                  SCR: 14.8351
+                  SDG: 598.993
+                  SEK: 9.77129
+                  SGD: 1.31896
+                  SHP: 0.7659
+                  SLL: 22663.6
+                  SOS: 566.75
+                  SRD: 36.72
+                  SSP: 4471.077
+                  STN: 21.6
+                  SVC: 8.75
+                  SYP: 13002
+                  SZL: 19.1043
+                  THB: 33.515
+                  TJS: 10.894
+                  TMT: 3.5
+                  TND: 2.9815
+                  TOP: 2.401
+                  TRY: 38.0582
+                  TTD: 6.8191
+                  TWD: 32.409
+                  TZS: 2660
+                  UAH: 41.5281
+                  UGX: 3675.3
+                  UYU: 42.984
+                  UZS: 12980.33
+                  VES: 77.0767
+                  VND: 25720
+                  VUV: 122.93
+                  WST: 2.6969
+                  XAF: 577.42
+                  XCD: 2.7
+                  XDR: 0.73954
+                  XOF: 577.42
+                  XPF: 104.95
+                  YER: 245.27
+                  ZAR: 19.1345
+                  ZMW: 28.3
+                updated: '2025-04-11T23:59:53Z'
+                ms: 77
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
+  /fetch-many-to-one:
+    get:
+      tags:
+      - currency
+      description: Fetch a set of many source currency rates to a single target currency (inverse of /fetch-multi). Midpoint spot rates. Costs one API call per pair returned.
+      parameters:
+      - name: from
+        in: query
+        description: Source currencies, comma separated list of 3-letter symbols
+        required: true
+        schema:
+          $ref: '#/components/schemas/CurrencyList'
+      - name: to
+        in: query
+        description: Target currency 3-letter symbol, defaults to USD
+        required: true
+        schema:
+          $ref: '#/components/schemas/Currency'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  to:
+                    $ref: '#/components/schemas/Currency'
+                  updated:
+                    $ref: '#/components/schemas/DateTimes'
+                  calls:
+                    $ref: '#/components/schemas/ApiUsage'
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                  from:
+                    type: object
+                    minProperties: 1
+                    additionalProperties:
+                      type: number
+                      format: float
+              example:
+                to: USD
+                from:
+                  JPY: 0.00679,
+                  CHF: 1.2539,
+                  ZAR: 0.0578,
+                  AUD: 0.65962,
+                  AED: 0.27229,
+                updated: '2025-10-03T16:34:29Z'
+                calls: 5
+                ms: 12
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
+  /fetch-matrix:
+    get:
+      tags:
+      - currency
+      description: Fetch a matrix of multiple from/to currency pairs. Midpoint spot rates. Costs one API call per pair returned.
+      parameters:
+      - name: from
+        in: query
+        description: Source currencies, comma separated list of 3-letter symbols
+        required: true
+        schema:
+          $ref: '#/components/schemas/CurrencyList'
+      - name: to
+        in: query
+        description: Target currencies, comma separated list of 3-letter symbols
+        required: true
+        schema:
+          $ref: '#/components/schemas/CurrencyList'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  from:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Currency'
+                  to:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Currency'
+                  matrix:
+                    type: object
+                    minProperties: 1
+                    additionalProperties:
+                      type: object
+                      minProperties: 1
+                      additionalProperties:
+                        type: number
+                        format: float
+                  updated:
+                    $ref: '#/components/schemas/DateTimes'
+                  calls:
+                    $ref: '#/components/schemas/ApiUsage'
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+              example:
+                from:
+                - USD
+                - CHF
+                - ZAR
+                - AED
+                to:
+                - USD
+                - GBP
+                - JPY
+                - CNY
+                matrix:
+                  USD:
+                    GBP: 0.74196
+                    JPY: 147.488
+                    CNY: 7.119
+                    USD: 1
+                  CHF:
+                    USD: 1.2573
+                    GBP: 0.93291
+                    JPY: 185.444
+                    CNY: 8.9504
+                  ZAR:
+                    USD: 0.0581
+                    GBP: 0.04308
+                    JPY: 8.56229
+                    CNY: 0.41342
+                  AED:
+                    USD: 0.27223
+                    GBP: 0.20196
+                    JPY: 40.1552
+                    CNY: 1.938
+                updated: '2025-10-03T16:52:05Z'
+                calls: 16
+                ms: 8
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
+  /convert:
+    get:
+      tags:
+      - currency
+      description: Convert an amount of one currency into another currency (supports physical and digital currencies)
+      parameters:
+      - name: from
+        in: query
+        description: Base currency symbol (physical or digital)
+        required: false
+        allowEmptyValue: true
+        schema:
+          $ref: '#/components/schemas/AnyCurrency'
+      - name: to
+        in: query
+        description: Target currency symbol (physical or digital)
+        required: true
+        schema:
+          $ref: '#/components/schemas/AnyCurrency'
+      - name: amount
+        in: query
+        description: Amount of source currency to convert
+        required: true
+        schema:
+          type: number
+          format: float
+          minimum: 0.01
+      - name: precision
+        in: query
+        description: Rounding precision for converted amount, defaults to 2 decimal places
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          maximum: 20
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  base:
+                    $ref: '#/components/schemas/AnyCurrency'
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                  amount:
+                    type: number
+                    format: float
+                  result:
+                    type: object
+                    minProperties: 2
+                    maxProperties: 2
+                    properties:
+                      rate:
+                        type: number
+                        format: float
+                    additionalProperties:
+                      type: number
+                      format: float
+              example:
+                base: USD
+                amount: 199.5
+                result:
+                  EUR: 164.29
+                  rate: 0.82353
+                ms: 7
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
+  /historical:
+    get:
+      tags:
+      - currency
+      description: Fetch midpoint currency exchange rates for a date in the past
+      parameters:
+      - name: date
+        in: query
+        description: UTC date in YYYY-MM-DD format. As far back as Jan 1970, depending on the currency pair.
+        required: true
+        schema:
+          $ref: '#/components/schemas/Date'
+      - name: from
+        in: query
+        description: Base currency 3-letter symbol, defaults to USD
+        required: false
+        allowEmptyValue: true
+        schema:
+          $ref: '#/components/schemas/Currency'
+      - name: to
+        in: query
+        description: Target currencies, comma separated list of 3-letter symbols. Defaults to all currencies if omitted
+        required: false
+        allowEmptyValue: true
+        schema:
+          $ref: '#/components/schemas/CurrencyList'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  base:
+                    $ref: '#/components/schemas/Currency'
+                  date:
+                    $ref: '#/components/schemas/Date'
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                  results:
+                    type: object
+                    minProperties: 130
+                    additionalProperties:
+                      type: number
+                      format: float
+              example:
+                date: '2021-01-16'
+                base: USD
+                results:
+                  AED: 3.67297
+                  AFN: 77.11468
+                  ALL: 101.78125
+                  AMD: 523.67143
+                  ANG: 1.78691
+                  AOA: 653.45356
+                  ARS: 85.74709
+                  AUD: 1.29806
+                  AWG: 1.79943
+                  AZN: 1.70727
+                  BAM: 1.62182
+                  BBD: 1.99941
+                  BDT: 84.84175
+                  BGN: 1.61063
+                  BHD: 0.37612
+                  BIF: 1943.32401
+                  BMD: 0.99926
+                  BND: 1.32953
+                  BOB: 6.88532
+                  BRL: 5.29479
+                  BSD: 1.00177
+                  BTN: 73.22317
+                  BWP: 10.98351
+                  BZD: 2.01472
+                  CAD: 1.27357
+                  CDF: 1977.04254
+                  CHF: 0.8912
+                  CLF: 0.02491
+                  CLP: 734.84469
+                  CNH: 6.47453
+                  CNY: 6.48079
+                  COP: 3461.79891
+                  CUP: 24.99558
+                  CVE: 90.9024
+                  CZK: 21.65759
+                  DJF: 177.94053
+                  DKK: 6.15612
+                  DOP: 58.27175
+                  DZD: 133.63021
+                  EGP: 15.64449
+                  ERN: 15.1347
+                  ETB: 39.35227
+                  EUR: 0.82791
+                  FJD: 2.05329
+                  FKP: 0.73605
+                  GBP: 0.73605
+                  GEL: 3.30208
+                  GHS: 5.78235
+                  GIP: 0.73605
+                  GMD: 51.76064
+                  GNF: 10080.74488
+                  GTQ: 7.78301
+                  GYD: 210.42985
+                  HKD: 7.75357
+                  HNL: 24.12042
+                  HRK: 6.19682
+                  HTG: 75.90461
+                  HUF: 298.21139
+                  IDR: 14054.17341
+                  ILS: 3.2719
+                  INR: 73.16164
+                  IQD: 1458.41307
+                  IRR: 42031.79744
+                  ISK: 129.4936
+                  JMD: 144.24702
+                  JOD: 0.70779
+                  JPY: 103.87016
+                  KES: 109.70116
+                  KGS: 75.50493
+                  KHR: 4047.84337
+                  KMF: 406.08715
+                  KPW: 900.13249
+                  KRW: 1102.13455
+                  KWD: 0.30318
+                  KYD: 0.81923
+                  KZT: 418.85765
+                  LAK: 9308.2585
+                  LBP: 1509.38466
+                  LKR: 194.62682
+                  LRD: 167.93022
+                  LSL: 15.21787
+                  LYD: 4.45341
+                  MAD: 8.91064
+                  MDL: 17.18902
+                  MGA: 3762.10805
+                  MKD: 51.00986
+                  MMK: 1331.8784
+                  MNT: 2853.84955
+                  MOP: 8.01634
+                  MRU: 36.41764
+                  MUR: 39.84837
+                  MVR: 15.66392
+                  MWK: 773.70087
+                  MXN: 19.79604
+                  MYR: 4.03732
+                  MZN: 74.77698
+                  NAD: 15.18769
+                  NGN: 380.3327
+                  NOK: 8.56904
+                  NPR: 117.3193
+                  NZD: 1.40232
+                  OMR: 0.38422
+                  PAB: 0.99926
+                  PEN: 3.60165
+                  PGK: 3.52819
+                  PHP: 48.06492
+                  PKR: 160.16046
+                  PLN: 3.7535
+                  PYG: 6890.343
+                  QAR: 3.64022
+                  RON: 4.02672
+                  RSD: 96.9947
+                  RUB: 73.59569
+                  RWF: 972.40542
+                  SAR: 3.74834
+                  SCR: 21.7415
+                  SDG: 55.12079
+                  SEK: 8.39445
+                  SGD: 1.33084
+                  SHP: 0.73605
+                  SLL: 10117.25305
+                  SOS: 585.66171
+                  SRD: 14.0817
+                  SYP: 1257.58133
+                  SZL: 15.23848
+                  THB: 30.10158
+                  TJS: 11.37737
+                  TMT: 3.49448
+                  TND: 2.7086
+                  TOP: 2.27536
+                  TRY: 7.45083
+                  TTD: 6.74407
+                  TWD: 28.03621
+                  TZS: 2317.83454
+                  UAH: 28.17938
+                  UGX: 3704.99043
+                  USD: 1
+                  UYU: 42.4356
+                  UZS: 10493.30193
+                  VND: 23216.10481
+                  VUV: 107.05138
+                  WST: 2.54085
+                  XAF: 542.97807
+                  XCD: 2.69954
+                  XDR: 0.69699
+                  XOF: 542.97807
+                  XPF: 98.70455
+                  YER: 246.27558
+                  ZAR: 15.20595
+                  ZMW: 21.37472
+                ms: 13
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found - We do not have historical rates for the requested date and currency pair
+        '429':
+          description: Rate limit exceeded
+  /time-series:
+    get:
+      tags:
+      - currency
+      description: Fetch a time-series dataset of daily currency exchange rates for the specified interval (only daily supported currently). See our FX quote & OHLC time-series endpoints for more granular data.
+      parameters:
+      - name: from
+        in: query
+        description: Base currency 3-letter symbol, defaults to USD
+        required: false
+        allowEmptyValue: true
+        schema:
+          $ref: '#/components/schemas/Currency'
+      - name: to
+        in: query
+        description: Target currency 3-letter symbol
+        required: true
+        schema:
+          $ref: '#/components/schemas/Currency'
+      - name: start
+        in: query
+        description: UTC start date in YYYY-MM-DD format. As far back as Jan 1970, depending on the currency pair.
+        required: true
+        schema:
+          $ref: '#/components/schemas/Date'
+      - name: end
+        in: query
+        description: UTC end date in YYYY-MM-DD format. As far back as Jan 1970, depending on the currency pair.
+        required: true
+        schema:
+          $ref: '#/components/schemas/Date'
+      - name: interval
+        in: query
+        description: ISO8601 duration, such as P1D (daily). Defaults to P1D. Currently only supports daily.
+        required: false
+        schema:
+          $ref: '#/components/schemas/Duration'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  start:
+                    $ref: '#/components/schemas/Date'
+                  end:
+                    $ref: '#/components/schemas/Date'
+                  interval:
+                    $ref: '#/components/schemas/Duration'
+                  base:
+                    $ref: '#/components/schemas/Currency'
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                  results:
+                    type: object
+                    minProperties: 1
+                    additionalProperties:
+                      type: number
+                      format: float
+              example:
+                start: '2021-01-24'
+                end: '2021-01-30'
+                interval: P1D
+                base: USD
+                results:
+                  GBP:
+                    '2021-01-24': 1.14
+                    '2021-01-25': 1.14
+                    '2021-01-26': 1.15
+                    '2021-01-27': 1.16
+                    '2021-01-28': 1.14
+                    '2021-01-29': 1.13
+                    '2021-01-30': 1.14
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
+  /currencies:
+    get:
+      tags:
+      - currency
+      description: Fetch a list of 160+ supported currencies with symbols. Also see /crypto/currencies
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                  currencies:
+                    type: object
+                    minProperties: 130
+                    additionalProperties:
+                      type: string
+              example:
+                currencies:
+                  AED: United Arab Emirates Dirham
+                  AFN: Afghan Afghani
+                  ALL: Albanian Lek
+                  AMD: Armenian Dram
+                  ANG: Dutch Guilders
+                  AOA: Angolan Kwanza
+                  ARS: Argentine Peso
+                  AUD: Australian Dollar
+                  AWG: Aruban Florin
+                  AZN: Azerbaijani Manat
+                  BAM: Bosnia-Herzegovina Convertible Mark
+                  BBD: Barbadian Dollar
+                  BDT: Bangladeshi Taka
+                  BGN: Bulgarian Lev
+                  BHD: Bahraini Dinar
+                  BIF: Burundian Franc
+                  BMD: Bermudian Dollar
+                  BND: Bruneian Dollar
+                  BOB: Bolivian Boliviano
+                  BRL: Brazilian Real
+                  BRX: Brazilian PTAX
+                  BSD: Bahamian Dollar
+                  BTN: Bhutanese Ngultrum
+                  BWP: Botswanan Pula
+                  BYN: Belarusian Ruble
+                  BZD: Belizean Dollar
+                  CAD: Canadian Dollar
+                  CDF: Congolese Franc
+                  CHF: Swiss Franc
+                  CLF: Chilean Unit of Account UF
+                  CLP: Chilean Peso
+                  CNH: Chinese Yuan Offshore
+                  CNY: Chinese Yuan
+                  COP: Colombian Peso
+                  COU: Unidad de Valor Real (Colombia)
+                  CRC: Costa Rican Colon
+                  CUP: Cuban Peso
+                  CVE: Cape Verdean Escudo
+                  CZK: Czech Republic Koruna
+                  DJF: Djiboutian Franc
+                  DKK: Danish Krone
+                  DOP: Dominican Peso
+                  DZD: Algerian Dinar
+                  EGP: Egyptian Pound
+                  ERN: Eritrean Nakfa
+                  ETB: Ethiopian Birr
+                  EUR: Euro
+                  FJD: Fijian Dollar
+                  FKP: Falkland Islands Pound
+                  GBP: British Pound Sterling
+                  GEL: Georgian Lari
+                  GHS: Ghanaian Cedi
+                  GIP: Gibraltar Pound
+                  GMD: Gambian Dalasi
+                  GNF: Guinean Franc
+                  GTQ: Guatemalan Quetzal
+                  GYD: Guyanaese Dollar
+                  HKD: Hong Kong Dollar
+                  HNL: Honduran Lempira
+                  HRK: Croatian Kuna
+                  HTG: Haitian Gourde
+                  HUF: Hungarian Forint
+                  HUX: Hungarian Forint Official Rate
+                  IDR: Indonesian Rupiah
+                  ILS: Israeli New Sheqel
+                  INR: Indian Rupee
+                  IQD: Iraqi Dinar
+                  IRR: Iranian Rial
+                  ISK: Icelandic Krona
+                  JMD: Jamaican Dollar
+                  JOD: Jordanian Dinar
+                  JPY: Japanese Yen
+                  KES: Kenyan Shilling
+                  KGS: Kyrgystani Som
+                  KHR: Cambodian Riel
+                  KMF: Comorian Franc
+                  KPW: North Korean Won
+                  KRW: South Korean Won
+                  KWD: Kuwaiti Dinar
+                  KYD: Caymanian Dollar
+                  KZT: Kazakhstani Tenge
+                  LAK: Laotian Kip
+                  LBP: Lebanese Pound
+                  LKR: Sri Lankan Rupee
+                  LRD: Liberian Dollar
+                  LSL: Lesotho Maloti
+                  LYD: Libyan Dinar
+                  MAD: Moroccan Dirham
+                  MDL: Moldovan Leu
+                  MGA: Malagasy Ariary
+                  MKD: Macedonian Denar
+                  MMK: Myanma Kyat
+                  MNT: Mongolian Tugrik
+                  MOP: Macanese Pataca
+                  MRU: Mauritanian Ouguiya
+                  MUR: Mauritian Rupee
+                  MVR: Maldivian Rufiyaa
+                  MWK: Malawian Kwacha
+                  MXN: Mexican Peso
+                  MXV: Mexican Unidad de Inversion
+                  MYR: Malaysian Ringgit
+                  MZN: Mozambican Metical
+                  NAD: Namibian Dollar
+                  NGN: Nigerian Naira
+                  NIO: Nicaraguan Cordoba
+                  NOK: Norwegian Krone
+                  NPR: Nepalese Rupee
+                  NZD: New Zealand Dollar
+                  OMR: Omani Rial
+                  PAB: Panamanian Balboa
+                  PEN: Peruvian Nuevo Sol
+                  PGK: Papua New Guinean Kina
+                  PHP: Philippine Peso
+                  PKR: Pakistani Rupee
+                  PLN: Polish Zloty
+                  PYG: Paraguayan Guarani
+                  QAR: Qatari Rial
+                  RON: Romanian Leu
+                  RSD: Serbian Dinar
+                  RUB: Russian Ruble
+                  RWF: Rwandan Franc
+                  SAR: Saudi Arabian Riyal
+                  SBD: Solomon Islands Dollar
+                  SCR: Seychellois Rupee
+                  SDG: Sudanese Pound
+                  SEK: Swedish Krona
+                  SGD: Singapore Dollar
+                  SHP: Saint Helena Pound
+                  SLL: Sierra Leonean Leone
+                  SOS: Somali Shilling
+                  SRD: Surinamese Dollar
+                  SSP: South Sudanese Pound
+                  STN: Sao Tomean Dobra
+                  SVC: Salvadoran Colon
+                  SYP: Syrian Pound
+                  SZL: Swazi Emalangeni
+                  THB: Thai Baht
+                  TJS: Tajikistani Somoni
+                  TMT: Turkmenistani Manat
+                  TND: Tunisian Dinar
+                  TOP: Tongan Pa'anga
+                  TRY: Turkish Lira
+                  TTD: Trinidad and Tobago Dollar
+                  TWD: Taiwan New Dollar
+                  TZS: Tanzanian Shilling
+                  UAH: Ukrainian Hryvnia
+                  UGX: Ugandan Shilling
+                  USD: United States Dollar
+                  UYU: Uruguayan Peso
+                  UZS: Uzbekistan Som
+                  VES: Venezuelan Bolivar
+                  VND: Vietnamese Dong
+                  VUV: Ni-Vanuatu Vatu
+                  WST: Samoan Tala
+                  XAF: CFA Franc BEAC
+                  XCD: East Caribbean Dollar
+                  XDR: Special Drawing Rights
+                  XOF: CFA Franc BCEAO
+                  XPF: CFP Franc
+                  YER: Yemeni Rial
+                  ZAR: South African Rand
+                  ZMW: Zambian Kwacha
+                ms: 3
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '429':
+          description: Rate limit exceeded
+components:
+  schemas:
+    IsoDateTimeZone:
+      type: string
+      pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(Z?|[+-][0-9]{2}:00)'
+      description: ISO8601 Datetime with optional timezone offset YYYY-MM-DDTHH:MM:SS±HH:00
+      example: '2021-01-26T15:30:00-05:00'
+    DateTimes:
+      description: A datetime value. If no timezone offset supplied, UTC/GMT is assumed.
+      oneOf:
+      - $ref: '#/components/schemas/DateTime'
+      - $ref: '#/components/schemas/IsoDateTimeZone'
+      - $ref: '#/components/schemas/TimestampMillis'
+    DateTime:
+      type: string
+      pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}'
+      description: UTC/GMT datetime YYYY-MM-DD HH:MM:SS
+    AnyCurrency:
+      type: string
+      pattern: '[A-Z0-9]{3,6}'
+      description: Currency code for a physical or digital/cryptocurrency
+    CurrencyList:
+      type: string
+      pattern: '[A-Z]{3}(,[A-Z]{3})*'
+      description: A comma-separated list of three-letter ISO 4217 currency codes
+    ApiUsage:
+      type: number
+      format: int32
+      description: The number of API calls consumed by this request
+    Date:
+      type: string
+      pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}'
+      description: UTC/GMT date YYYY-MM-DD
+    TimestampMillis:
+      type: number
+      format: int64
+      description: Milliseconds since Jan 1 1970 (unix timestamp with millisecond precision)
+      example: 1739305030072
+    ResponseTime:
+      type: number
+      format: int32
+      description: Server response time in milliseconds
+    Currency:
+      type: string
+      pattern: '[A-Z]{3}'
+      description: Three-letter ISO 4217 currency code
+    Duration:
+      type: string
+      description: ISO8601 Duration. https://en.wikipedia.org/wiki/ISO_8601#Durations
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: query
+    apiKeyHeader:
+      type: apiKey
+      name: X-API-KEY
+      in: header
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: api_key
+    basicAuth:
+      type: http
+      scheme: basic
+externalDocs:
+  description: Find out more about fastFOREX.io
+  url: https://www.fastforex.io
+x-samples-languages:
+- curl
+- node
+- ruby
+- javascript
+- python
+- php
+- go
+- java
+- swift
+x-proxy-enabled: false

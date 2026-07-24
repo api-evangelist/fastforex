@@ -1,0 +1,776 @@
+openapi: 3.0.3
+info:
+  title: fastFOREX.io admin fx API
+  version: 2.3.2
+  description: Foreign & cryptocurrency exchange rate API
+  termsOfService: https://www.fastforex.io/terms-of-sale
+  contact:
+    email: support@fastforex.io
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: https://api.fastforex.io
+  description: Production
+- url: https://api.beta.fastforex.io
+  description: Beta
+security:
+- api_key: []
+- apiKeyHeader: []
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: fx
+  description: Realtime FX trading pairs - instruments, prices and history
+paths:
+  /fx/pairs:
+    get:
+      tags:
+      - fx
+      description: List approx 2,300 supported FX pairs
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                  pairs:
+                    type: object
+                    minProperties: 2000
+                    additionalProperties:
+                      $ref: '#/components/schemas/AnyTradingPair'
+              example:
+                pairs:
+                  EUR/USD:
+                    base: EUR
+                    quote: USD
+                    alt: EURUSD
+                  GBP/USD:
+                    base: GBP
+                    quote: USD
+                    alt: GBPUSD
+                  USD/GBP:
+                    base: USD
+                    quote: GBP
+                    alt: USDGBP
+                ms: 8
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '429':
+          description: Rate limit exceeded
+  /fx/pairs/historical-limits:
+    get:
+      tags:
+      - fx
+      description: FX pairs earliest available historical data point for the supplied interval (P1D default)
+      parameters:
+      - name: interval
+        in: query
+        description: ISO8601 duration, such as P1D (daily). Defaults to P1D. Options are P1D, PT1H, PT1M.
+        required: false
+        schema:
+          $ref: '#/components/schemas/Duration'
+      - name: price
+        in: query
+        description: bid or ask. Defaults to bid.
+        required: false
+        schema:
+          $ref: '#/components/schemas/PriceType'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                  interval:
+                    $ref: '#/components/schemas/Duration'
+                  price:
+                    $ref: '#/components/schemas/PriceType'
+                  pairs:
+                    type: object
+                    minProperties: 2000
+                    additionalProperties:
+                      $ref: '#/components/schemas/DateTimes'
+              example:
+                interval: P1D
+                price: bid
+                pairs:
+                  EURUSD: 1976-01-02 00:00:00+00:00
+                  GBPUSD: 1970-01-02 00:00:00+00:00
+                  USDJPY: 1975-01-02 00:00:00+00:00
+                ms: 12
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '429':
+          description: Rate limit exceeded
+  /fx/pairs/quote-sizes:
+    get:
+      tags:
+      - fx
+      description: List of FX trading pairs with non-standard quote sizes
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                  sizes:
+                    type: object
+                    additionalProperties:
+                      type: number
+                      format: integer
+              example:
+                sizes:
+                  IRRUSD: 100000,
+                  VNDUSD: 10000,
+                  LKRNZD: 1000,
+                  DOPGBP: 100,
+                ms: 12
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '429':
+          description: Rate limit exceeded
+  /fx/currencies:
+    get:
+      tags:
+      - fx
+      description: List of supported trading pair currency symbols and descriptions
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                  currencies:
+                    type: object
+                    minProperties: 150
+                    additionalProperties:
+                      type: string
+              example:
+                currencies:
+                  AED: United Arab Emirates Dirham
+                  AFN: Afghan Afghani
+                  ALL: Albanian Lek
+                  AMD: Armenian Dram
+                  ANG: Dutch Guilders
+                  AOA: Angolan Kwanza
+                  ARS: Argentine Peso
+                  AUD: Australian Dollar
+                  AWG: Aruban Florin
+                  AZN: Azerbaijani Manat
+                  BAM: Bosnia-Herzegovina Convertible Mark
+                  BBD: Barbadian Dollar
+                  BDT: Bangladeshi Taka
+                  BGN: Bulgarian Lev
+                  BHD: Bahraini Dinar
+                  BIF: Burundian Franc
+                  BMD: Bermudian Dollar
+                  BND: Bruneian Dollar
+                  BOB: Bolivian Boliviano
+                  BRL: Brazilian Real
+                  BRX: Brazilian PTAX
+                  BSD: Bahamian Dollar
+                  BTN: Bhutanese Ngultrum
+                  BWP: Botswanan Pula
+                  BYN: Belarusian Ruble
+                  BZD: Belizean Dollar
+                  CAD: Canadian Dollar
+                  CDF: Congolese Franc
+                  CHF: Swiss Franc
+                  CLF: Chilean Unit of Account UF
+                  CLP: Chilean Peso
+                  CNH: Chinese Yuan Offshore
+                  CNY: Chinese Yuan
+                  COP: Colombian Peso
+                  COU: Unidad de Valor Real (Colombia)
+                  CRC: Costa Rican Colon
+                  CUP: Cuban Peso
+                  CVE: Cape Verdean Escudo
+                  CZK: Czech Republic Koruna
+                  DJF: Djiboutian Franc
+                  DKK: Danish Krone
+                  DOP: Dominican Peso
+                  DZD: Algerian Dinar
+                  EGP: Egyptian Pound
+                  ERN: Eritrean Nakfa
+                  ETB: Ethiopian Birr
+                  EUR: Euro
+                  FJD: Fijian Dollar
+                  FKP: Falkland Islands Pound
+                  GBP: British Pound Sterling
+                  GEL: Georgian Lari
+                  GHS: Ghanaian Cedi
+                  GIP: Gibraltar Pound
+                  GMD: Gambian Dalasi
+                  GNF: Guinean Franc
+                  GTQ: Guatemalan Quetzal
+                  GYD: Guyanaese Dollar
+                  HKD: Hong Kong Dollar
+                  HNL: Honduran Lempira
+                  HRK: Croatian Kuna
+                  HTG: Haitian Gourde
+                  HUF: Hungarian Forint
+                  HUX: Hungarian Forint Official Rate
+                  IDR: Indonesian Rupiah
+                  ILS: Israeli New Sheqel
+                  INR: Indian Rupee
+                  IQD: Iraqi Dinar
+                  IRR: Iranian Rial
+                  ISK: Icelandic Krona
+                  JMD: Jamaican Dollar
+                  JOD: Jordanian Dinar
+                  JPY: Japanese Yen
+                  KES: Kenyan Shilling
+                  KGS: Kyrgystani Som
+                  KHR: Cambodian Riel
+                  KMF: Comorian Franc
+                  KPW: North Korean Won
+                  KRW: South Korean Won
+                  KWD: Kuwaiti Dinar
+                  KYD: Caymanian Dollar
+                  KZT: Kazakhstani Tenge
+                  LAK: Laotian Kip
+                  LBP: Lebanese Pound
+                  LKR: Sri Lankan Rupee
+                  LRD: Liberian Dollar
+                  LSL: Lesotho Maloti
+                  LYD: Libyan Dinar
+                  MAD: Moroccan Dirham
+                  MDL: Moldovan Leu
+                  MGA: Malagasy Ariary
+                  MKD: Macedonian Denar
+                  MMK: Myanma Kyat
+                  MNT: Mongolian Tugrik
+                  MOP: Macanese Pataca
+                  MRU: Mauritanian Ouguiya
+                  MUR: Mauritian Rupee
+                  MVR: Maldivian Rufiyaa
+                  MWK: Malawian Kwacha
+                  MXN: Mexican Peso
+                  MXV: Mexican Unidad de Inversion
+                  MYR: Malaysian Ringgit
+                  MZN: Mozambican Metical
+                  NAD: Namibian Dollar
+                  NGN: Nigerian Naira
+                  NIO: Nicaraguan Cordoba
+                  NOK: Norwegian Krone
+                  NPR: Nepalese Rupee
+                  NZD: New Zealand Dollar
+                  OMR: Omani Rial
+                  PAB: Panamanian Balboa
+                  PEN: Peruvian Nuevo Sol
+                  PGK: Papua New Guinean Kina
+                  PHP: Philippine Peso
+                  PKR: Pakistani Rupee
+                  PLN: Polish Zloty
+                  PYG: Paraguayan Guarani
+                  QAR: Qatari Rial
+                  RON: Romanian Leu
+                  RSD: Serbian Dinar
+                  RUB: Russian Ruble
+                  RWF: Rwandan Franc
+                  SAR: Saudi Arabian Riyal
+                  SBD: Solomon Islands Dollar
+                  SCR: Seychellois Rupee
+                  SDG: Sudanese Pound
+                  SEK: Swedish Krona
+                  SGD: Singapore Dollar
+                  SHP: Saint Helena Pound
+                  SLL: Sierra Leonean Leone
+                  SOS: Somali Shilling
+                  SRD: Surinamese Dollar
+                  SSP: South Sudanese Pound
+                  STN: Sao Tomean Dobra
+                  SVC: Salvadoran Colon
+                  SYP: Syrian Pound
+                  SZL: Swazi Emalangeni
+                  THB: Thai Baht
+                  TJS: Tajikistani Somoni
+                  TMT: Turkmenistani Manat
+                  TND: Tunisian Dinar
+                  TOP: Tongan Pa'anga
+                  TRY: Turkish Lira
+                  TTD: Trinidad and Tobago Dollar
+                  TWD: Taiwan New Dollar
+                  TZS: Tanzanian Shilling
+                  UAH: Ukrainian Hryvnia
+                  UGX: Ugandan Shilling
+                  USD: United States Dollar
+                  UYU: Uruguayan Peso
+                  UZS: Uzbekistan Som
+                  VES: Venezuelan Bolivar
+                  VND: Vietnamese Dong
+                  VUV: Ni-Vanuatu Vatu
+                  WST: Samoan Tala
+                  XAF: CFA Franc BEAC
+                  XCD: East Caribbean Dollar
+                  XDR: Special Drawing Rights
+                  XOF: CFA Franc BCEAO
+                  XPF: CFP Franc
+                  YER: Yemeni Rial
+                  ZAR: South African Rand
+                  ZMW: Zambian Kwacha
+                ms: 9
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '429':
+          description: Rate limit exceeded
+  /fx/quote:
+    get:
+      tags:
+      - fx
+      description: Live bid & ask quote for 1 or more (up to 10 in a single request) FX trading pairs.
+      parameters:
+      - name: pairs
+        in: query
+        description: Up to 10 target currency pairs, comma separated in XXXYYY or XXX/YYY format
+        required: true
+        schema:
+          $ref: '#/components/schemas/TradingPairList'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  prices:
+                    type: object
+                    minProperties: 1
+                    additionalProperties:
+                      type: object
+                      properties:
+                        bid:
+                          type: number
+                          format: float
+                        ask:
+                          type: number
+                          format: float
+                        tsp:
+                          $ref: '#/components/schemas/TimestampMillis'
+                        size:
+                          $ref: '#/components/schemas/QuoteSize'
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                example:
+                  quotes:
+                    EURUSD:
+                      bid: 1.2145
+                      ask: 1.2146
+                      tsp: 1739305030072
+                      size: 1
+                    GBPUSD:
+                      bid: 1.4145
+                      ask: 1.4146
+                      tsp: 1739305029908
+                      size: 1
+                    IRRUSD:
+                      bid: 2.3808
+                      ask: 2.3816
+                      tsp: 1739305029908
+                      size: 100000
+                  ms: 8
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
+  /fx/quote/time-series:
+    get:
+      tags:
+      - fx
+      description: bid/ask time-series data for a given FX trading pair and interval. Values are the closing bid/ask for the interval. Supports a range of datetime formats and timezone offsets. Datetime format in the response will try to match your request - unless specified explicitly.
+      parameters:
+      - name: pair
+        in: query
+        description: Trading pair, such as EURUSD
+        required: true
+        schema:
+          $ref: '#/components/schemas/TradingPair'
+      - name: start
+        in: query
+        description: 'Time-series start. Supported formats: YYYY-MM-DD (UTC). YYYY-MM-DD HH:MM:SS (UTC), ISO8601 with timezone offset. Timestamp in milliseconds. Supply this or end.'
+        required: false
+        schema:
+          $ref: '#/components/schemas/DateOrDateTime'
+      - name: end
+        in: query
+        description: 'Time-series end. Supported formats: YYYY-MM-DD (UTC). YYYY-MM-DD HH:MM:SS (UTC), ISO8601 with timezone offset. Timestamp in milliseconds. Supply this or start.'
+        required: false
+        schema:
+          $ref: '#/components/schemas/DateOrDateTime'
+      - name: dtmfmt
+        in: query
+        description: Desired datetime response format. Defaults to match your request. Can be [ISO] ISO8601 datetime including timezone offset, [TSP] UNIX Timestamp in milliseconds, or [UTCYMD] 'YYYY-MM-DD HH:MM:SS' (UTC).
+        required: false
+        schema:
+          $ref: '#/components/schemas/DateTimeFormat'
+      - name: interval
+        in: query
+        description: ISO8601 duration, such as P1D (daily). Defaults to P1D. Options are P1D, PT1H, PT1M.
+        required: false
+        schema:
+          $ref: '#/components/schemas/Duration'
+      - name: limit
+        in: query
+        description: Maximum number of data points to return. Default varies upon duration.
+        required: false
+        schema:
+          type: number
+          format: int32
+          minimum: 1
+          maximum: 100
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pair:
+                    $ref: '#/components/schemas/TradingPair'
+                  interval:
+                    $ref: '#/components/schemas/Duration'
+                  limit:
+                    type: number
+                    format: int32
+                  dtmfmt:
+                    $ref: '#/components/schemas/DateTimeFormat'
+                  start:
+                    $ref: '#/components/schemas/DateTimes'
+                  end:
+                    $ref: '#/components/schemas/DateTimes'
+                  tzOffset:
+                    type: string
+                    description: Timezone offset. e.g. +00:00 or -05:00
+                  size:
+                    $ref: '#/components/schemas/QuoteSize'
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        dtm:
+                          $ref: '#/components/schemas/DateTimes'
+                        bid:
+                          type: number
+                          format: float
+                        ask:
+                          type: number
+                          format: float
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+              example:
+                pair: GBPUSD
+                interval: PT1M
+                limit: 10
+                dtmfmt: ISO
+                end: '2025-02-13T16:30:00Z'
+                tzOffset: +00:00
+                size: 1
+                results:
+                - dtm: '2025-02-13T16:29:00Z'
+                  bid: 1.25377
+                  ask: 1.25379
+                - dtm: '2025-02-13T16:28:00Z'
+                  bid: 1.2536
+                  ask: 1.25371
+                - dtm: '2025-02-13T16:27:00Z'
+                  bid: 1.25359
+                  ask: 1.25366
+                - dtm: '2025-02-13T16:26:00Z'
+                  bid: 1.25385
+                  ask: 1.25396
+                - dtm: '2025-02-13T16:25:00Z'
+                  bid: 1.25401
+                  ask: 1.25402
+                - dtm: '2025-02-13T16:24:00Z'
+                  bid: 1.25392
+                  ask: 1.25397
+                - dtm: '2025-02-13T16:23:00Z'
+                  bid: 1.25374
+                  ask: 1.25379
+                - dtm: '2025-02-13T16:22:00Z'
+                  bid: 1.2537
+                  ask: 1.25387
+                - dtm: '2025-02-13T16:21:00Z'
+                  bid: 1.25372
+                  ask: 1.25389
+                ms: 16
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
+  /fx/ohlc/time-series:
+    get:
+      tags:
+      - fx
+      description: Fetch a set of OHLC time-series data points for a given FX trading pair and interval. Values are based on the BID price. Supports a range of datetime formats and timezone offsets. Datetime format in the response will try to match your request - unless specified explicitly.
+      parameters:
+      - name: pair
+        in: query
+        description: Trading pair, such as EURUSD
+        required: true
+        schema:
+          $ref: '#/components/schemas/TradingPair'
+      - name: start
+        in: query
+        description: 'Time-series start. Supported formats: YYYY-MM-DD (UTC). YYYY-MM-DD HH:MM:SS (UTC), ISO8601 with timezone offset. Timestamp in milliseconds. Supply this or end.'
+        required: false
+        schema:
+          $ref: '#/components/schemas/DateOrDateTime'
+      - name: end
+        in: query
+        description: 'Time-series end. Supported formats: YYYY-MM-DD (UTC). YYYY-MM-DD HH:MM:SS (UTC), ISO8601 with timezone offset. Timestamp in milliseconds. Supply this or start.'
+        required: false
+        schema:
+          $ref: '#/components/schemas/DateOrDateTime'
+      - name: dtmfmt
+        in: query
+        description: Desired datetime response format. Defaults to match your request. Can be [ISO] ISO8601 datetime including timezone offset, [TSP] UNIX Timestamp in milliseconds, or [UTCYMD] 'YYYY-MM-DD HH:MM:SS' (UTC).
+        required: false
+        schema:
+          $ref: '#/components/schemas/DateTimeFormat'
+      - name: interval
+        in: query
+        description: ISO8601 duration, such as P1D (daily). Defaults to P1D. Options are P1D, PT1H, PT1M.
+        required: false
+        schema:
+          $ref: '#/components/schemas/Duration'
+      - name: limit
+        in: query
+        description: Maximum number of data points to return. Default varies upon duration.
+        required: false
+        schema:
+          type: number
+          format: int32
+          minimum: 1
+          maximum: 100
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pair:
+                    $ref: '#/components/schemas/TradingPair'
+                  interval:
+                    $ref: '#/components/schemas/Duration'
+                  limit:
+                    type: number
+                    format: int32
+                  dtmfmt:
+                    $ref: '#/components/schemas/DateTimeFormat'
+                  start:
+                    $ref: '#/components/schemas/DateTimes'
+                  end:
+                    $ref: '#/components/schemas/DateTimes'
+                  tzOffset:
+                    type: string
+                    description: Timezone offset. e.g. +00:00 or -05:00
+                  size:
+                    $ref: '#/components/schemas/QuoteSize'
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        dtm:
+                          $ref: '#/components/schemas/DateTimes'
+                        o:
+                          type: number
+                          format: float
+                        h:
+                          type: number
+                          format: float
+                        l:
+                          type: number
+                          format: float
+                        c:
+                          type: number
+                          format: float
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+              example:
+                pair: EURUSD
+                interval: P1D
+                limit: 3
+                dtmfmt: ISO
+                end: '2021-01-26T00:00:00Z'
+                tzOffset: +00:00
+                size: 1
+                results:
+                - dtm: '2021-01-24T00:00:00Z'
+                  o: 1.2145
+                  h: 1.2156
+                  l: 1.2134
+                  c: 1.2142
+                - dtm: '2021-01-25T00:00:00Z'
+                  o: 1.2142
+                  h: 1.2157
+                  l: 1.2139
+                  c: 1.2149
+                - dtm: '2021-01-26T00:00:00Z'
+                  o: 1.2149
+                  h: 1.2158
+                  l: 1.2137
+                  c: 1.2145
+                ms: 8
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
+components:
+  schemas:
+    IsoDateTimeZone:
+      type: string
+      pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(Z?|[+-][0-9]{2}:00)'
+      description: ISO8601 Datetime with optional timezone offset YYYY-MM-DDTHH:MM:SS±HH:00
+      example: '2021-01-26T15:30:00-05:00'
+    PriceType:
+      type: string
+      description: bid or ask
+      enum:
+      - bid
+      - ask
+    DateTimes:
+      description: A datetime value. If no timezone offset supplied, UTC/GMT is assumed.
+      oneOf:
+      - $ref: '#/components/schemas/DateTime'
+      - $ref: '#/components/schemas/IsoDateTimeZone'
+      - $ref: '#/components/schemas/TimestampMillis'
+    DateTime:
+      type: string
+      pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}'
+      description: UTC/GMT datetime YYYY-MM-DD HH:MM:SS
+    DateOrDateTime:
+      description: A datetime value. If no timezone offset supplied, UTC/GMT is assumed. If only a date is supplied, time is assumed to be 00:00:00 UTC.
+      oneOf:
+      - $ref: '#/components/schemas/Date'
+      - $ref: '#/components/schemas/DateTime'
+      - $ref: '#/components/schemas/IsoDateTimeZone'
+      - $ref: '#/components/schemas/TimestampMillis'
+    DateTimeFormat:
+      description: Can be [ISO] ISO8601 datetime including timezone offset, [TSP] UNIX Timestamp in milliseconds, or [UTCYMD] 'YYYY-MM-DD HH:MM:SS' (UTC).
+      type: string
+      enum:
+      - ISO
+      - TSP
+      - UTCYMD
+    TradingPairList:
+      type: string
+      pattern: '[A-Z0-9]{3,6}/?[A-Z0-9]{3,6}(,[A-Z0-9]{3,6}/?[A-Z0-9]{3,6})*'
+      description: A comma-separated list of FX trading pairs
+    QuoteSize:
+      type: number
+      format: int32
+      description: Size of the quote is units of the base currency/symbol. Usually 1.
+    Date:
+      type: string
+      pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}'
+      description: UTC/GMT date YYYY-MM-DD
+    AnyTradingPair:
+      type: object
+      description: Defines a currency trading pair.
+      properties:
+        base:
+          type: string
+          pattern: '[A-Z0-9]{3,6}'
+          description: Base currency in the pair
+        quote:
+          type: string
+          pattern: '[A-Z0-9]{3,6}'
+          description: Quote currency in the pair
+        alt:
+          type: string
+          pattern: '[A-Z0-9]{6,8}'
+          description: Alternative trading pair identifier
+      example:
+        base: EUR
+        quote: USD
+        alt: EURUSD
+    TimestampMillis:
+      type: number
+      format: int64
+      description: Milliseconds since Jan 1 1970 (unix timestamp with millisecond precision)
+      example: 1739305030072
+    TradingPair:
+      type: string
+      pattern: '[A-Z0-9]{3,6}/?[A-Z0-9]{3,6}'
+      description: A single FX trading pair, with or without a slash
+    ResponseTime:
+      type: number
+      format: int32
+      description: Server response time in milliseconds
+    Duration:
+      type: string
+      description: ISO8601 Duration. https://en.wikipedia.org/wiki/ISO_8601#Durations
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: query
+    apiKeyHeader:
+      type: apiKey
+      name: X-API-KEY
+      in: header
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: api_key
+    basicAuth:
+      type: http
+      scheme: basic
+externalDocs:
+  description: Find out more about fastFOREX.io
+  url: https://www.fastforex.io
+x-samples-languages:
+- curl
+- node
+- ruby
+- javascript
+- python
+- php
+- go
+- java
+- swift
+x-proxy-enabled: false

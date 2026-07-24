@@ -1,72 +1,61 @@
-openapi: "3.0.3"
+openapi: 3.0.3
 info:
-  title: "fastFOREX.io"
-  version: "2.3.2"
-  description: "Foreign & cryptocurrency exchange rate API"
-  termsOfService: "https://www.fastforex.io/terms-of-sale"
+  title: fastFOREX.io admin plan-extra API
+  version: 2.3.2
+  description: Foreign & cryptocurrency exchange rate API
+  termsOfService: https://www.fastforex.io/terms-of-sale
   contact:
-    email: "support@fastforex.io"
+    email: support@fastforex.io
   license:
-    name: "Apache 2.0"
-    url: "https://www.apache.org/licenses/LICENSE-2.0.html"
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
 servers:
-  - url: "https://api.fastforex.io"
-    description: "Production"
-  - url: "https://api.beta.fastforex.io"
-    description: "Beta"
+- url: https://api.fastforex.io
+  description: Production
+- url: https://api.beta.fastforex.io
+  description: Beta
+security:
+- api_key: []
+- apiKeyHeader: []
+- bearerAuth: []
+- basicAuth: []
 tags:
-  - name: "currency"
-    description: "Physical currencies, rates and conversions"
-  - name: "crypto"
-    description: "Digital currencies, pairs & prices"
-  - name: "fx"
-    description: "Realtime FX trading pairs - instruments, prices and history"
-  - name: "admin"
-    description: "Account admin"
-  - name: "plan-one"
-    description: "Available on The One Plan"
-  - name: "plan-extra"
-    description: "Available on The Extra Plan"
-  - name: "plan-premium"
-    description: "Available on The Premium Plan"
+- name: plan-extra
+  description: Available on The Extra Plan
 paths:
   /fetch-one:
     get:
       tags:
-        - "currency"
-        - "crypto"
-        - "plan-one"
-        - "plan-extra"
-        - "plan-premium"
-      description: "Fetch a single currency exchange rate, from and to any supported physical or digital currency. Midpoint spot rate."
+      - plan-extra
+      description: Fetch a single currency exchange rate, from and to any supported physical or digital currency. Midpoint spot rate.
       parameters:
-        - name: "from"
-          in: "query"
-          description: "Base currency symbol (physical or digital), defaults to USD"
-          required: false
-          allowEmptyValue: true
-          schema:
-            $ref: "#/components/schemas/AnyCurrency"
-        - name: "to"
-          in: "query"
-          description: "Target currency symbol (physical or digital), defaults to USD"
-          required: true
-          schema:
-            $ref: "#/components/schemas/AnyCurrency"
+      - name: from
+        in: query
+        description: Base currency symbol (physical or digital), defaults to USD
+        required: false
+        allowEmptyValue: true
+        schema:
+          $ref: '#/components/schemas/AnyCurrency'
+      - name: to
+        in: query
+        description: Target currency symbol (physical or digital), defaults to USD
+        required: true
+        schema:
+          $ref: '#/components/schemas/AnyCurrency'
       responses:
-        "200":
-          description: "Success"
+        '200':
+          description: Success
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   base:
-                    $ref: "#/components/schemas/AnyCurrency"
+                    $ref: '#/components/schemas/AnyCurrency'
                   updated:
-                    $ref: "#/components/schemas/DateTimes"
+                    $ref: '#/components/schemas/DateTimes'
                   ms:
-                    $ref: "#/components/schemas/ResponseTime"
+                    $ref: '#/components/schemas/ResponseTime'
                   result:
                     type: object
                     minProperties: 1
@@ -80,50 +69,47 @@ paths:
                   EUR: 0.82791
                 updated: '2021-01-16T16:34:29Z'
                 ms: 4
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "403":
-          description: "Forbidden"
-        "429":
-          description: "Rate limit exceeded"
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
   /fetch-multi:
     get:
       tags:
-        - "currency"
-        - "plan-one"
-        - "plan-extra"
-        - "plan-premium"
-      description: "Fetch multiple target exchange rates from a single source currency. Midpoint spot rates."
+      - plan-extra
+      description: Fetch multiple target exchange rates from a single source currency. Midpoint spot rates.
       parameters:
-        - name: "from"
-          in: "query"
-          description: "Base currency 3-letter symbol, defaults to USD"
-          required: false
-          allowEmptyValue: true
-          schema:
-            $ref: "#/components/schemas/Currency"
-        - name: "to"
-          in: "query"
-          description: "Target currencies, comma separated list of 3-letter symbols"
-          required: true
-          schema:
-            $ref: "#/components/schemas/CurrencyList"
+      - name: from
+        in: query
+        description: Base currency 3-letter symbol, defaults to USD
+        required: false
+        allowEmptyValue: true
+        schema:
+          $ref: '#/components/schemas/Currency'
+      - name: to
+        in: query
+        description: Target currencies, comma separated list of 3-letter symbols
+        required: true
+        schema:
+          $ref: '#/components/schemas/CurrencyList'
       responses:
-        "200":
-          description: "Success"
+        '200':
+          description: Success
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   base:
-                    $ref: "#/components/schemas/Currency"
+                    $ref: '#/components/schemas/Currency'
                   updated:
-                    $ref: "#/components/schemas/DateTimes"
+                    $ref: '#/components/schemas/DateTimes'
                   ms:
-                    $ref: "#/components/schemas/ResponseTime"
+                    $ref: '#/components/schemas/ResponseTime'
                   results:
                     type: object
                     minProperties: 1
@@ -137,44 +123,41 @@ paths:
                   GBP: 0.73605
                 updated: '2021-01-16T16:34:29Z'
                 ms: 8
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "403":
-          description: "Forbidden"
-        "429":
-          description: "Rate limit exceeded"
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
   /fetch-all:
     get:
       tags:
-        - "currency"
-        - "plan-one"
-        - "plan-extra"
-        - "plan-premium"
-      description: "Fetch all available currency rates for the supplied source currency. Midpoint spot rates."
+      - plan-extra
+      description: Fetch all available currency rates for the supplied source currency. Midpoint spot rates.
       parameters:
-        - name: "from"
-          in: "query"
-          description: "Base currency 3-letter symbol, defaults to USD"
-          required: false
-          allowEmptyValue: true
-          schema:
-            $ref: "#/components/schemas/Currency"
+      - name: from
+        in: query
+        description: Base currency 3-letter symbol, defaults to USD
+        required: false
+        allowEmptyValue: true
+        schema:
+          $ref: '#/components/schemas/Currency'
       responses:
-        "200":
-          description: "Success"
+        '200':
+          description: Success
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   base:
-                    $ref: "#/components/schemas/Currency"
+                    $ref: '#/components/schemas/Currency'
                   updated:
-                    $ref: "#/components/schemas/DateTimes"
+                    $ref: '#/components/schemas/DateTimes'
                   ms:
-                    $ref: "#/components/schemas/ResponseTime"
+                    $ref: '#/components/schemas/ResponseTime'
                   results:
                     type: object
                     minProperties: 130
@@ -345,51 +328,48 @@ paths:
                   ZMW: 28.3
                 updated: '2025-04-11T23:59:53Z'
                 ms: 77
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "403":
-          description: "Forbidden"
-        "429":
-          description: "Rate limit exceeded"
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
   /fetch-many-to-one:
     get:
       tags:
-        - "currency"
-        - "plan-one"
-        - "plan-extra"
-        - "plan-premium"
-      description: "Fetch a set of many source currency rates to a single target currency (inverse of /fetch-multi). Midpoint spot rates. Costs one API call per pair returned."
+      - plan-extra
+      description: Fetch a set of many source currency rates to a single target currency (inverse of /fetch-multi). Midpoint spot rates. Costs one API call per pair returned.
       parameters:
-        - name: "from"
-          in: "query"
-          description: "Source currencies, comma separated list of 3-letter symbols"
-          required: true
-          schema:
-            $ref: "#/components/schemas/CurrencyList"
-        - name: "to"
-          in: "query"
-          description: "Target currency 3-letter symbol, defaults to USD"
-          required: true
-          schema:
-            $ref: "#/components/schemas/Currency"
+      - name: from
+        in: query
+        description: Source currencies, comma separated list of 3-letter symbols
+        required: true
+        schema:
+          $ref: '#/components/schemas/CurrencyList'
+      - name: to
+        in: query
+        description: Target currency 3-letter symbol, defaults to USD
+        required: true
+        schema:
+          $ref: '#/components/schemas/Currency'
       responses:
-        "200":
-          description: "Success"
+        '200':
+          description: Success
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   to:
-                    $ref: "#/components/schemas/Currency"
+                    $ref: '#/components/schemas/Currency'
                   updated:
-                    $ref: "#/components/schemas/DateTimes"
+                    $ref: '#/components/schemas/DateTimes'
                   calls:
-                    $ref: "#/components/schemas/ApiUsage"
+                    $ref: '#/components/schemas/ApiUsage'
                   ms:
-                    $ref: "#/components/schemas/ResponseTime"
+                    $ref: '#/components/schemas/ResponseTime'
                   from:
                     type: object
                     minProperties: 1
@@ -407,38 +387,35 @@ paths:
                 updated: '2025-10-03T16:34:29Z'
                 calls: 5
                 ms: 12
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "403":
-          description: "Forbidden"
-        "429":
-          description: "Rate limit exceeded"
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
   /fetch-matrix:
     get:
       tags:
-        - "currency"
-        - "plan-one"
-        - "plan-extra"
-        - "plan-premium"
-      description: "Fetch a matrix of multiple from/to currency pairs. Midpoint spot rates. Costs one API call per pair returned."
+      - plan-extra
+      description: Fetch a matrix of multiple from/to currency pairs. Midpoint spot rates. Costs one API call per pair returned.
       parameters:
-        - name: "from"
-          in: "query"
-          description: "Source currencies, comma separated list of 3-letter symbols"
-          required: true
-          schema:
-            $ref: "#/components/schemas/CurrencyList"
-        - name: "to"
-          in: "query"
-          description: "Target currencies, comma separated list of 3-letter symbols"
-          required: true
-          schema:
-            $ref: "#/components/schemas/CurrencyList"
+      - name: from
+        in: query
+        description: Source currencies, comma separated list of 3-letter symbols
+        required: true
+        schema:
+          $ref: '#/components/schemas/CurrencyList'
+      - name: to
+        in: query
+        description: Target currencies, comma separated list of 3-letter symbols
+        required: true
+        schema:
+          $ref: '#/components/schemas/CurrencyList'
       responses:
-        "200":
-          description: "Success"
+        '200':
+          description: Success
           content:
             application/json:
               schema:
@@ -447,11 +424,11 @@ paths:
                   from:
                     type: array
                     items:
-                      $ref: "#/components/schemas/Currency"
+                      $ref: '#/components/schemas/Currency'
                   to:
                     type: array
                     items:
-                      $ref: "#/components/schemas/Currency"
+                      $ref: '#/components/schemas/Currency'
                   matrix:
                     type: object
                     minProperties: 1
@@ -462,22 +439,22 @@ paths:
                         type: number
                         format: float
                   updated:
-                    $ref: "#/components/schemas/DateTimes"
+                    $ref: '#/components/schemas/DateTimes'
                   calls:
-                    $ref: "#/components/schemas/ApiUsage"
+                    $ref: '#/components/schemas/ApiUsage'
                   ms:
-                    $ref: "#/components/schemas/ResponseTime"
+                    $ref: '#/components/schemas/ResponseTime'
               example:
                 from:
-                  - USD
-                  - CHF
-                  - ZAR
-                  - AED
+                - USD
+                - CHF
+                - ZAR
+                - AED
                 to:
-                  - USD
-                  - GBP
-                  - JPY
-                  - CNY
+                - USD
+                - GBP
+                - JPY
+                - CNY
                 matrix:
                   USD:
                     GBP: 0.74196
@@ -502,65 +479,61 @@ paths:
                 updated: '2025-10-03T16:52:05Z'
                 calls: 16
                 ms: 8
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "403":
-          description: "Forbidden"
-        "429":
-          description: "Rate limit exceeded"
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
   /convert:
     get:
       tags:
-        - "currency"
-        - "crypto"
-        - "plan-one"
-        - "plan-extra"
-        - "plan-premium"
-      description: "Convert an amount of one currency into another currency (supports physical and digital currencies)"
+      - plan-extra
+      description: Convert an amount of one currency into another currency (supports physical and digital currencies)
       parameters:
-        - name: "from"
-          in: "query"
-          description: "Base currency symbol (physical or digital)"
-          required: false
-          allowEmptyValue: true
-          schema:
-            $ref: "#/components/schemas/AnyCurrency"
-        - name: "to"
-          in: "query"
-          description: "Target currency symbol (physical or digital)"
-          required: true
-          schema:
-            $ref: "#/components/schemas/AnyCurrency"
-        - name: "amount"
-          in: "query"
-          description: "Amount of source currency to convert"
-          required: true
-          schema:
-            type: number
-            format: float
-            minimum: 0.01
-        - name: "precision"
-          in: "query"
-          description: "Rounding precision for converted amount, defaults to 2 decimal places"
-          required: false
-          schema:
-            type: integer
-            minimum: 0
-            maximum: 20
+      - name: from
+        in: query
+        description: Base currency symbol (physical or digital)
+        required: false
+        allowEmptyValue: true
+        schema:
+          $ref: '#/components/schemas/AnyCurrency'
+      - name: to
+        in: query
+        description: Target currency symbol (physical or digital)
+        required: true
+        schema:
+          $ref: '#/components/schemas/AnyCurrency'
+      - name: amount
+        in: query
+        description: Amount of source currency to convert
+        required: true
+        schema:
+          type: number
+          format: float
+          minimum: 0.01
+      - name: precision
+        in: query
+        description: Rounding precision for converted amount, defaults to 2 decimal places
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          maximum: 20
       responses:
-        "200":
-          description: "Success"
+        '200':
+          description: Success
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   base:
-                    $ref: "#/components/schemas/AnyCurrency"
+                    $ref: '#/components/schemas/AnyCurrency'
                   ms:
-                    $ref: "#/components/schemas/ResponseTime"
+                    $ref: '#/components/schemas/ResponseTime'
                   amount:
                     type: number
                     format: float
@@ -582,57 +555,54 @@ paths:
                   EUR: 164.29
                   rate: 0.82353
                 ms: 7
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "403":
-          description: "Forbidden"
-        "429":
-          description: "Rate limit exceeded"
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
   /historical:
     get:
       tags:
-        - "currency"
-        - "plan-one"
-        - "plan-extra"
-        - "plan-premium"
-      description: "Fetch midpoint currency exchange rates for a date in the past"
+      - plan-extra
+      description: Fetch midpoint currency exchange rates for a date in the past
       parameters:
-        - name: "date"
-          in: "query"
-          description: "UTC date in YYYY-MM-DD format. As far back as Jan 1970, depending on the currency pair."
-          required: true
-          schema:
-            $ref: "#/components/schemas/Date"
-        - name: "from"
-          in: "query"
-          description: "Base currency 3-letter symbol, defaults to USD"
-          required: false
-          allowEmptyValue: true
-          schema:
-            $ref: "#/components/schemas/Currency"
-        - name: "to"
-          in: "query"
-          description: "Target currencies, comma separated list of 3-letter symbols. Defaults to all currencies if omitted"
-          required: false
-          allowEmptyValue: true
-          schema:
-            $ref: "#/components/schemas/CurrencyList"
+      - name: date
+        in: query
+        description: UTC date in YYYY-MM-DD format. As far back as Jan 1970, depending on the currency pair.
+        required: true
+        schema:
+          $ref: '#/components/schemas/Date'
+      - name: from
+        in: query
+        description: Base currency 3-letter symbol, defaults to USD
+        required: false
+        allowEmptyValue: true
+        schema:
+          $ref: '#/components/schemas/Currency'
+      - name: to
+        in: query
+        description: Target currencies, comma separated list of 3-letter symbols. Defaults to all currencies if omitted
+        required: false
+        allowEmptyValue: true
+        schema:
+          $ref: '#/components/schemas/CurrencyList'
       responses:
-        "200":
-          description: "Success"
+        '200':
+          description: Success
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   base:
-                    $ref: "#/components/schemas/Currency"
+                    $ref: '#/components/schemas/Currency'
                   date:
-                    $ref: "#/components/schemas/Date"
+                    $ref: '#/components/schemas/Date'
                   ms:
-                    $ref: "#/components/schemas/ResponseTime"
+                    $ref: '#/components/schemas/ResponseTime'
                   results:
                     type: object
                     minProperties: 130
@@ -794,74 +764,71 @@ paths:
                   ZAR: 15.20595
                   ZMW: 21.37472
                 ms: 13
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "403":
-          description: "Forbidden"
-        "404":
-          description: "Not Found - We do not have historical rates for the requested date and currency pair"
-        "429":
-          description: "Rate limit exceeded"
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found - We do not have historical rates for the requested date and currency pair
+        '429':
+          description: Rate limit exceeded
   /time-series:
     get:
       tags:
-        - "currency"
-        - "plan-one"
-        - "plan-extra"
-        - "plan-premium"
-      description: "Fetch a time-series dataset of daily currency exchange rates for the specified interval (only daily supported currently). See our FX quote & OHLC time-series endpoints for more granular data."
+      - plan-extra
+      description: Fetch a time-series dataset of daily currency exchange rates for the specified interval (only daily supported currently). See our FX quote & OHLC time-series endpoints for more granular data.
       parameters:
-        - name: "from"
-          in: "query"
-          description: "Base currency 3-letter symbol, defaults to USD"
-          required: false
-          allowEmptyValue: true
-          schema:
-            $ref: "#/components/schemas/Currency"
-        - name: "to"
-          in: "query"
-          description: "Target currency 3-letter symbol"
-          required: true
-          schema:
-            $ref: "#/components/schemas/Currency"
-        - name: "start"
-          in: "query"
-          description: "UTC start date in YYYY-MM-DD format. As far back as Jan 1970, depending on the currency pair."
-          required: true
-          schema:
-            $ref: "#/components/schemas/Date"
-        - name: "end"
-          in: "query"
-          description: "UTC end date in YYYY-MM-DD format. As far back as Jan 1970, depending on the currency pair."
-          required: true
-          schema:
-            $ref: "#/components/schemas/Date"
-        - name: "interval"
-          in: "query"
-          description: "ISO8601 duration, such as P1D (daily). Defaults to P1D. Currently only supports daily."
-          required: false
-          schema:
-            $ref: "#/components/schemas/Duration"
+      - name: from
+        in: query
+        description: Base currency 3-letter symbol, defaults to USD
+        required: false
+        allowEmptyValue: true
+        schema:
+          $ref: '#/components/schemas/Currency'
+      - name: to
+        in: query
+        description: Target currency 3-letter symbol
+        required: true
+        schema:
+          $ref: '#/components/schemas/Currency'
+      - name: start
+        in: query
+        description: UTC start date in YYYY-MM-DD format. As far back as Jan 1970, depending on the currency pair.
+        required: true
+        schema:
+          $ref: '#/components/schemas/Date'
+      - name: end
+        in: query
+        description: UTC end date in YYYY-MM-DD format. As far back as Jan 1970, depending on the currency pair.
+        required: true
+        schema:
+          $ref: '#/components/schemas/Date'
+      - name: interval
+        in: query
+        description: ISO8601 duration, such as P1D (daily). Defaults to P1D. Currently only supports daily.
+        required: false
+        schema:
+          $ref: '#/components/schemas/Duration'
       responses:
-        "200":
-          description: "Success"
+        '200':
+          description: Success
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   start:
-                    $ref: "#/components/schemas/Date"
+                    $ref: '#/components/schemas/Date'
                   end:
-                    $ref: "#/components/schemas/Date"
+                    $ref: '#/components/schemas/Date'
                   interval:
-                    $ref: "#/components/schemas/Duration"
+                    $ref: '#/components/schemas/Duration'
                   base:
-                    $ref: "#/components/schemas/Currency"
+                    $ref: '#/components/schemas/Currency'
                   ms:
-                    $ref: "#/components/schemas/ResponseTime"
+                    $ref: '#/components/schemas/ResponseTime'
                   results:
                     type: object
                     minProperties: 1
@@ -871,7 +838,7 @@ paths:
               example:
                 start: '2021-01-24'
                 end: '2021-01-30'
-                interval: 'P1D'
+                interval: P1D
                 base: USD
                 results:
                   GBP:
@@ -882,32 +849,29 @@ paths:
                     '2021-01-28': 1.14
                     '2021-01-29': 1.13
                     '2021-01-30': 1.14
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "403":
-          description: "Forbidden"
-        "429":
-          description: "Rate limit exceeded"
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
   /currencies:
     get:
       tags:
-        - "currency"
-        - "plan-one"
-        - "plan-extra"
-        - "plan-premium"
-      description: "Fetch a list of 160+ supported currencies with symbols. Also see /crypto/currencies"
+      - plan-extra
+      description: Fetch a list of 160+ supported currencies with symbols. Also see /crypto/currencies
       responses:
-        "200":
-          description: "Success"
+        '200':
+          description: Success
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   ms:
-                    $ref: "#/components/schemas/ResponseTime"
+                    $ref: '#/components/schemas/ResponseTime'
                   currencies:
                     type: object
                     minProperties: 130
@@ -1078,30 +1042,27 @@ paths:
                   ZAR: South African Rand
                   ZMW: Zambian Kwacha
                 ms: 3
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "429":
-          description: "Rate limit exceeded"
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '429':
+          description: Rate limit exceeded
   /crypto/currencies:
     get:
       tags:
-        - "crypto"
-        - "plan-one"
-        - "plan-extra"
-        - "plan-premium"
-      description: "Fetch a list of 500+ supported cryptocurrencies"
+      - plan-extra
+      description: Fetch a list of 500+ supported cryptocurrencies
       responses:
-        "200":
-          description: "Success"
+        '200':
+          description: Success
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   ms:
-                    $ref: "#/components/schemas/ResponseTime"
+                    $ref: '#/components/schemas/ResponseTime'
                   currencies:
                     type: object
                     minProperties: 200
@@ -1116,35 +1077,32 @@ paths:
                   ADA: Cardano
                   AERGO: Aergo
                 ms: 8
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "429":
-          description: "Rate limit exceeded"
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '429':
+          description: Rate limit exceeded
   /crypto/pairs:
     get:
       tags:
-        - "crypto"
-        - "plan-one"
-        - "plan-extra"
-        - "plan-premium"
-      description: "Fetch a list of 400+ supported cryptocurrency pairs"
+      - plan-extra
+      description: Fetch a list of 400+ supported cryptocurrency pairs
       responses:
-        "200":
-          description: "Success"
+        '200':
+          description: Success
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   ms:
-                    $ref: "#/components/schemas/ResponseTime"
+                    $ref: '#/components/schemas/ResponseTime'
                   pairs:
                     type: object
                     minProperties: 400
                     additionalProperties:
-                      $ref: "#/components/schemas/AnyCurrencyPair"
+                      $ref: '#/components/schemas/AnyCurrencyPair'
               example:
                 pairs:
                   1INCH/BTC:
@@ -1157,37 +1115,34 @@ paths:
                     base: ETH
                     quote: BTC
                 ms: 8
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "429":
-          description: "Rate limit exceeded"
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '429':
+          description: Rate limit exceeded
   /crypto/fetch-prices:
     get:
       tags:
-        - "crypto"
-        - "plan-one"
-        - "plan-extra"
-        - "plan-premium"
-      description: "Fetch one or more (up to 10) real-time prices for supported cryptocurrency pairs"
+      - plan-extra
+      description: Fetch one or more (up to 10) real-time prices for supported cryptocurrency pairs
       parameters:
-        - name: "pairs"
-          in: "query"
-          description: "Up to 10 target currency pairs, comma separated in XXX/YYY format"
-          required: true
-          schema:
-            $ref: "#/components/schemas/CryptoCurrencyPairList"
+      - name: pairs
+        in: query
+        description: Up to 10 target currency pairs, comma separated in XXX/YYY format
+        required: true
+        schema:
+          $ref: '#/components/schemas/CryptoCurrencyPairList'
       responses:
-        "200":
-          description: "Success"
+        '200':
+          description: Success
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   ms:
-                    $ref: "#/components/schemas/ResponseTime"
+                    $ref: '#/components/schemas/ResponseTime'
                   prices:
                     type: object
                     minProperties: 1
@@ -1199,36 +1154,34 @@ paths:
                   BTC/USD: 20624.21
                   ETH/BTC: 0.075316
                 ms: 8
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "403":
-          description: "Forbidden"
-        "429":
-          description: "Rate limit exceeded"
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
   /fx/pairs:
     get:
       tags:
-        - "fx"
-        - "plan-extra"
-        - "plan-premium"
-      description: "List approx 2,300 supported FX pairs"
+      - plan-extra
+      description: List approx 2,300 supported FX pairs
       responses:
-        "200":
-          description: "Success"
+        '200':
+          description: Success
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   ms:
-                    $ref: "#/components/schemas/ResponseTime"
+                    $ref: '#/components/schemas/ResponseTime'
                   pairs:
                     type: object
                     minProperties: 2000
                     additionalProperties:
-                      $ref: "#/components/schemas/AnyTradingPair"
+                      $ref: '#/components/schemas/AnyTradingPair'
               example:
                 pairs:
                   EUR/USD:
@@ -1244,82 +1197,78 @@ paths:
                     quote: GBP
                     alt: USDGBP
                 ms: 8
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "429":
-          description: "Rate limit exceeded"
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '429':
+          description: Rate limit exceeded
   /fx/pairs/historical-limits:
     get:
       tags:
-        - "fx"
-        - "plan-extra"
-        - "plan-premium"
-      description: "FX pairs earliest available historical data point for the supplied interval (P1D default)"
+      - plan-extra
+      description: FX pairs earliest available historical data point for the supplied interval (P1D default)
       parameters:
-        - name: "interval"
-          in: "query"
-          description: "ISO8601 duration, such as P1D (daily). Defaults to P1D. Options are P1D, PT1H, PT1M."
-          required: false
-          schema:
-            $ref: "#/components/schemas/Duration"
-        - name: "price"
-          in: "query"
-          description: "bid or ask. Defaults to bid."
-          required: false
-          schema:
-            $ref: "#/components/schemas/PriceType"
+      - name: interval
+        in: query
+        description: ISO8601 duration, such as P1D (daily). Defaults to P1D. Options are P1D, PT1H, PT1M.
+        required: false
+        schema:
+          $ref: '#/components/schemas/Duration'
+      - name: price
+        in: query
+        description: bid or ask. Defaults to bid.
+        required: false
+        schema:
+          $ref: '#/components/schemas/PriceType'
       responses:
-        "200":
-          description: "Success"
+        '200':
+          description: Success
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   ms:
-                    $ref: "#/components/schemas/ResponseTime"
+                    $ref: '#/components/schemas/ResponseTime'
                   interval:
-                    $ref: "#/components/schemas/Duration"
+                    $ref: '#/components/schemas/Duration'
                   price:
-                    $ref: "#/components/schemas/PriceType"
+                    $ref: '#/components/schemas/PriceType'
                   pairs:
                     type: object
                     minProperties: 2000
                     additionalProperties:
-                      $ref: "#/components/schemas/DateTimes"
+                      $ref: '#/components/schemas/DateTimes'
               example:
                 interval: P1D
                 price: bid
                 pairs:
-                  EURUSD: 1976-01-02T00:00:00Z
-                  GBPUSD: 1970-01-02T00:00:00Z
-                  USDJPY: 1975-01-02T00:00:00Z
+                  EURUSD: 1976-01-02 00:00:00+00:00
+                  GBPUSD: 1970-01-02 00:00:00+00:00
+                  USDJPY: 1975-01-02 00:00:00+00:00
                 ms: 12
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "429":
-          description: "Rate limit exceeded"
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '429':
+          description: Rate limit exceeded
   /fx/pairs/quote-sizes:
     get:
       tags:
-        - "fx"
-        - "plan-extra"
-        - "plan-premium"
-      description: "List of FX trading pairs with non-standard quote sizes"
+      - plan-extra
+      description: List of FX trading pairs with non-standard quote sizes
       responses:
-        "200":
-          description: "Success"
+        '200':
+          description: Success
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   ms:
-                    $ref: "#/components/schemas/ResponseTime"
+                    $ref: '#/components/schemas/ResponseTime'
                   sizes:
                     type: object
                     additionalProperties:
@@ -1332,29 +1281,27 @@ paths:
                   LKRNZD: 1000,
                   DOPGBP: 100,
                 ms: 12
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "429":
-          description: "Rate limit exceeded"
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '429':
+          description: Rate limit exceeded
   /fx/currencies:
     get:
       tags:
-        - "fx"
-        - "plan-extra"
-        - "plan-premium"
-      description: "List of supported trading pair currency symbols and descriptions"
+      - plan-extra
+      description: List of supported trading pair currency symbols and descriptions
       responses:
-        "200":
-          description: "Success"
+        '200':
+          description: Success
           content:
             application/json:
               schema:
                 type: object
                 properties:
                   ms:
-                    $ref: "#/components/schemas/ResponseTime"
+                    $ref: '#/components/schemas/ResponseTime'
                   currencies:
                     type: object
                     minProperties: 150
@@ -1525,29 +1472,27 @@ paths:
                   ZAR: South African Rand
                   ZMW: Zambian Kwacha
                 ms: 9
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "429":
-          description: "Rate limit exceeded"
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '429':
+          description: Rate limit exceeded
   /fx/quote:
     get:
       tags:
-        - "fx"
-        - "plan-extra"
-        - "plan-premium"
-      description: "Live bid & ask quote for 1 or more (up to 10 in a single request) FX trading pairs."
+      - plan-extra
+      description: Live bid & ask quote for 1 or more (up to 10 in a single request) FX trading pairs.
       parameters:
-        - name: "pairs"
-          in: "query"
-          description: "Up to 10 target currency pairs, comma separated in XXXYYY or XXX/YYY format"
-          required: true
-          schema:
-            $ref: "#/components/schemas/TradingPairList"
+      - name: pairs
+        in: query
+        description: Up to 10 target currency pairs, comma separated in XXXYYY or XXX/YYY format
+        required: true
+        schema:
+          $ref: '#/components/schemas/TradingPairList'
       responses:
-        "200":
-          description: "Success"
+        '200':
+          description: Success
           content:
             application/json:
               schema:
@@ -1566,11 +1511,11 @@ paths:
                           type: number
                           format: float
                         tsp:
-                          $ref: "#/components/schemas/TimestampMillis"
+                          $ref: '#/components/schemas/TimestampMillis'
                         size:
-                          $ref: "#/components/schemas/QuoteSize"
+                          $ref: '#/components/schemas/QuoteSize'
                   ms:
-                    $ref: "#/components/schemas/ResponseTime"
+                    $ref: '#/components/schemas/ResponseTime'
                 example:
                   quotes:
                     EURUSD:
@@ -1589,283 +1534,22 @@ paths:
                       tsp: 1739305029908
                       size: 100000
                   ms: 8
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "403":
-          description: "Forbidden"
-        "429":
-          description: "Rate limit exceeded"
-  /fx/quote/time-series:
-    get:
-      tags:
-        - "fx"
-        - "plan-premium"
-      description: "bid/ask time-series data for a given FX trading pair and interval. Values are the closing bid/ask for the interval. Supports a range of datetime formats and timezone offsets. Datetime format in the response will try to match your request - unless specified explicitly."
-      parameters:
-        - name: "pair"
-          in: "query"
-          description: "Trading pair, such as EURUSD"
-          required: true
-          schema:
-            $ref: "#/components/schemas/TradingPair"
-        - name: "start"
-          in: "query"
-          description: "Time-series start. Supported formats: YYYY-MM-DD (UTC). YYYY-MM-DD HH:MM:SS (UTC), ISO8601 with timezone offset. Timestamp in milliseconds. Supply this or end."
-          required: false
-          schema:
-            $ref: "#/components/schemas/DateOrDateTime"
-        - name: "end"
-          in: "query"
-          description: "Time-series end. Supported formats: YYYY-MM-DD (UTC). YYYY-MM-DD HH:MM:SS (UTC), ISO8601 with timezone offset. Timestamp in milliseconds. Supply this or start."
-          required: false
-          schema:
-            $ref: "#/components/schemas/DateOrDateTime"
-        - name: dtmfmt
-          in: "query"
-          description: "Desired datetime response format. Defaults to match your request. Can be [ISO] ISO8601 datetime including timezone offset, [TSP] UNIX Timestamp in milliseconds, or [UTCYMD] 'YYYY-MM-DD HH:MM:SS' (UTC)."
-          required: false
-          schema:
-            $ref: "#/components/schemas/DateTimeFormat"
-        - name: "interval"
-          in: "query"
-          description: "ISO8601 duration, such as P1D (daily). Defaults to P1D. Options are P1D, PT1H, PT1M."
-          required: false
-          schema:
-            $ref: "#/components/schemas/Duration"
-        - name: "limit"
-          in: "query"
-          description: "Maximum number of data points to return. Default varies upon duration."
-          required: false
-          schema:
-            type: number
-            format: int32
-            minimum: 1
-            maximum: 100
-      responses:
-        "200":
-          description: "Success"
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  pair:
-                    $ref: "#/components/schemas/TradingPair"
-                  interval:
-                    $ref: "#/components/schemas/Duration"
-                  limit:
-                    type: number
-                    format: int32
-                  dtmfmt:
-                    $ref: "#/components/schemas/DateTimeFormat"
-                  start:
-                    $ref: "#/components/schemas/DateTimes"
-                  end:
-                    $ref: "#/components/schemas/DateTimes"
-                  tzOffset:
-                    type: string
-                    description: "Timezone offset. e.g. +00:00 or -05:00"
-                  size:
-                    $ref: "#/components/schemas/QuoteSize"
-                  results:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        dtm:
-                          $ref: "#/components/schemas/DateTimes"
-                        bid:
-                          type: number
-                          format: float
-                        ask:
-                          type: number
-                          format: float
-                  ms:
-                    $ref: "#/components/schemas/ResponseTime"
-              example:
-                pair: GBPUSD
-                interval: PT1M
-                limit: 10
-                dtmfmt: ISO
-                end: '2025-02-13T16:30:00Z'
-                tzOffset: '+00:00'
-                size: 1
-                results:
-                  - dtm: '2025-02-13T16:29:00Z'
-                    bid: 1.25377
-                    ask: 1.25379
-                  - dtm: '2025-02-13T16:28:00Z'
-                    bid: 1.2536
-                    ask: 1.25371
-                  - dtm: '2025-02-13T16:27:00Z'
-                    bid: 1.25359
-                    ask: 1.25366
-                  - dtm: '2025-02-13T16:26:00Z'
-                    bid: 1.25385
-                    ask: 1.25396
-                  - dtm: '2025-02-13T16:25:00Z'
-                    bid: 1.25401
-                    ask: 1.25402
-                  - dtm: '2025-02-13T16:24:00Z'
-                    bid: 1.25392
-                    ask: 1.25397
-                  - dtm: '2025-02-13T16:23:00Z'
-                    bid: 1.25374
-                    ask: 1.25379
-                  - dtm: '2025-02-13T16:22:00Z'
-                    bid: 1.2537
-                    ask: 1.25387
-                  - dtm: '2025-02-13T16:21:00Z'
-                    bid: 1.25372
-                    ask: 1.25389
-                ms: 16
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "403":
-          description: "Forbidden"
-        "429":
-          description: "Rate limit exceeded"
-  /fx/ohlc/time-series:
-    get:
-      tags:
-        - "fx"
-        - "plan-premium"
-      description: "Fetch a set of OHLC time-series data points for a given FX trading pair and interval. Values are based on the BID price. Supports a range of datetime formats and timezone offsets. Datetime format in the response will try to match your request - unless specified explicitly."
-      parameters:
-        - name: "pair"
-          in: "query"
-          description: "Trading pair, such as EURUSD"
-          required: true
-          schema:
-            $ref: "#/components/schemas/TradingPair"
-        - name: "start"
-          in: "query"
-          description: "Time-series start. Supported formats: YYYY-MM-DD (UTC). YYYY-MM-DD HH:MM:SS (UTC), ISO8601 with timezone offset. Timestamp in milliseconds. Supply this or end."
-          required: false
-          schema:
-            $ref: "#/components/schemas/DateOrDateTime"
-        - name: "end"
-          in: "query"
-          description: "Time-series end. Supported formats: YYYY-MM-DD (UTC). YYYY-MM-DD HH:MM:SS (UTC), ISO8601 with timezone offset. Timestamp in milliseconds. Supply this or start."
-          required: false
-          schema:
-            $ref: "#/components/schemas/DateOrDateTime"
-        - name: dtmfmt
-          in: "query"
-          description: "Desired datetime response format. Defaults to match your request. Can be [ISO] ISO8601 datetime including timezone offset, [TSP] UNIX Timestamp in milliseconds, or [UTCYMD] 'YYYY-MM-DD HH:MM:SS' (UTC)."
-          required: false
-          schema:
-            $ref: "#/components/schemas/DateTimeFormat"
-        - name: "interval"
-          in: "query"
-          description: "ISO8601 duration, such as P1D (daily). Defaults to P1D. Options are P1D, PT1H, PT1M."
-          required: false
-          schema:
-            $ref: "#/components/schemas/Duration"
-        - name: "limit"
-          in: "query"
-          description: "Maximum number of data points to return. Default varies upon duration."
-          required: false
-          schema:
-            type: number
-            format: int32
-            minimum: 1
-            maximum: 100
-      responses:
-        "200":
-          description: "Success"
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  pair:
-                    $ref: "#/components/schemas/TradingPair"
-                  interval:
-                    $ref: "#/components/schemas/Duration"
-                  limit:
-                    type: number
-                    format: int32
-                  dtmfmt:
-                    $ref: "#/components/schemas/DateTimeFormat"
-                  start:
-                    $ref: "#/components/schemas/DateTimes"
-                  end:
-                    $ref: "#/components/schemas/DateTimes"
-                  tzOffset:
-                    type: string
-                    description: "Timezone offset. e.g. +00:00 or -05:00"
-                  size:
-                    $ref: "#/components/schemas/QuoteSize"
-                  results:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        dtm:
-                          $ref: "#/components/schemas/DateTimes"
-                        o:
-                          type: number
-                          format: float
-                        h:
-                          type: number
-                          format: float
-                        l:
-                          type: number
-                          format: float
-                        c:
-                          type: number
-                          format: float
-                  ms:
-                    $ref: "#/components/schemas/ResponseTime"
-              example:
-                pair: EURUSD
-                interval: P1D
-                limit: 3
-                dtmfmt: ISO
-                end: '2021-01-26T00:00:00Z'
-                tzOffset: '+00:00'
-                size: 1
-                results:
-                  - dtm: '2021-01-24T00:00:00Z'
-                    o: 1.2145
-                    h: 1.2156
-                    l: 1.2134
-                    c: 1.2142
-                  - dtm: '2021-01-25T00:00:00Z'
-                    o: 1.2142
-                    h: 1.2157
-                    l: 1.2139
-                    c: 1.2149
-                  - dtm: '2021-01-26T00:00:00Z'
-                    o: 1.2149
-                    h: 1.2158
-                    l: 1.2137
-                    c: 1.2145
-                ms: 8
-        "400":
-          description: "Bad Request"
-        "401":
-          description: "Not Authorized"
-        "403":
-          description: "Forbidden"
-        "429":
-          description: "Rate limit exceeded"
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
   /usage:
     get:
       tags:
-        - "admin"
-        - "plan-one"
-        - "plan-extra"
-        - "plan-premium"
-      description: "Fetch recent API usage data. Includes current period start, end, usage and quota remaining"
+      - plan-extra
+      description: Fetch recent API usage data. Includes current period start, end, usage and quota remaining
       responses:
-        "200":
-          description: "Success"
+        '200':
+          description: Success
           content:
             application/json:
               schema:
@@ -1875,7 +1559,7 @@ paths:
                     type: number
                     format: int32
                   ms:
-                    $ref: "#/components/schemas/ResponseTime"
+                    $ref: '#/components/schemas/ResponseTime'
                   usage:
                     type: object
                     minProperties: 15
@@ -1887,9 +1571,9 @@ paths:
                     type: object
                     properties:
                       start:
-                        $ref: "#/components/schemas/Date"
+                        $ref: '#/components/schemas/Date'
                       end:
-                        $ref: "#/components/schemas/Date"
+                        $ref: '#/components/schemas/Date'
                       remaining_quota:
                         type: number
                         format: int32
@@ -1915,135 +1599,117 @@ paths:
                   '2021-02-07': 3245
                 monthly_quota: 500000
                 current_period:
-                  'start': '2021-02-03'
-                  'end': '2021-03-02'
-                  'remaining_quota': 495453
-                  'usage': 4547
+                  start: '2021-02-03'
+                  end: '2021-03-02'
+                  remaining_quota: 495453
+                  usage: 4547
                 ms: 3
-        "401":
-          description: "Not Authorized"
-        "429":
-          description: "Rate limit exceeded"
-security:
-  - api_key: []
-  - apiKeyHeader: []
-  - bearerAuth: []
-  - basicAuth: []
+        '401':
+          description: Not Authorized
+        '429':
+          description: Rate limit exceeded
 components:
   schemas:
-    Currency:
-      type: "string"
-      pattern: "[A-Z]{3}"
-      description: "Three-letter ISO 4217 currency code"
-    CurrencyList:
-      type: "string"
-      pattern: "[A-Z]{3}(,[A-Z]{3})*"
-      description: "A comma-separated list of three-letter ISO 4217 currency codes"
-    AnyCurrency:
-      type: "string"
-      pattern: "[A-Z0-9]{3,6}"
-      description: "Currency code for a physical or digital/cryptocurrency"
-    CryptoCurrencyPairList:
-      type: "string"
-      pattern: "[A-Z0-9]{3,6}/[A-Z0-9]{3,6}(,[A-Z0-9]{3,6}/[A-Z0-9]{3,6})*"
-      description: "A comma-separated list of crypto pairs"
-    TradingPair:
-      type: "string"
-      pattern: "[A-Z0-9]{3,6}/?[A-Z0-9]{3,6}"
-      description: "A single FX trading pair, with or without a slash"
-    TradingPairList:
-      type: "string"
-      pattern: "[A-Z0-9]{3,6}/?[A-Z0-9]{3,6}(,[A-Z0-9]{3,6}/?[A-Z0-9]{3,6})*"
-      description: "A comma-separated list of FX trading pairs"
     AnyCurrencyPair:
       type: object
-      description: "Defines a currency trading pair."
+      description: Defines a currency trading pair.
       properties:
         base:
           type: string
-          pattern: "[A-Z0-9]{3,6}"
-          description: "Base currency in the pair"
+          pattern: '[A-Z0-9]{3,6}'
+          description: Base currency in the pair
         quote:
           type: string
-          pattern: "[A-Z0-9]{3,6}"
-          description: "Quote currency in the pair"
+          pattern: '[A-Z0-9]{3,6}'
+          description: Quote currency in the pair
       example:
         base: USD
         quote: BTC
+    IsoDateTimeZone:
+      type: string
+      pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(Z?|[+-][0-9]{2}:00)'
+      description: ISO8601 Datetime with optional timezone offset YYYY-MM-DDTHH:MM:SS±HH:00
+      example: '2021-01-26T15:30:00-05:00'
+    PriceType:
+      type: string
+      description: bid or ask
+      enum:
+      - bid
+      - ask
+    DateTimes:
+      description: A datetime value. If no timezone offset supplied, UTC/GMT is assumed.
+      oneOf:
+      - $ref: '#/components/schemas/DateTime'
+      - $ref: '#/components/schemas/IsoDateTimeZone'
+      - $ref: '#/components/schemas/TimestampMillis'
+    DateTime:
+      type: string
+      pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}'
+      description: UTC/GMT datetime YYYY-MM-DD HH:MM:SS
+    CryptoCurrencyPairList:
+      type: string
+      pattern: '[A-Z0-9]{3,6}/[A-Z0-9]{3,6}(,[A-Z0-9]{3,6}/[A-Z0-9]{3,6})*'
+      description: A comma-separated list of crypto pairs
+    AnyCurrency:
+      type: string
+      pattern: '[A-Z0-9]{3,6}'
+      description: Currency code for a physical or digital/cryptocurrency
+    CurrencyList:
+      type: string
+      pattern: '[A-Z]{3}(,[A-Z]{3})*'
+      description: A comma-separated list of three-letter ISO 4217 currency codes
+    Date:
+      type: string
+      pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}'
+      description: UTC/GMT date YYYY-MM-DD
+    TradingPairList:
+      type: string
+      pattern: '[A-Z0-9]{3,6}/?[A-Z0-9]{3,6}(,[A-Z0-9]{3,6}/?[A-Z0-9]{3,6})*'
+      description: A comma-separated list of FX trading pairs
+    QuoteSize:
+      type: number
+      format: int32
+      description: Size of the quote is units of the base currency/symbol. Usually 1.
+    ApiUsage:
+      type: number
+      format: int32
+      description: The number of API calls consumed by this request
     AnyTradingPair:
       type: object
-      description: "Defines a currency trading pair."
+      description: Defines a currency trading pair.
       properties:
         base:
           type: string
-          pattern: "[A-Z0-9]{3,6}"
-          description: "Base currency in the pair"
+          pattern: '[A-Z0-9]{3,6}'
+          description: Base currency in the pair
         quote:
           type: string
-          pattern: "[A-Z0-9]{3,6}"
-          description: "Quote currency in the pair"
+          pattern: '[A-Z0-9]{3,6}'
+          description: Quote currency in the pair
         alt:
           type: string
-          pattern: "[A-Z0-9]{6,8}"
-          description: "Alternative trading pair identifier"
+          pattern: '[A-Z0-9]{6,8}'
+          description: Alternative trading pair identifier
       example:
         base: EUR
         quote: USD
         alt: EURUSD
-    ResponseTime:
-      type: number
-      format: int32
-      description: "Server response time in milliseconds"
-    ApiUsage:
-      type: number
-      format: int32
-      description: "The number of API calls consumed by this request"
     TimestampMillis:
       type: number
       format: int64
-      description: "Milliseconds since Jan 1 1970 (unix timestamp with millisecond precision)"
+      description: Milliseconds since Jan 1 1970 (unix timestamp with millisecond precision)
       example: 1739305030072
-    IsoDateTimeZone:
-      type: string
-      pattern: "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(Z?|[+-][0-9]{2}:00)"
-      description: "ISO8601 Datetime with optional timezone offset YYYY-MM-DDTHH:MM:SS±HH:00"
-      example: "2021-01-26T15:30:00-05:00"
-    DateTime:
-      type: string
-      pattern: "[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}"
-      description: "UTC/GMT datetime YYYY-MM-DD HH:MM:SS"
-    Date:
-      type: string
-      pattern: "[0-9]{4}-[0-9]{2}-[0-9]{2}"
-      description: "UTC/GMT date YYYY-MM-DD"
-    DateOrDateTime:
-      description: "A datetime value. If no timezone offset supplied, UTC/GMT is assumed. If only a date is supplied, time is assumed to be 00:00:00 UTC."
-      oneOf:
-        - $ref: "#/components/schemas/Date"
-        - $ref: "#/components/schemas/DateTime"
-        - $ref: "#/components/schemas/IsoDateTimeZone"
-        - $ref: "#/components/schemas/TimestampMillis"
-    DateTimes:
-      description: "A datetime value. If no timezone offset supplied, UTC/GMT is assumed."
-      oneOf:
-        - $ref: "#/components/schemas/DateTime"
-        - $ref: "#/components/schemas/IsoDateTimeZone"
-        - $ref: "#/components/schemas/TimestampMillis"
-    DateTimeFormat:
-      description: "Can be [ISO] ISO8601 datetime including timezone offset, [TSP] UNIX Timestamp in milliseconds, or [UTCYMD] 'YYYY-MM-DD HH:MM:SS' (UTC)."
-      type: string
-      enum: [ISO, TSP, UTCYMD]
-    Duration:
-      type: string
-      description: "ISO8601 Duration. https://en.wikipedia.org/wiki/ISO_8601#Durations"
-    PriceType:
-      type: string
-      description: "bid or ask"
-      enum: [bid, ask]
-    QuoteSize:
+    ResponseTime:
       type: number
       format: int32
-      description: "Size of the quote is units of the base currency/symbol. Usually 1."
+      description: Server response time in milliseconds
+    Currency:
+      type: string
+      pattern: '[A-Z]{3}'
+      description: Three-letter ISO 4217 currency code
+    Duration:
+      type: string
+      description: ISO8601 Duration. https://en.wikipedia.org/wiki/ISO_8601#Durations
   securitySchemes:
     api_key:
       type: apiKey
@@ -2061,16 +1727,16 @@ components:
       type: http
       scheme: basic
 externalDocs:
-  description: "Find out more about fastFOREX.io"
-  url: "https://www.fastforex.io"
+  description: Find out more about fastFOREX.io
+  url: https://www.fastforex.io
 x-samples-languages:
-  - curl
-  - node
-  - ruby
-  - javascript
-  - python
-  - php
-  - go
-  - java
-  - swift
+- curl
+- node
+- ruby
+- javascript
+- python
+- php
+- go
+- java
+- swift
 x-proxy-enabled: false

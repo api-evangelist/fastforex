@@ -1,0 +1,348 @@
+openapi: 3.0.3
+info:
+  title: fastFOREX.io admin crypto API
+  version: 2.3.2
+  description: Foreign & cryptocurrency exchange rate API
+  termsOfService: https://www.fastforex.io/terms-of-sale
+  contact:
+    email: support@fastforex.io
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: https://api.fastforex.io
+  description: Production
+- url: https://api.beta.fastforex.io
+  description: Beta
+security:
+- api_key: []
+- apiKeyHeader: []
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: crypto
+  description: Digital currencies, pairs & prices
+paths:
+  /fetch-one:
+    get:
+      tags:
+      - crypto
+      description: Fetch a single currency exchange rate, from and to any supported physical or digital currency. Midpoint spot rate.
+      parameters:
+      - name: from
+        in: query
+        description: Base currency symbol (physical or digital), defaults to USD
+        required: false
+        allowEmptyValue: true
+        schema:
+          $ref: '#/components/schemas/AnyCurrency'
+      - name: to
+        in: query
+        description: Target currency symbol (physical or digital), defaults to USD
+        required: true
+        schema:
+          $ref: '#/components/schemas/AnyCurrency'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  base:
+                    $ref: '#/components/schemas/AnyCurrency'
+                  updated:
+                    $ref: '#/components/schemas/DateTimes'
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                  result:
+                    type: object
+                    minProperties: 1
+                    maxProperties: 1
+                    additionalProperties:
+                      type: number
+                      format: float
+              example:
+                base: USD
+                result:
+                  EUR: 0.82791
+                updated: '2021-01-16T16:34:29Z'
+                ms: 4
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
+  /convert:
+    get:
+      tags:
+      - crypto
+      description: Convert an amount of one currency into another currency (supports physical and digital currencies)
+      parameters:
+      - name: from
+        in: query
+        description: Base currency symbol (physical or digital)
+        required: false
+        allowEmptyValue: true
+        schema:
+          $ref: '#/components/schemas/AnyCurrency'
+      - name: to
+        in: query
+        description: Target currency symbol (physical or digital)
+        required: true
+        schema:
+          $ref: '#/components/schemas/AnyCurrency'
+      - name: amount
+        in: query
+        description: Amount of source currency to convert
+        required: true
+        schema:
+          type: number
+          format: float
+          minimum: 0.01
+      - name: precision
+        in: query
+        description: Rounding precision for converted amount, defaults to 2 decimal places
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          maximum: 20
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  base:
+                    $ref: '#/components/schemas/AnyCurrency'
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                  amount:
+                    type: number
+                    format: float
+                  result:
+                    type: object
+                    minProperties: 2
+                    maxProperties: 2
+                    properties:
+                      rate:
+                        type: number
+                        format: float
+                    additionalProperties:
+                      type: number
+                      format: float
+              example:
+                base: USD
+                amount: 199.5
+                result:
+                  EUR: 164.29
+                  rate: 0.82353
+                ms: 7
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
+  /crypto/currencies:
+    get:
+      tags:
+      - crypto
+      description: Fetch a list of 500+ supported cryptocurrencies
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                  currencies:
+                    type: object
+                    minProperties: 200
+                    additionalProperties:
+                      type: string
+              example:
+                currencies:
+                  1INCH: 1inch Network
+                  AAVE: Aave
+                  ACA: Acala Token
+                  ACH: Alchemy Pay
+                  ADA: Cardano
+                  AERGO: Aergo
+                ms: 8
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '429':
+          description: Rate limit exceeded
+  /crypto/pairs:
+    get:
+      tags:
+      - crypto
+      description: Fetch a list of 400+ supported cryptocurrency pairs
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                  pairs:
+                    type: object
+                    minProperties: 400
+                    additionalProperties:
+                      $ref: '#/components/schemas/AnyCurrencyPair'
+              example:
+                pairs:
+                  1INCH/BTC:
+                    base: 1INCH
+                    quote: BTC
+                  BTC/USD:
+                    base: BTC
+                    quote: USD
+                  ETH/BTC:
+                    base: ETH
+                    quote: BTC
+                ms: 8
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '429':
+          description: Rate limit exceeded
+  /crypto/fetch-prices:
+    get:
+      tags:
+      - crypto
+      description: Fetch one or more (up to 10) real-time prices for supported cryptocurrency pairs
+      parameters:
+      - name: pairs
+        in: query
+        description: Up to 10 target currency pairs, comma separated in XXX/YYY format
+        required: true
+        schema:
+          $ref: '#/components/schemas/CryptoCurrencyPairList'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                  prices:
+                    type: object
+                    minProperties: 1
+                    additionalProperties:
+                      type: number
+                      format: float
+              example:
+                prices:
+                  BTC/USD: 20624.21
+                  ETH/BTC: 0.075316
+                ms: 8
+        '400':
+          description: Bad Request
+        '401':
+          description: Not Authorized
+        '403':
+          description: Forbidden
+        '429':
+          description: Rate limit exceeded
+components:
+  schemas:
+    AnyCurrencyPair:
+      type: object
+      description: Defines a currency trading pair.
+      properties:
+        base:
+          type: string
+          pattern: '[A-Z0-9]{3,6}'
+          description: Base currency in the pair
+        quote:
+          type: string
+          pattern: '[A-Z0-9]{3,6}'
+          description: Quote currency in the pair
+      example:
+        base: USD
+        quote: BTC
+    IsoDateTimeZone:
+      type: string
+      pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(Z?|[+-][0-9]{2}:00)'
+      description: ISO8601 Datetime with optional timezone offset YYYY-MM-DDTHH:MM:SS±HH:00
+      example: '2021-01-26T15:30:00-05:00'
+    DateTimes:
+      description: A datetime value. If no timezone offset supplied, UTC/GMT is assumed.
+      oneOf:
+      - $ref: '#/components/schemas/DateTime'
+      - $ref: '#/components/schemas/IsoDateTimeZone'
+      - $ref: '#/components/schemas/TimestampMillis'
+    DateTime:
+      type: string
+      pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}'
+      description: UTC/GMT datetime YYYY-MM-DD HH:MM:SS
+    CryptoCurrencyPairList:
+      type: string
+      pattern: '[A-Z0-9]{3,6}/[A-Z0-9]{3,6}(,[A-Z0-9]{3,6}/[A-Z0-9]{3,6})*'
+      description: A comma-separated list of crypto pairs
+    AnyCurrency:
+      type: string
+      pattern: '[A-Z0-9]{3,6}'
+      description: Currency code for a physical or digital/cryptocurrency
+    TimestampMillis:
+      type: number
+      format: int64
+      description: Milliseconds since Jan 1 1970 (unix timestamp with millisecond precision)
+      example: 1739305030072
+    ResponseTime:
+      type: number
+      format: int32
+      description: Server response time in milliseconds
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: query
+    apiKeyHeader:
+      type: apiKey
+      name: X-API-KEY
+      in: header
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: api_key
+    basicAuth:
+      type: http
+      scheme: basic
+externalDocs:
+  description: Find out more about fastFOREX.io
+  url: https://www.fastforex.io
+x-samples-languages:
+- curl
+- node
+- ruby
+- javascript
+- python
+- php
+- go
+- java
+- swift
+x-proxy-enabled: false

@@ -1,0 +1,131 @@
+openapi: 3.0.3
+info:
+  title: fastFOREX.io admin API
+  version: 2.3.2
+  description: Foreign & cryptocurrency exchange rate API
+  termsOfService: https://www.fastforex.io/terms-of-sale
+  contact:
+    email: support@fastforex.io
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+- url: https://api.fastforex.io
+  description: Production
+- url: https://api.beta.fastforex.io
+  description: Beta
+security:
+- api_key: []
+- apiKeyHeader: []
+- bearerAuth: []
+- basicAuth: []
+tags:
+- name: admin
+  description: Account admin
+paths:
+  /usage:
+    get:
+      tags:
+      - admin
+      description: Fetch recent API usage data. Includes current period start, end, usage and quota remaining
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  monthly_quota:
+                    type: number
+                    format: int32
+                  ms:
+                    $ref: '#/components/schemas/ResponseTime'
+                  usage:
+                    type: object
+                    minProperties: 15
+                    maxProperties: 15
+                    additionalProperties:
+                      type: number
+                      format: int32
+                  current_period:
+                    type: object
+                    properties:
+                      start:
+                        $ref: '#/components/schemas/Date'
+                      end:
+                        $ref: '#/components/schemas/Date'
+                      remaining_quota:
+                        type: number
+                        format: int32
+                      usage:
+                        type: number
+                        format: int32
+              example:
+                usage:
+                  '2021-01-24': 247
+                  '2021-01-25': 312
+                  '2021-01-26': 23
+                  '2021-01-27': 159
+                  '2021-01-28': 0
+                  '2021-01-29': 45
+                  '2021-01-30': 92
+                  '2021-01-31': 240
+                  '2021-02-01': 1204
+                  '2021-02-02': 34
+                  '2021-02-03': 1245
+                  '2021-02-04': 4
+                  '2021-02-05': 0
+                  '2021-02-06': 53
+                  '2021-02-07': 3245
+                monthly_quota: 500000
+                current_period:
+                  start: '2021-02-03'
+                  end: '2021-03-02'
+                  remaining_quota: 495453
+                  usage: 4547
+                ms: 3
+        '401':
+          description: Not Authorized
+        '429':
+          description: Rate limit exceeded
+components:
+  schemas:
+    ResponseTime:
+      type: number
+      format: int32
+      description: Server response time in milliseconds
+    Date:
+      type: string
+      pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}'
+      description: UTC/GMT date YYYY-MM-DD
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: query
+    apiKeyHeader:
+      type: apiKey
+      name: X-API-KEY
+      in: header
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: api_key
+    basicAuth:
+      type: http
+      scheme: basic
+externalDocs:
+  description: Find out more about fastFOREX.io
+  url: https://www.fastforex.io
+x-samples-languages:
+- curl
+- node
+- ruby
+- javascript
+- python
+- php
+- go
+- java
+- swift
+x-proxy-enabled: false
