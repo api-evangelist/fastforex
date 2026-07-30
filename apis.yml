@@ -1,7 +1,20 @@
 aid: fastforex
 name: FastForex
 description: FastForex is a fast, reliable REST API providing real-time and historical currency exchange rates for 160+ world currencies, 500+ cryptocurrencies, and 2,300+ FX trading pairs. Features include currency conversion, many-to-one and multi-rate lookups, OHLC candlestick data, bid/ask pricing, WebSocket streaming, and up to 55 years of historical data. Average response time of 21ms with 100% uptime SLA.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Freemium (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/fastforex.png
 url: https://raw.githubusercontent.com/api-evangelist/fastforex/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -17,33 +30,132 @@ tags:
   - Historical Data
   - Real-Time Data
 apis:
-  - aid: fastforex:fastforex-api
-    name: FastForex API
-    description: Real-time and historical currency exchange rate REST API supporting 160+ currencies, 500+ cryptocurrencies, and 2,300+ FX trading pairs. Provides single-rate lookups, multi-rate queries, currency conversion, time-series data, bid/ask quotes, OHLC data, and WebSocket streaming.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.fastforex.io/docs
-    baseURL: https://api.fastforex.io
-    tags:
-      - Currency Exchange
-      - Forex
-      - Exchange Rates
-      - Cryptocurrency
-      - FX Trading
-      - Historical Data
-    properties:
-      - type: Documentation
-        url: https://www.fastforex.io/docs
-      - type: OpenAPI
-        url: https://raw.githubusercontent.com/fastforex/openapi/main/openapi.yaml
-      - type: Plans
-        url: plans/fastforex-plans-pricing.yml
-      - type: RateLimits
-        url: rate-limits/fastforex-rate-limits.yml
-      - type: FinOps
-        url: finops/fastforex-finops.yml
-    contact:
-      - FN: FastForex Support
-        email: support@fastforex.io
+- aid: fastforex:fastforex-admin-api
+  name: FastForex admin API
+  description: Account admin
+  humanURL: https://www.fastforex.io/docs
+  baseURL: https://api.fastforex.io
+  tags:
+  - admin
+  properties:
+  - type: OpenAPI
+    url: openapi/fastforex-admin-api-openapi.yml
+  - type: Documentation
+    url: https://www.fastforex.io/docs
+  - type: Plans
+    url: plans/fastforex-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/fastforex-rate-limits.yml
+  - type: FinOps
+    url: finops/fastforex-finops.yml
+- aid: fastforex:fastforex-crypto-api
+  name: FastForex crypto API
+  description: Digital currencies, pairs & prices
+  humanURL: https://www.fastforex.io/docs
+  baseURL: https://api.fastforex.io
+  tags:
+  - crypto
+  properties:
+  - type: OpenAPI
+    url: openapi/fastforex-crypto-api-openapi.yml
+  - type: Documentation
+    url: https://www.fastforex.io/docs
+  - type: Plans
+    url: plans/fastforex-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/fastforex-rate-limits.yml
+  - type: FinOps
+    url: finops/fastforex-finops.yml
+- aid: fastforex:fastforex-currency-api
+  name: FastForex currency API
+  description: Physical currencies, rates and conversions
+  humanURL: https://www.fastforex.io/docs
+  baseURL: https://api.fastforex.io
+  tags:
+  - currency
+  properties:
+  - type: OpenAPI
+    url: openapi/fastforex-currency-api-openapi.yml
+  - type: Documentation
+    url: https://www.fastforex.io/docs
+  - type: Plans
+    url: plans/fastforex-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/fastforex-rate-limits.yml
+  - type: FinOps
+    url: finops/fastforex-finops.yml
+- aid: fastforex:fastforex-fx-api
+  name: FastForex fx API
+  description: Realtime FX trading pairs - instruments, prices and history
+  humanURL: https://www.fastforex.io/docs
+  baseURL: https://api.fastforex.io
+  tags:
+  - fx
+  properties:
+  - type: OpenAPI
+    url: openapi/fastforex-fx-api-openapi.yml
+  - type: Documentation
+    url: https://www.fastforex.io/docs
+  - type: Plans
+    url: plans/fastforex-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/fastforex-rate-limits.yml
+  - type: FinOps
+    url: finops/fastforex-finops.yml
+- aid: fastforex:fastforex-plan-extra-api
+  name: FastForex plan-extra API
+  description: Available on The Extra Plan
+  humanURL: https://www.fastforex.io/docs
+  baseURL: https://api.fastforex.io
+  tags:
+  - plan-extra
+  properties:
+  - type: OpenAPI
+    url: openapi/fastforex-plan-extra-api-openapi.yml
+  - type: Documentation
+    url: https://www.fastforex.io/docs
+  - type: Plans
+    url: plans/fastforex-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/fastforex-rate-limits.yml
+  - type: FinOps
+    url: finops/fastforex-finops.yml
+- aid: fastforex:fastforex-plan-one-api
+  name: FastForex plan-one API
+  description: Available on The One Plan
+  humanURL: https://www.fastforex.io/docs
+  baseURL: https://api.fastforex.io
+  tags:
+  - plan-one
+  properties:
+  - type: OpenAPI
+    url: openapi/fastforex-plan-one-api-openapi.yml
+  - type: Documentation
+    url: https://www.fastforex.io/docs
+  - type: Plans
+    url: plans/fastforex-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/fastforex-rate-limits.yml
+  - type: FinOps
+    url: finops/fastforex-finops.yml
+- aid: fastforex:fastforex-plan-premium-api
+  name: FastForex plan-premium API
+  description: Available on The Premium Plan
+  humanURL: https://www.fastforex.io/docs
+  baseURL: https://api.fastforex.io
+  tags:
+  - plan-premium
+  properties:
+  - type: OpenAPI
+    url: openapi/fastforex-plan-premium-api-openapi.yml
+  - type: Documentation
+    url: https://www.fastforex.io/docs
+  - type: Plans
+    url: plans/fastforex-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/fastforex-rate-limits.yml
+  - type: FinOps
+    url: finops/fastforex-finops.yml
 common:
   - type: AgenticAccess
     url: agentic-access/fastforex-agentic-access.yml
