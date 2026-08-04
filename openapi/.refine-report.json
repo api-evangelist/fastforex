@@ -1,0 +1,26 @@
+{
+  "provider": "fastforex",
+  "sources": [
+    "fastforex-admin-api-openapi.yml",
+    "fastforex-crypto-api-openapi.yml",
+    "fastforex-currency-api-openapi.yml",
+    "fastforex-fx-api-openapi.yml",
+    "fastforex-plan-extra-api-openapi.yml",
+    "fastforex-plan-one-api-openapi.yml",
+    "fastforex-plan-premium-api-openapi.yml"
+  ],
+  "outputs": [
+    "fastforex-admin-api-openapi.yml",
+    "fastforex-crypto-api-openapi.yml",
+    "fastforex-currency-api-openapi.yml",
+    "fastforex-fx-api-openapi.yml",
+    "fastforex-plan-extra-api-openapi.yml",
+    "fastforex-plan-one-api-openapi.yml",
+    "fastforex-plan-premium-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
