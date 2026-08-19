@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "fastFOREX.io admin crypto API",
+    "version": "2.3.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "crypto",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /fetch-one",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/fetch-one",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Base currency symbol (physical or digital), defaults to USD"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Target currency symbol (physical or digital), defaults to USD"
+              }
+            ]
+          },
+          "docs": "Fetch a single currency exchange rate, from and to any supported physical or digital currency. Midpoint spot rate."
+        },
+        {
+          "info": {
+            "name": "GET /convert",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/convert",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Base currency symbol (physical or digital)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Target currency symbol (physical or digital)"
+              },
+              {
+                "name": "amount",
+                "value": "",
+                "type": "query",
+                "description": "Amount of source currency to convert"
+              },
+              {
+                "name": "precision",
+                "value": "",
+                "type": "query",
+                "description": "Rounding precision for converted amount, defaults to 2 decimal places"
+              }
+            ]
+          },
+          "docs": "Convert an amount of one currency into another currency (supports physical and digital currencies)"
+        },
+        {
+          "info": {
+            "name": "GET /crypto/currencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/crypto/currencies"
+          },
+          "docs": "Fetch a list of 500+ supported cryptocurrencies"
+        },
+        {
+          "info": {
+            "name": "GET /crypto/pairs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/crypto/pairs"
+          },
+          "docs": "Fetch a list of 400+ supported cryptocurrency pairs"
+        },
+        {
+          "info": {
+            "name": "GET /crypto/fetch-prices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/crypto/fetch-prices",
+            "params": [
+              {
+                "name": "pairs",
+                "value": "",
+                "type": "query",
+                "description": "Up to 10 target currency pairs, comma separated in XXX/YYY format"
+              }
+            ]
+          },
+          "docs": "Fetch one or more (up to 10) real-time prices for supported cryptocurrency pairs"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

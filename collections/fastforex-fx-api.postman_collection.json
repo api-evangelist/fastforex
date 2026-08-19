@@ -1,0 +1,1836 @@
+{
+  "item": [
+    {
+      "id": "6025a50e-c876-4391-a5cb-99435041007b",
+      "name": "fx",
+      "description": {
+        "content": "Realtime FX trading pairs - instruments, prices and history",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cf3585f0-241a-453e-b8c6-760cb6d95ad4",
+          "name": "List approx 2,300 supported FX pairs",
+          "request": {
+            "name": "List approx 2,300 supported FX pairs",
+            "description": {
+              "content": "List approx 2,300 supported FX pairs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fx",
+                "pairs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e708123a-36c7-4396-810d-9fe4978915f4",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "pairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pairs\": {\n    \"EUR/USD\": {\n      \"base\": \"EUR\",\n      \"quote\": \"USD\",\n      \"alt\": \"EURUSD\"\n    },\n    \"GBP/USD\": {\n      \"base\": \"GBP\",\n      \"quote\": \"USD\",\n      \"alt\": \"GBPUSD\"\n    },\n    \"USD/GBP\": {\n      \"base\": \"USD\",\n      \"quote\": \"GBP\",\n      \"alt\": \"USDGBP\"\n    }\n  },\n  \"ms\": 8\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0caf84a-16b5-47ff-a483-f4c736322448",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "pairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8559884e-3163-4996-ae87-9e7884aacaeb",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "pairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6fc65107-32d1-4785-b8f0-ec30d3dafe2e",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "pairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0060dc0f-af4f-4826-8eaf-ce85f5e15499",
+          "name": "FX pairs earliest available historical data point for the supplied interval (P1D default)",
+          "request": {
+            "name": "FX pairs earliest available historical data point for the supplied interval (P1D default)",
+            "description": {
+              "content": "FX pairs earliest available historical data point for the supplied interval (P1D default)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fx",
+                "pairs",
+                "historical-limits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "<string>",
+                  "description": "ISO8601 duration, such as P1D (daily). Defaults to P1D. Options are P1D, PT1H, PT1M."
+                },
+                {
+                  "disabled": false,
+                  "key": "price",
+                  "value": "<string>",
+                  "description": "bid or ask. Defaults to bid."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "47fa47f2-66d4-4b04-a05e-41cbe7c30e6a",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "pairs",
+                    "historical-limits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "price",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"interval\": \"P1D\",\n  \"price\": \"bid\",\n  \"pairs\": {\n    \"EURUSD\": \"1976-01-02 00:00:00+00:00\",\n    \"GBPUSD\": \"1970-01-02 00:00:00+00:00\",\n    \"USDJPY\": \"1975-01-02 00:00:00+00:00\"\n  },\n  \"ms\": 12\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "775b3636-25f9-4b6d-92f7-f59383f8c479",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "pairs",
+                    "historical-limits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "price",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f51b4a33-c3bb-4dc6-a827-f2b2a9cdf96e",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "pairs",
+                    "historical-limits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "price",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6fc5d429-35eb-4cbd-9920-c19983ff4686",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "pairs",
+                    "historical-limits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "price",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bddc8af7-4707-47b8-b439-f88c1c050923",
+          "name": "List of FX trading pairs with non-standard quote sizes",
+          "request": {
+            "name": "List of FX trading pairs with non-standard quote sizes",
+            "description": {
+              "content": "List of FX trading pairs with non-standard quote sizes",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fx",
+                "pairs",
+                "quote-sizes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "028a8456-2d7e-4ccc-9fd4-e9f2f66f8566",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "pairs",
+                    "quote-sizes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"sizes\": {\n    \"IRRUSD\": \"100000,\",\n    \"VNDUSD\": \"10000,\",\n    \"LKRNZD\": \"1000,\",\n    \"DOPGBP\": \"100,\"\n  },\n  \"ms\": 12\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a84ef08-555c-45fa-ad69-6ea46e51a1e1",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "pairs",
+                    "quote-sizes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ab4809af-c62f-41d4-a138-05ae9b53b6e3",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "pairs",
+                    "quote-sizes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d92722bc-ed4d-4c3b-a805-cc7387f9f79e",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "pairs",
+                    "quote-sizes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3f1cd6d-3896-4940-9f4d-c2b3e2a12a72",
+          "name": "List of supported trading pair currency symbols and descriptions",
+          "request": {
+            "name": "List of supported trading pair currency symbols and descriptions",
+            "description": {
+              "content": "List of supported trading pair currency symbols and descriptions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fx",
+                "currencies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3d9fc41a-908d-451a-968b-56ead4c69656",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currencies\": {\n    \"AED\": \"United Arab Emirates Dirham\",\n    \"AFN\": \"Afghan Afghani\",\n    \"ALL\": \"Albanian Lek\",\n    \"AMD\": \"Armenian Dram\",\n    \"ANG\": \"Dutch Guilders\",\n    \"AOA\": \"Angolan Kwanza\",\n    \"ARS\": \"Argentine Peso\",\n    \"AUD\": \"Australian Dollar\",\n    \"AWG\": \"Aruban Florin\",\n    \"AZN\": \"Azerbaijani Manat\",\n    \"BAM\": \"Bosnia-Herzegovina Convertible Mark\",\n    \"BBD\": \"Barbadian Dollar\",\n    \"BDT\": \"Bangladeshi Taka\",\n    \"BGN\": \"Bulgarian Lev\",\n    \"BHD\": \"Bahraini Dinar\",\n    \"BIF\": \"Burundian Franc\",\n    \"BMD\": \"Bermudian Dollar\",\n    \"BND\": \"Bruneian Dollar\",\n    \"BOB\": \"Bolivian Boliviano\",\n    \"BRL\": \"Brazilian Real\",\n    \"BRX\": \"Brazilian PTAX\",\n    \"BSD\": \"Bahamian Dollar\",\n    \"BTN\": \"Bhutanese Ngultrum\",\n    \"BWP\": \"Botswanan Pula\",\n    \"BYN\": \"Belarusian Ruble\",\n    \"BZD\": \"Belizean Dollar\",\n    \"CAD\": \"Canadian Dollar\",\n    \"CDF\": \"Congolese Franc\",\n    \"CHF\": \"Swiss Franc\",\n    \"CLF\": \"Chilean Unit of Account UF\",\n    \"CLP\": \"Chilean Peso\",\n    \"CNH\": \"Chinese Yuan Offshore\",\n    \"CNY\": \"Chinese Yuan\",\n    \"COP\": \"Colombian Peso\",\n    \"COU\": \"Unidad de Valor Real (Colombia)\",\n    \"CRC\": \"Costa Rican Colon\",\n    \"CUP\": \"Cuban Peso\",\n    \"CVE\": \"Cape Verdean Escudo\",\n    \"CZK\": \"Czech Republic Koruna\",\n    \"DJF\": \"Djiboutian Franc\",\n    \"DKK\": \"Danish Krone\",\n    \"DOP\": \"Dominican Peso\",\n    \"DZD\": \"Algerian Dinar\",\n    \"EGP\": \"Egyptian Pound\",\n    \"ERN\": \"Eritrean Nakfa\",\n    \"ETB\": \"Ethiopian Birr\",\n    \"EUR\": \"Euro\",\n    \"FJD\": \"Fijian Dollar\",\n    \"FKP\": \"Falkland Islands Pound\",\n    \"GBP\": \"British Pound Sterling\",\n    \"GEL\": \"Georgian Lari\",\n    \"GHS\": \"Ghanaian Cedi\",\n    \"GIP\": \"Gibraltar Pound\",\n    \"GMD\": \"Gambian Dalasi\",\n    \"GNF\": \"Guinean Franc\",\n    \"GTQ\": \"Guatemalan Quetzal\",\n    \"GYD\": \"Guyanaese Dollar\",\n    \"HKD\": \"Hong Kong Dollar\",\n    \"HNL\": \"Honduran Lempira\",\n    \"HRK\": \"Croatian Kuna\",\n    \"HTG\": \"Haitian Gourde\",\n    \"HUF\": \"Hungarian Forint\",\n    \"HUX\": \"Hungarian Forint Official Rate\",\n    \"IDR\": \"Indonesian Rupiah\",\n    \"ILS\": \"Israeli New Sheqel\",\n    \"INR\": \"Indian Rupee\",\n    \"IQD\": \"Iraqi Dinar\",\n    \"IRR\": \"Iranian Rial\",\n    \"ISK\": \"Icelandic Krona\",\n    \"JMD\": \"Jamaican Dollar\",\n    \"JOD\": \"Jordanian Dinar\",\n    \"JPY\": \"Japanese Yen\",\n    \"KES\": \"Kenyan Shilling\",\n    \"KGS\": \"Kyrgystani Som\",\n    \"KHR\": \"Cambodian Riel\",\n    \"KMF\": \"Comorian Franc\",\n    \"KPW\": \"North Korean Won\",\n    \"KRW\": \"South Korean Won\",\n    \"KWD\": \"Kuwaiti Dinar\",\n    \"KYD\": \"Caymanian Dollar\",\n    \"KZT\": \"Kazakhstani Tenge\",\n    \"LAK\": \"Laotian Kip\",\n    \"LBP\": \"Lebanese Pound\",\n    \"LKR\": \"Sri Lankan Rupee\",\n    \"LRD\": \"Liberian Dollar\",\n    \"LSL\": \"Lesotho Maloti\",\n    \"LYD\": \"Libyan Dinar\",\n    \"MAD\": \"Moroccan Dirham\",\n    \"MDL\": \"Moldovan Leu\",\n    \"MGA\": \"Malagasy Ariary\",\n    \"MKD\": \"Macedonian Denar\",\n    \"MMK\": \"Myanma Kyat\",\n    \"MNT\": \"Mongolian Tugrik\",\n    \"MOP\": \"Macanese Pataca\",\n    \"MRU\": \"Mauritanian Ouguiya\",\n    \"MUR\": \"Mauritian Rupee\",\n    \"MVR\": \"Maldivian Rufiyaa\",\n    \"MWK\": \"Malawian Kwacha\",\n    \"MXN\": \"Mexican Peso\",\n    \"MXV\": \"Mexican Unidad de Inversion\",\n    \"MYR\": \"Malaysian Ringgit\",\n    \"MZN\": \"Mozambican Metical\",\n    \"NAD\": \"Namibian Dollar\",\n    \"NGN\": \"Nigerian Naira\",\n    \"NIO\": \"Nicaraguan Cordoba\",\n    \"NOK\": \"Norwegian Krone\",\n    \"NPR\": \"Nepalese Rupee\",\n    \"NZD\": \"New Zealand Dollar\",\n    \"OMR\": \"Omani Rial\",\n    \"PAB\": \"Panamanian Balboa\",\n    \"PEN\": \"Peruvian Nuevo Sol\",\n    \"PGK\": \"Papua New Guinean Kina\",\n    \"PHP\": \"Philippine Peso\",\n    \"PKR\": \"Pakistani Rupee\",\n    \"PLN\": \"Polish Zloty\",\n    \"PYG\": \"Paraguayan Guarani\",\n    \"QAR\": \"Qatari Rial\",\n    \"RON\": \"Romanian Leu\",\n    \"RSD\": \"Serbian Dinar\",\n    \"RUB\": \"Russian Ruble\",\n    \"RWF\": \"Rwandan Franc\",\n    \"SAR\": \"Saudi Arabian Riyal\",\n    \"SBD\": \"Solomon Islands Dollar\",\n    \"SCR\": \"Seychellois Rupee\",\n    \"SDG\": \"Sudanese Pound\",\n    \"SEK\": \"Swedish Krona\",\n    \"SGD\": \"Singapore Dollar\",\n    \"SHP\": \"Saint Helena Pound\",\n    \"SLL\": \"Sierra Leonean Leone\",\n    \"SOS\": \"Somali Shilling\",\n    \"SRD\": \"Surinamese Dollar\",\n    \"SSP\": \"South Sudanese Pound\",\n    \"STN\": \"Sao Tomean Dobra\",\n    \"SVC\": \"Salvadoran Colon\",\n    \"SYP\": \"Syrian Pound\",\n    \"SZL\": \"Swazi Emalangeni\",\n    \"THB\": \"Thai Baht\",\n    \"TJS\": \"Tajikistani Somoni\",\n    \"TMT\": \"Turkmenistani Manat\",\n    \"TND\": \"Tunisian Dinar\",\n    \"TOP\": \"Tongan Pa'anga\",\n    \"TRY\": \"Turkish Lira\",\n    \"TTD\": \"Trinidad and Tobago Dollar\",\n    \"TWD\": \"Taiwan New Dollar\",\n    \"TZS\": \"Tanzanian Shilling\",\n    \"UAH\": \"Ukrainian Hryvnia\",\n    \"UGX\": \"Ugandan Shilling\",\n    \"USD\": \"United States Dollar\",\n    \"UYU\": \"Uruguayan Peso\",\n    \"UZS\": \"Uzbekistan Som\",\n    \"VES\": \"Venezuelan Bolivar\",\n    \"VND\": \"Vietnamese Dong\",\n    \"VUV\": \"Ni-Vanuatu Vatu\",\n    \"WST\": \"Samoan Tala\",\n    \"XAF\": \"CFA Franc BEAC\",\n    \"XCD\": \"East Caribbean Dollar\",\n    \"XDR\": \"Special Drawing Rights\",\n    \"XOF\": \"CFA Franc BCEAO\",\n    \"XPF\": \"CFP Franc\",\n    \"YER\": \"Yemeni Rial\",\n    \"ZAR\": \"South African Rand\",\n    \"ZMW\": \"Zambian Kwacha\"\n  },\n  \"ms\": 9\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "380cd63d-d638-4aed-a5c5-584f491496eb",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d886ddc3-1cf7-4b3c-b415-abacbcea3dbe",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0b1288f6-b885-4c05-b41a-9afa7b86e3c5",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17cb52a7-0046-412b-af54-0cb1e9565231",
+          "name": "Live bid & ask quote for 1 or more (up to 10 in a single request) FX trading pairs.",
+          "request": {
+            "name": "Live bid & ask quote for 1 or more (up to 10 in a single request) FX trading pairs.",
+            "description": {
+              "content": "Live bid & ask quote for 1 or more (up to 10 in a single request) FX trading pairs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fx",
+                "quote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pairs",
+                  "value": "<string>",
+                  "description": "(Required) Up to 10 target currency pairs, comma separated in XXXYYY or XXX/YYY format"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64f1bc77-5308-43d9-9888-d420ce06c6d9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pairs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quotes\": {\n    \"EURUSD\": {\n      \"bid\": 1.2145,\n      \"ask\": 1.2146,\n      \"tsp\": 1739305030072,\n      \"size\": 1\n    },\n    \"GBPUSD\": {\n      \"bid\": 1.4145,\n      \"ask\": 1.4146,\n      \"tsp\": 1739305029908,\n      \"size\": 1\n    },\n    \"IRRUSD\": {\n      \"bid\": 2.3808,\n      \"ask\": 2.3816,\n      \"tsp\": 1739305029908,\n      \"size\": 100000\n    }\n  },\n  \"ms\": 8\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d4830a1f-6291-4071-a57c-b92706cbc507",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pairs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1e58bf66-bf8a-47b0-8d44-68b0061515ae",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pairs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f9041357-6d90-484b-9d08-e195e916608d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pairs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "357e0d7f-ae99-429a-a27b-c7a94a0ea88d",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pairs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffa32a3a-5ef1-4880-aaa0-0abe48d0261e",
+          "name": "bid/ask time-series data for a given FX trading pair and interval. Values are the closing bid/ask for the interval. Supports a range of datetime formats and timezone offsets. Datetime format in the response will try to match your request - unless specified explicitly.",
+          "request": {
+            "name": "bid/ask time-series data for a given FX trading pair and interval. Values are the closing bid/ask for the interval. Supports a range of datetime formats and timezone offsets. Datetime format in the response will try to match your request - unless specified explicitly.",
+            "description": {
+              "content": "bid/ask time-series data for a given FX trading pair and interval. Values are the closing bid/ask for the interval. Supports a range of datetime formats and timezone offsets. Datetime format in the response will try to match your request - unless specified explicitly.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fx",
+                "quote",
+                "time-series"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pair",
+                  "value": "<string>",
+                  "description": "(Required) Trading pair, such as EURUSD"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<string>",
+                  "description": "Time-series start. Supported formats: YYYY-MM-DD (UTC). YYYY-MM-DD HH:MM:SS (UTC), ISO8601 with timezone offset. Timestamp in milliseconds. Supply this or end."
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<string>",
+                  "description": "Time-series end. Supported formats: YYYY-MM-DD (UTC). YYYY-MM-DD HH:MM:SS (UTC), ISO8601 with timezone offset. Timestamp in milliseconds. Supply this or start."
+                },
+                {
+                  "disabled": false,
+                  "key": "dtmfmt",
+                  "value": "<string>",
+                  "description": "Desired datetime response format. Defaults to match your request. Can be [ISO] ISO8601 datetime including timezone offset, [TSP] UNIX Timestamp in milliseconds, or [UTCYMD] 'YYYY-MM-DD HH:MM:SS' (UTC)."
+                },
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "<string>",
+                  "description": "ISO8601 duration, such as P1D (daily). Defaults to P1D. Options are P1D, PT1H, PT1M."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<int32>",
+                  "description": "Maximum number of data points to return. Default varies upon duration."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8afc72a6-f93a-4b70-aa1d-65d8cce744ab",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "quote",
+                    "time-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pair",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtmfmt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pair\": \"GBPUSD\",\n  \"interval\": \"PT1M\",\n  \"limit\": 10,\n  \"dtmfmt\": \"ISO\",\n  \"end\": \"2025-02-13T16:30:00Z\",\n  \"tzOffset\": \"+00:00\",\n  \"size\": 1,\n  \"results\": [\n    {\n      \"dtm\": \"2025-02-13T16:29:00Z\",\n      \"bid\": 1.25377,\n      \"ask\": 1.25379\n    },\n    {\n      \"dtm\": \"2025-02-13T16:28:00Z\",\n      \"bid\": 1.2536,\n      \"ask\": 1.25371\n    },\n    {\n      \"dtm\": \"2025-02-13T16:27:00Z\",\n      \"bid\": 1.25359,\n      \"ask\": 1.25366\n    },\n    {\n      \"dtm\": \"2025-02-13T16:26:00Z\",\n      \"bid\": 1.25385,\n      \"ask\": 1.25396\n    },\n    {\n      \"dtm\": \"2025-02-13T16:25:00Z\",\n      \"bid\": 1.25401,\n      \"ask\": 1.25402\n    },\n    {\n      \"dtm\": \"2025-02-13T16:24:00Z\",\n      \"bid\": 1.25392,\n      \"ask\": 1.25397\n    },\n    {\n      \"dtm\": \"2025-02-13T16:23:00Z\",\n      \"bid\": 1.25374,\n      \"ask\": 1.25379\n    },\n    {\n      \"dtm\": \"2025-02-13T16:22:00Z\",\n      \"bid\": 1.2537,\n      \"ask\": 1.25387\n    },\n    {\n      \"dtm\": \"2025-02-13T16:21:00Z\",\n      \"bid\": 1.25372,\n      \"ask\": 1.25389\n    }\n  ],\n  \"ms\": 16\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "391cf901-cc7e-401e-bdee-988d14be578e",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "quote",
+                    "time-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pair",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtmfmt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a13f26f6-0e6f-4d2c-bb0c-a51b50cf97b1",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "quote",
+                    "time-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pair",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtmfmt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "38be849a-4366-4309-b71b-c9c4fe85f1b4",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "quote",
+                    "time-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pair",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtmfmt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3f8fe89c-7028-4bc5-b11e-d55dd5cce39d",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "quote",
+                    "time-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pair",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtmfmt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38733c0e-40ff-49ad-ae6e-45e33ae52c85",
+          "name": "Fetch a set of OHLC time-series data points for a given FX trading pair and interval. Values are based on the BID price. Supports a range of datetime formats and timezone offsets. Datetime format in the response will try to match your request - unless specified explicitly.",
+          "request": {
+            "name": "Fetch a set of OHLC time-series data points for a given FX trading pair and interval. Values are based on the BID price. Supports a range of datetime formats and timezone offsets. Datetime format in the response will try to match your request - unless specified explicitly.",
+            "description": {
+              "content": "Fetch a set of OHLC time-series data points for a given FX trading pair and interval. Values are based on the BID price. Supports a range of datetime formats and timezone offsets. Datetime format in the response will try to match your request - unless specified explicitly.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fx",
+                "ohlc",
+                "time-series"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pair",
+                  "value": "<string>",
+                  "description": "(Required) Trading pair, such as EURUSD"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<string>",
+                  "description": "Time-series start. Supported formats: YYYY-MM-DD (UTC). YYYY-MM-DD HH:MM:SS (UTC), ISO8601 with timezone offset. Timestamp in milliseconds. Supply this or end."
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<string>",
+                  "description": "Time-series end. Supported formats: YYYY-MM-DD (UTC). YYYY-MM-DD HH:MM:SS (UTC), ISO8601 with timezone offset. Timestamp in milliseconds. Supply this or start."
+                },
+                {
+                  "disabled": false,
+                  "key": "dtmfmt",
+                  "value": "<string>",
+                  "description": "Desired datetime response format. Defaults to match your request. Can be [ISO] ISO8601 datetime including timezone offset, [TSP] UNIX Timestamp in milliseconds, or [UTCYMD] 'YYYY-MM-DD HH:MM:SS' (UTC)."
+                },
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "<string>",
+                  "description": "ISO8601 duration, such as P1D (daily). Defaults to P1D. Options are P1D, PT1H, PT1M."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<int32>",
+                  "description": "Maximum number of data points to return. Default varies upon duration."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e2ab07c9-969b-479a-9938-46a40d66e876",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "ohlc",
+                    "time-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pair",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtmfmt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pair\": \"EURUSD\",\n  \"interval\": \"P1D\",\n  \"limit\": 3,\n  \"dtmfmt\": \"ISO\",\n  \"end\": \"2021-01-26T00:00:00Z\",\n  \"tzOffset\": \"+00:00\",\n  \"size\": 1,\n  \"results\": [\n    {\n      \"dtm\": \"2021-01-24T00:00:00Z\",\n      \"o\": 1.2145,\n      \"h\": 1.2156,\n      \"l\": 1.2134,\n      \"c\": 1.2142\n    },\n    {\n      \"dtm\": \"2021-01-25T00:00:00Z\",\n      \"o\": 1.2142,\n      \"h\": 1.2157,\n      \"l\": 1.2139,\n      \"c\": 1.2149\n    },\n    {\n      \"dtm\": \"2021-01-26T00:00:00Z\",\n      \"o\": 1.2149,\n      \"h\": 1.2158,\n      \"l\": 1.2137,\n      \"c\": 1.2145\n    }\n  ],\n  \"ms\": 8\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90eaf422-5035-40d9-bd3b-bbacc488fcde",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "ohlc",
+                    "time-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pair",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtmfmt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ccf71828-3e0b-4f00-aecd-b7928e59181b",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "ohlc",
+                    "time-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pair",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtmfmt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "686ed72e-a817-4b5d-bead-3832cf91784c",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "ohlc",
+                    "time-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pair",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtmfmt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0dd208db-ec20-408b-a85f-3f8724b9aad5",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fx",
+                    "ohlc",
+                    "time-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pair",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "dtmfmt",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<int32>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fastforex.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3e548312-cbc0-417a-8295-b65479838ada",
+    "name": "fastFOREX.io admin fx API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Foreign & cryptocurrency exchange rate API\n\nContact Support:\n Email: support@fastforex.io",
+      "type": "text/plain"
+    }
+  }
+}

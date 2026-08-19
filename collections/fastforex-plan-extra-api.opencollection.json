@@ -1,0 +1,396 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "fastFOREX.io admin plan-extra API",
+    "version": "2.3.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "plan-extra",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /fetch-one",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/fetch-one",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Base currency symbol (physical or digital), defaults to USD"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Target currency symbol (physical or digital), defaults to USD"
+              }
+            ]
+          },
+          "docs": "Fetch a single currency exchange rate, from and to any supported physical or digital currency. Midpoint spot rate."
+        },
+        {
+          "info": {
+            "name": "GET /fetch-multi",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/fetch-multi",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Base currency 3-letter symbol, defaults to USD"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Target currencies, comma separated list of 3-letter symbols"
+              }
+            ]
+          },
+          "docs": "Fetch multiple target exchange rates from a single source currency. Midpoint spot rates."
+        },
+        {
+          "info": {
+            "name": "GET /fetch-all",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/fetch-all",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Base currency 3-letter symbol, defaults to USD"
+              }
+            ]
+          },
+          "docs": "Fetch all available currency rates for the supplied source currency. Midpoint spot rates."
+        },
+        {
+          "info": {
+            "name": "GET /fetch-many-to-one",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/fetch-many-to-one",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Source currencies, comma separated list of 3-letter symbols"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Target currency 3-letter symbol, defaults to USD"
+              }
+            ]
+          },
+          "docs": "Fetch a set of many source currency rates to a single target currency (inverse of /fetch-multi). Midpoint spot rates. Costs one API call per pair returned."
+        },
+        {
+          "info": {
+            "name": "GET /fetch-matrix",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/fetch-matrix",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Source currencies, comma separated list of 3-letter symbols"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Target currencies, comma separated list of 3-letter symbols"
+              }
+            ]
+          },
+          "docs": "Fetch a matrix of multiple from/to currency pairs. Midpoint spot rates. Costs one API call per pair returned."
+        },
+        {
+          "info": {
+            "name": "GET /convert",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/convert",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Base currency symbol (physical or digital)"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Target currency symbol (physical or digital)"
+              },
+              {
+                "name": "amount",
+                "value": "",
+                "type": "query",
+                "description": "Amount of source currency to convert"
+              },
+              {
+                "name": "precision",
+                "value": "",
+                "type": "query",
+                "description": "Rounding precision for converted amount, defaults to 2 decimal places"
+              }
+            ]
+          },
+          "docs": "Convert an amount of one currency into another currency (supports physical and digital currencies)"
+        },
+        {
+          "info": {
+            "name": "GET /historical",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/historical",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "UTC date in YYYY-MM-DD format. As far back as Jan 1970, depending on the currency pair."
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Base currency 3-letter symbol, defaults to USD"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Target currencies, comma separated list of 3-letter symbols. Defaults to all currencies if omitted"
+              }
+            ]
+          },
+          "docs": "Fetch midpoint currency exchange rates for a date in the past"
+        },
+        {
+          "info": {
+            "name": "GET /time-series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/time-series",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query",
+                "description": "Base currency 3-letter symbol, defaults to USD"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query",
+                "description": "Target currency 3-letter symbol"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "UTC start date in YYYY-MM-DD format. As far back as Jan 1970, depending on the currency pair."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "UTC end date in YYYY-MM-DD format. As far back as Jan 1970, depending on the currency pair."
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 duration, such as P1D (daily). Defaults to P1D. Currently only supports daily."
+              }
+            ]
+          },
+          "docs": "Fetch a time-series dataset of daily currency exchange rates for the specified interval (only daily supported currently). See our FX quote & OHLC time-series endpoints for more granular data."
+        },
+        {
+          "info": {
+            "name": "GET /currencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/currencies"
+          },
+          "docs": "Fetch a list of 160+ supported currencies with symbols. Also see /crypto/currencies"
+        },
+        {
+          "info": {
+            "name": "GET /crypto/currencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/crypto/currencies"
+          },
+          "docs": "Fetch a list of 500+ supported cryptocurrencies"
+        },
+        {
+          "info": {
+            "name": "GET /crypto/pairs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/crypto/pairs"
+          },
+          "docs": "Fetch a list of 400+ supported cryptocurrency pairs"
+        },
+        {
+          "info": {
+            "name": "GET /crypto/fetch-prices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/crypto/fetch-prices",
+            "params": [
+              {
+                "name": "pairs",
+                "value": "",
+                "type": "query",
+                "description": "Up to 10 target currency pairs, comma separated in XXX/YYY format"
+              }
+            ]
+          },
+          "docs": "Fetch one or more (up to 10) real-time prices for supported cryptocurrency pairs"
+        },
+        {
+          "info": {
+            "name": "GET /fx/pairs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/fx/pairs"
+          },
+          "docs": "List approx 2,300 supported FX pairs"
+        },
+        {
+          "info": {
+            "name": "GET /fx/pairs/historical-limits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/fx/pairs/historical-limits",
+            "params": [
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 duration, such as P1D (daily). Defaults to P1D. Options are P1D, PT1H, PT1M."
+              },
+              {
+                "name": "price",
+                "value": "",
+                "type": "query",
+                "description": "bid or ask. Defaults to bid."
+              }
+            ]
+          },
+          "docs": "FX pairs earliest available historical data point for the supplied interval (P1D default)"
+        },
+        {
+          "info": {
+            "name": "GET /fx/pairs/quote-sizes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/fx/pairs/quote-sizes"
+          },
+          "docs": "List of FX trading pairs with non-standard quote sizes"
+        },
+        {
+          "info": {
+            "name": "GET /fx/currencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/fx/currencies"
+          },
+          "docs": "List of supported trading pair currency symbols and descriptions"
+        },
+        {
+          "info": {
+            "name": "GET /fx/quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/fx/quote",
+            "params": [
+              {
+                "name": "pairs",
+                "value": "",
+                "type": "query",
+                "description": "Up to 10 target currency pairs, comma separated in XXXYYY or XXX/YYY format"
+              }
+            ]
+          },
+          "docs": "Live bid & ask quote for 1 or more (up to 10 in a single request) FX trading pairs."
+        },
+        {
+          "info": {
+            "name": "GET /usage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/usage"
+          },
+          "docs": "Fetch recent API usage data. Includes current period start, end, usage and quota remaining"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

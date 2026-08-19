@@ -1,0 +1,3265 @@
+{
+  "item": [
+    {
+      "id": "d8f97cf3-4241-4954-8094-bae7f36fdeee",
+      "name": "plan-one",
+      "description": {
+        "content": "Available on The One Plan",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "96cfb1e6-87a8-478d-ab5d-dba764d470c8",
+          "name": "Fetch a single currency exchange rate, from and to any supported physical or digital currency. Midpoint spot rate.",
+          "request": {
+            "name": "Fetch a single currency exchange rate, from and to any supported physical or digital currency. Midpoint spot rate.",
+            "description": {
+              "content": "Fetch a single currency exchange rate, from and to any supported physical or digital currency. Midpoint spot rate.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fetch-one"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "Base currency symbol (physical or digital), defaults to USD"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) Target currency symbol (physical or digital), defaults to USD"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9277baf9-f028-4063-b259-fb0c7f755025",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-one"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"base\": \"USD\",\n  \"result\": {\n    \"EUR\": 0.82791\n  },\n  \"updated\": \"2021-01-16T16:34:29Z\",\n  \"ms\": 4\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fee71e5a-c4d0-48ba-91c4-e56610f2b7df",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-one"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7f79df35-3072-475a-818e-bffca4af2967",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-one"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a00026de-45cb-4e0b-baee-4750e7fd6057",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-one"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0a067f14-4793-42dc-af36-14fcb30ae018",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-one"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7b66ac0-6dee-43fd-ba47-056b6e9488e8",
+          "name": "Fetch multiple target exchange rates from a single source currency. Midpoint spot rates.",
+          "request": {
+            "name": "Fetch multiple target exchange rates from a single source currency. Midpoint spot rates.",
+            "description": {
+              "content": "Fetch multiple target exchange rates from a single source currency. Midpoint spot rates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fetch-multi"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "Base currency 3-letter symbol, defaults to USD"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) Target currencies, comma separated list of 3-letter symbols"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d04e5608-7370-4422-8693-810e1cf93460",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-multi"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"base\": \"USD\",\n  \"results\": {\n    \"EUR\": 0.82791,\n    \"GBP\": 0.73605\n  },\n  \"updated\": \"2021-01-16T16:34:29Z\",\n  \"ms\": 8\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c45cb906-1738-47f4-a30f-39a241c5cf7a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-multi"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "746587c9-8530-4d28-93e3-02d13000fe0a",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-multi"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e43fb7bd-6dd9-4027-9053-a926e3c3dafb",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-multi"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bf1a268f-443b-4271-93eb-80a2c0b73bf4",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-multi"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9741056-bbb1-4c9e-911d-1dc289407cc3",
+          "name": "Fetch all available currency rates for the supplied source currency. Midpoint spot rates.",
+          "request": {
+            "name": "Fetch all available currency rates for the supplied source currency. Midpoint spot rates.",
+            "description": {
+              "content": "Fetch all available currency rates for the supplied source currency. Midpoint spot rates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fetch-all"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "Base currency 3-letter symbol, defaults to USD"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab3b0556-f2ac-4036-8249-49019861c6e6",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"base\": \"USD\",\n  \"results\": {\n    \"AED\": 3.673,\n    \"AFN\": 72.5642,\n    \"ALL\": 88.59,\n    \"AMD\": 391.07,\n    \"ANG\": 1.788,\n    \"AOA\": 912,\n    \"ARS\": 1074.69,\n    \"AUD\": 1.5892,\n    \"AWG\": 1.81,\n    \"AZN\": 1.7,\n    \"BAM\": 1.7217,\n    \"BBD\": 2,\n    \"BDT\": 121.81,\n    \"BGN\": 1.7219,\n    \"BHD\": 0.37708,\n    \"BIF\": 2923.15,\n    \"BMD\": 1,\n    \"BND\": 1.3194,\n    \"BOB\": 6.94,\n    \"BRL\": 5.8742,\n    \"BRX\": 5.8734,\n    \"BSD\": 1.003,\n    \"BWP\": 14.0056,\n    \"BYN\": 3.28,\n    \"BZD\": 2.0178,\n    \"CAD\": 1.38642,\n    \"CDF\": 2859.46,\n    \"CHF\": 0.81519,\n    \"CLF\": 0.02495,\n    \"CLP\": 971.76,\n    \"CNH\": 7.28156,\n    \"CNY\": 7.2916,\n    \"COP\": 4277.27,\n    \"COU\": 10.6753,\n    \"CRC\": 508.43,\n    \"CUP\": 24,\n    \"CVE\": 96.88,\n    \"CZK\": 22.1127,\n    \"DJF\": 177.405,\n    \"DKK\": 6.57264,\n    \"DOP\": 61.33,\n    \"DZD\": 131.969,\n    \"EGP\": 51.3229,\n    \"ERN\": 15.15,\n    \"ETB\": 130.47,\n    \"EUR\": 0.8799,\n    \"FJD\": 2.283,\n    \"FKP\": 0.7659,\n    \"GBP\": 0.76423,\n    \"GEL\": 2.7573,\n    \"GHS\": 15.4527,\n    \"GIP\": 0.7659,\n    \"GMD\": 72,\n    \"GNF\": 8664,\n    \"GTQ\": 7.709,\n    \"GYD\": 210.19,\n    \"HKD\": 7.7537,\n    \"HNL\": 25.7132,\n    \"HTG\": 132.88,\n    \"HUF\": 360.62,\n    \"HUX\": 370.54,\n    \"IDR\": 16794,\n    \"ILS\": 3.704,\n    \"INR\": 86.118,\n    \"IQD\": 1310,\n    \"IRR\": 42003,\n    \"ISK\": 127.9,\n    \"JMD\": 157.71,\n    \"JOD\": 0.709,\n    \"JPY\": 143.525,\n    \"KES\": 129.78,\n    \"KGS\": 87.45,\n    \"KHR\": 4000,\n    \"KMF\": 454.5,\n    \"KPW\": 900,\n    \"KRW\": 1421.365,\n    \"KWD\": 0.307,\n    \"KYD\": 0.82,\n    \"KZT\": 518.06,\n    \"LAK\": 21557,\n    \"LBP\": 89600,\n    \"LKR\": 298.1,\n    \"LRD\": 199.926,\n    \"LSL\": 19.37,\n    \"LYD\": 5.5571,\n    \"MAD\": 9.3176,\n    \"MDL\": 17.7,\n    \"MGA\": 4655,\n    \"MKD\": 54.257,\n    \"MMK\": 2098.68,\n    \"MNT\": 3537.2,\n    \"MOP\": 7.9863,\n    \"MRU\": 39.9,\n    \"MUR\": 43.7,\n    \"MVR\": 15.46,\n    \"MWK\": 1733.673,\n    \"MXN\": 20.321,\n    \"MXV\": 2.42005,\n    \"MYR\": 4.423,\n    \"MZN\": 63.56,\n    \"NAD\": 19.1599,\n    \"NGN\": 1597.115,\n    \"NIO\": 36.6243,\n    \"NOK\": 10.65512,\n    \"NPR\": 137.673,\n    \"NZD\": 1.7164,\n    \"OMR\": 0.3851,\n    \"PAB\": 1,\n    \"PEN\": 3.7286,\n    \"PGK\": 4.1144,\n    \"PHP\": 57.241,\n    \"PKR\": 280.34,\n    \"PLN\": 3.7742,\n    \"PYG\": 8027.64,\n    \"QAR\": 3.641,\n    \"RON\": 4.38927,\n    \"RSD\": 103.229,\n    \"RUB\": 83.3,\n    \"RWF\": 1410.28,\n    \"SAR\": 3.7542,\n    \"SBD\": 8.3542,\n    \"SCR\": 14.8351,\n    \"SDG\": 598.993,\n    \"SEK\": 9.77129,\n    \"SGD\": 1.31896,\n    \"SHP\": 0.7659,\n    \"SLL\": 22663.6,\n    \"SOS\": 566.75,\n    \"SRD\": 36.72,\n    \"SSP\": 4471.077,\n    \"STN\": 21.6,\n    \"SVC\": 8.75,\n    \"SYP\": 13002,\n    \"SZL\": 19.1043,\n    \"THB\": 33.515,\n    \"TJS\": 10.894,\n    \"TMT\": 3.5,\n    \"TND\": 2.9815,\n    \"TOP\": 2.401,\n    \"TRY\": 38.0582,\n    \"TTD\": 6.8191,\n    \"TWD\": 32.409,\n    \"TZS\": 2660,\n    \"UAH\": 41.5281,\n    \"UGX\": 3675.3,\n    \"UYU\": 42.984,\n    \"UZS\": 12980.33,\n    \"VES\": 77.0767,\n    \"VND\": 25720,\n    \"VUV\": 122.93,\n    \"WST\": 2.6969,\n    \"XAF\": 577.42,\n    \"XCD\": 2.7,\n    \"XDR\": 0.73954,\n    \"XOF\": 577.42,\n    \"XPF\": 104.95,\n    \"YER\": 245.27,\n    \"ZAR\": 19.1345,\n    \"ZMW\": 28.3\n  },\n  \"updated\": \"2025-04-11T23:59:53Z\",\n  \"ms\": 77\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8b90c3cd-2196-4ae4-81ef-16da2df6a271",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9acc6890-f5a5-4457-a850-bf87b5d474a6",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "852da2df-70e5-422f-aa48-34d23603f649",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "45b5b92a-6478-4676-b969-d9fec28a1219",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-all"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0619e504-1274-43b6-8c6d-6e0e24d3f030",
+          "name": "Fetch a set of many source currency rates to a single target currency (inverse of /fetch-multi). Midpoint spot rates. Costs one API call per pair returned.",
+          "request": {
+            "name": "Fetch a set of many source currency rates to a single target currency (inverse of /fetch-multi). Midpoint spot rates. Costs one API call per pair returned.",
+            "description": {
+              "content": "Fetch a set of many source currency rates to a single target currency (inverse of /fetch-multi). Midpoint spot rates. Costs one API call per pair returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fetch-many-to-one"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "(Required) Source currencies, comma separated list of 3-letter symbols"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) Target currency 3-letter symbol, defaults to USD"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5af50caa-33c3-41e5-b4ad-8591350eb3af",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-many-to-one"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"to\": \"USD\",\n  \"from\": {\n    \"JPY\": \"0.00679,\",\n    \"CHF\": \"1.2539,\",\n    \"ZAR\": \"0.0578,\",\n    \"AUD\": \"0.65962,\",\n    \"AED\": \"0.27229,\"\n  },\n  \"updated\": \"2025-10-03T16:34:29Z\",\n  \"calls\": 5,\n  \"ms\": 12\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7bb7d54e-3cc0-401c-9b11-c3930f7828a6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-many-to-one"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bf4d048f-c6e6-4449-ac25-06850d3581b9",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-many-to-one"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "50ae9f57-3dcd-4a19-bfc3-86962e4f46e2",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-many-to-one"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d2c1bad3-9db1-4d4a-bbac-85d671fda18b",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-many-to-one"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "999c1898-c353-4c07-9f09-1ba107ebd7d6",
+          "name": "Fetch a matrix of multiple from/to currency pairs. Midpoint spot rates. Costs one API call per pair returned.",
+          "request": {
+            "name": "Fetch a matrix of multiple from/to currency pairs. Midpoint spot rates. Costs one API call per pair returned.",
+            "description": {
+              "content": "Fetch a matrix of multiple from/to currency pairs. Midpoint spot rates. Costs one API call per pair returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "fetch-matrix"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "(Required) Source currencies, comma separated list of 3-letter symbols"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) Target currencies, comma separated list of 3-letter symbols"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f255be9d-3cf5-4a9d-80ac-2b6ea89926fb",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-matrix"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"from\": [\n    \"USD\",\n    \"CHF\",\n    \"ZAR\",\n    \"AED\"\n  ],\n  \"to\": [\n    \"USD\",\n    \"GBP\",\n    \"JPY\",\n    \"CNY\"\n  ],\n  \"matrix\": {\n    \"USD\": {\n      \"GBP\": 0.74196,\n      \"JPY\": 147.488,\n      \"CNY\": 7.119,\n      \"USD\": 1\n    },\n    \"CHF\": {\n      \"USD\": 1.2573,\n      \"GBP\": 0.93291,\n      \"JPY\": 185.444,\n      \"CNY\": 8.9504\n    },\n    \"ZAR\": {\n      \"USD\": 0.0581,\n      \"GBP\": 0.04308,\n      \"JPY\": 8.56229,\n      \"CNY\": 0.41342\n    },\n    \"AED\": {\n      \"USD\": 0.27223,\n      \"GBP\": 0.20196,\n      \"JPY\": 40.1552,\n      \"CNY\": 1.938\n    }\n  },\n  \"updated\": \"2025-10-03T16:52:05Z\",\n  \"calls\": 16,\n  \"ms\": 8\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fd98edd-c488-469d-97ee-54b5643b84e5",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-matrix"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e6017ba2-3f04-4520-a5ca-a2cc1c9e7640",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-matrix"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d92d019c-3b3b-4afc-a003-2532c86784eb",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-matrix"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "79f0fa62-6b3a-4a44-8fb9-aaa6e5c4b6ba",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "fetch-matrix"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5d6e0e74-d7de-444d-96f9-79bbda1df909",
+          "name": "Convert an amount of one currency into another currency (supports physical and digital currencies)",
+          "request": {
+            "name": "Convert an amount of one currency into another currency (supports physical and digital currencies)",
+            "description": {
+              "content": "Convert an amount of one currency into another currency (supports physical and digital currencies)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "convert"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "Base currency symbol (physical or digital)"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) Target currency symbol (physical or digital)"
+                },
+                {
+                  "disabled": false,
+                  "key": "amount",
+                  "value": "<float>",
+                  "description": "(Required) Amount of source currency to convert"
+                },
+                {
+                  "disabled": false,
+                  "key": "precision",
+                  "value": "<integer>",
+                  "description": "Rounding precision for converted amount, defaults to 2 decimal places"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9a37d569-f71a-47e4-92bb-45d1dc84b51d",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "convert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "precision",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"base\": \"USD\",\n  \"amount\": 199.5,\n  \"result\": {\n    \"EUR\": 164.29,\n    \"rate\": 0.82353\n  },\n  \"ms\": 7\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81cec7f4-2d10-435b-b83e-681c8ae7eb5d",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "convert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "precision",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8ec4ec1d-832e-4a79-a9c3-f5e2ecbaec45",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "convert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "precision",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fa2ec664-95a1-48d3-81e9-692834b238ae",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "convert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "precision",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fe323ddd-3f3c-4daa-8c1a-a98bcba66aad",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "convert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "precision",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c712468e-beea-4967-b86b-19a00f93c053",
+          "name": "Fetch midpoint currency exchange rates for a date in the past",
+          "request": {
+            "name": "Fetch midpoint currency exchange rates for a date in the past",
+            "description": {
+              "content": "Fetch midpoint currency exchange rates for a date in the past",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "historical"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string>",
+                  "description": "(Required) UTC date in YYYY-MM-DD format. As far back as Jan 1970, depending on the currency pair."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "Base currency 3-letter symbol, defaults to USD"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "Target currencies, comma separated list of 3-letter symbols. Defaults to all currencies if omitted"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "07369a08-6dec-4881-92a9-86fe35aebada",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "historical"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"date\": \"2021-01-16\",\n  \"base\": \"USD\",\n  \"results\": {\n    \"AED\": 3.67297,\n    \"AFN\": 77.11468,\n    \"ALL\": 101.78125,\n    \"AMD\": 523.67143,\n    \"ANG\": 1.78691,\n    \"AOA\": 653.45356,\n    \"ARS\": 85.74709,\n    \"AUD\": 1.29806,\n    \"AWG\": 1.79943,\n    \"AZN\": 1.70727,\n    \"BAM\": 1.62182,\n    \"BBD\": 1.99941,\n    \"BDT\": 84.84175,\n    \"BGN\": 1.61063,\n    \"BHD\": 0.37612,\n    \"BIF\": 1943.32401,\n    \"BMD\": 0.99926,\n    \"BND\": 1.32953,\n    \"BOB\": 6.88532,\n    \"BRL\": 5.29479,\n    \"BSD\": 1.00177,\n    \"BTN\": 73.22317,\n    \"BWP\": 10.98351,\n    \"BZD\": 2.01472,\n    \"CAD\": 1.27357,\n    \"CDF\": 1977.04254,\n    \"CHF\": 0.8912,\n    \"CLF\": 0.02491,\n    \"CLP\": 734.84469,\n    \"CNH\": 6.47453,\n    \"CNY\": 6.48079,\n    \"COP\": 3461.79891,\n    \"CUP\": 24.99558,\n    \"CVE\": 90.9024,\n    \"CZK\": 21.65759,\n    \"DJF\": 177.94053,\n    \"DKK\": 6.15612,\n    \"DOP\": 58.27175,\n    \"DZD\": 133.63021,\n    \"EGP\": 15.64449,\n    \"ERN\": 15.1347,\n    \"ETB\": 39.35227,\n    \"EUR\": 0.82791,\n    \"FJD\": 2.05329,\n    \"FKP\": 0.73605,\n    \"GBP\": 0.73605,\n    \"GEL\": 3.30208,\n    \"GHS\": 5.78235,\n    \"GIP\": 0.73605,\n    \"GMD\": 51.76064,\n    \"GNF\": 10080.74488,\n    \"GTQ\": 7.78301,\n    \"GYD\": 210.42985,\n    \"HKD\": 7.75357,\n    \"HNL\": 24.12042,\n    \"HRK\": 6.19682,\n    \"HTG\": 75.90461,\n    \"HUF\": 298.21139,\n    \"IDR\": 14054.17341,\n    \"ILS\": 3.2719,\n    \"INR\": 73.16164,\n    \"IQD\": 1458.41307,\n    \"IRR\": 42031.79744,\n    \"ISK\": 129.4936,\n    \"JMD\": 144.24702,\n    \"JOD\": 0.70779,\n    \"JPY\": 103.87016,\n    \"KES\": 109.70116,\n    \"KGS\": 75.50493,\n    \"KHR\": 4047.84337,\n    \"KMF\": 406.08715,\n    \"KPW\": 900.13249,\n    \"KRW\": 1102.13455,\n    \"KWD\": 0.30318,\n    \"KYD\": 0.81923,\n    \"KZT\": 418.85765,\n    \"LAK\": 9308.2585,\n    \"LBP\": 1509.38466,\n    \"LKR\": 194.62682,\n    \"LRD\": 167.93022,\n    \"LSL\": 15.21787,\n    \"LYD\": 4.45341,\n    \"MAD\": 8.91064,\n    \"MDL\": 17.18902,\n    \"MGA\": 3762.10805,\n    \"MKD\": 51.00986,\n    \"MMK\": 1331.8784,\n    \"MNT\": 2853.84955,\n    \"MOP\": 8.01634,\n    \"MRU\": 36.41764,\n    \"MUR\": 39.84837,\n    \"MVR\": 15.66392,\n    \"MWK\": 773.70087,\n    \"MXN\": 19.79604,\n    \"MYR\": 4.03732,\n    \"MZN\": 74.77698,\n    \"NAD\": 15.18769,\n    \"NGN\": 380.3327,\n    \"NOK\": 8.56904,\n    \"NPR\": 117.3193,\n    \"NZD\": 1.40232,\n    \"OMR\": 0.38422,\n    \"PAB\": 0.99926,\n    \"PEN\": 3.60165,\n    \"PGK\": 3.52819,\n    \"PHP\": 48.06492,\n    \"PKR\": 160.16046,\n    \"PLN\": 3.7535,\n    \"PYG\": 6890.343,\n    \"QAR\": 3.64022,\n    \"RON\": 4.02672,\n    \"RSD\": 96.9947,\n    \"RUB\": 73.59569,\n    \"RWF\": 972.40542,\n    \"SAR\": 3.74834,\n    \"SCR\": 21.7415,\n    \"SDG\": 55.12079,\n    \"SEK\": 8.39445,\n    \"SGD\": 1.33084,\n    \"SHP\": 0.73605,\n    \"SLL\": 10117.25305,\n    \"SOS\": 585.66171,\n    \"SRD\": 14.0817,\n    \"SYP\": 1257.58133,\n    \"SZL\": 15.23848,\n    \"THB\": 30.10158,\n    \"TJS\": 11.37737,\n    \"TMT\": 3.49448,\n    \"TND\": 2.7086,\n    \"TOP\": 2.27536,\n    \"TRY\": 7.45083,\n    \"TTD\": 6.74407,\n    \"TWD\": 28.03621,\n    \"TZS\": 2317.83454,\n    \"UAH\": 28.17938,\n    \"UGX\": 3704.99043,\n    \"USD\": 1,\n    \"UYU\": 42.4356,\n    \"UZS\": 10493.30193,\n    \"VND\": 23216.10481,\n    \"VUV\": 107.05138,\n    \"WST\": 2.54085,\n    \"XAF\": 542.97807,\n    \"XCD\": 2.69954,\n    \"XDR\": 0.69699,\n    \"XOF\": 542.97807,\n    \"XPF\": 98.70455,\n    \"YER\": 246.27558,\n    \"ZAR\": 15.20595,\n    \"ZMW\": 21.37472\n  },\n  \"ms\": 13\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8243505c-d787-4df6-ad1b-e7deed1e42c6",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "historical"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cb3b8dff-34df-49e4-90a1-53b817f76294",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "historical"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7785f88e-2f1b-4928-9ad2-b10b45b62960",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "historical"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "04c4c894-bd3c-4c63-a06c-c405472ee31a",
+              "name": "Not Found - We do not have historical rates for the requested date and currency pair",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "historical"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5f5a0f84-f042-4293-bb51-02a213e8777f",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "historical"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8db7a42-79be-4e0f-bffa-c9ea9649afda",
+          "name": "Fetch a time-series dataset of daily currency exchange rates for the specified interval (only daily supported currently). See our FX quote & OHLC time-series endpoints for more granular data.",
+          "request": {
+            "name": "Fetch a time-series dataset of daily currency exchange rates for the specified interval (only daily supported currently). See our FX quote & OHLC time-series endpoints for more granular data.",
+            "description": {
+              "content": "Fetch a time-series dataset of daily currency exchange rates for the specified interval (only daily supported currently). See our FX quote & OHLC time-series endpoints for more granular data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "time-series"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "Base currency 3-letter symbol, defaults to USD"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<string>",
+                  "description": "(Required) Target currency 3-letter symbol"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<string>",
+                  "description": "(Required) UTC start date in YYYY-MM-DD format. As far back as Jan 1970, depending on the currency pair."
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<string>",
+                  "description": "(Required) UTC end date in YYYY-MM-DD format. As far back as Jan 1970, depending on the currency pair."
+                },
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "<string>",
+                  "description": "ISO8601 duration, such as P1D (daily). Defaults to P1D. Currently only supports daily."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3493860-5c42-4e80-923a-8695614f8b21",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "time-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"start\": \"2021-01-24\",\n  \"end\": \"2021-01-30\",\n  \"interval\": \"P1D\",\n  \"base\": \"USD\",\n  \"results\": {\n    \"GBP\": {\n      \"2021-01-24\": 1.14,\n      \"2021-01-25\": 1.14,\n      \"2021-01-26\": 1.15,\n      \"2021-01-27\": 1.16,\n      \"2021-01-28\": 1.14,\n      \"2021-01-29\": 1.13,\n      \"2021-01-30\": 1.14\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5257edd9-23ad-4e51-bd54-dcf5edda67b2",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "time-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "63e159f5-690c-4a66-bea3-318b7d12d473",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "time-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "65fc7b71-00dc-452c-9768-b381045c7b7b",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "time-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4936fc1d-4a70-428b-a7c7-082d3afdc615",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "time-series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b09b8352-51c4-493d-96cb-7831c6f5efd4",
+          "name": "Fetch a list of 160+ supported currencies with symbols. Also see /crypto/currencies",
+          "request": {
+            "name": "Fetch a list of 160+ supported currencies with symbols. Also see /crypto/currencies",
+            "description": {
+              "content": "Fetch a list of 160+ supported currencies with symbols. Also see /crypto/currencies",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "currencies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aec94ff3-784b-4ffb-baa5-c1b1cbff6079",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currencies\": {\n    \"AED\": \"United Arab Emirates Dirham\",\n    \"AFN\": \"Afghan Afghani\",\n    \"ALL\": \"Albanian Lek\",\n    \"AMD\": \"Armenian Dram\",\n    \"ANG\": \"Dutch Guilders\",\n    \"AOA\": \"Angolan Kwanza\",\n    \"ARS\": \"Argentine Peso\",\n    \"AUD\": \"Australian Dollar\",\n    \"AWG\": \"Aruban Florin\",\n    \"AZN\": \"Azerbaijani Manat\",\n    \"BAM\": \"Bosnia-Herzegovina Convertible Mark\",\n    \"BBD\": \"Barbadian Dollar\",\n    \"BDT\": \"Bangladeshi Taka\",\n    \"BGN\": \"Bulgarian Lev\",\n    \"BHD\": \"Bahraini Dinar\",\n    \"BIF\": \"Burundian Franc\",\n    \"BMD\": \"Bermudian Dollar\",\n    \"BND\": \"Bruneian Dollar\",\n    \"BOB\": \"Bolivian Boliviano\",\n    \"BRL\": \"Brazilian Real\",\n    \"BRX\": \"Brazilian PTAX\",\n    \"BSD\": \"Bahamian Dollar\",\n    \"BTN\": \"Bhutanese Ngultrum\",\n    \"BWP\": \"Botswanan Pula\",\n    \"BYN\": \"Belarusian Ruble\",\n    \"BZD\": \"Belizean Dollar\",\n    \"CAD\": \"Canadian Dollar\",\n    \"CDF\": \"Congolese Franc\",\n    \"CHF\": \"Swiss Franc\",\n    \"CLF\": \"Chilean Unit of Account UF\",\n    \"CLP\": \"Chilean Peso\",\n    \"CNH\": \"Chinese Yuan Offshore\",\n    \"CNY\": \"Chinese Yuan\",\n    \"COP\": \"Colombian Peso\",\n    \"COU\": \"Unidad de Valor Real (Colombia)\",\n    \"CRC\": \"Costa Rican Colon\",\n    \"CUP\": \"Cuban Peso\",\n    \"CVE\": \"Cape Verdean Escudo\",\n    \"CZK\": \"Czech Republic Koruna\",\n    \"DJF\": \"Djiboutian Franc\",\n    \"DKK\": \"Danish Krone\",\n    \"DOP\": \"Dominican Peso\",\n    \"DZD\": \"Algerian Dinar\",\n    \"EGP\": \"Egyptian Pound\",\n    \"ERN\": \"Eritrean Nakfa\",\n    \"ETB\": \"Ethiopian Birr\",\n    \"EUR\": \"Euro\",\n    \"FJD\": \"Fijian Dollar\",\n    \"FKP\": \"Falkland Islands Pound\",\n    \"GBP\": \"British Pound Sterling\",\n    \"GEL\": \"Georgian Lari\",\n    \"GHS\": \"Ghanaian Cedi\",\n    \"GIP\": \"Gibraltar Pound\",\n    \"GMD\": \"Gambian Dalasi\",\n    \"GNF\": \"Guinean Franc\",\n    \"GTQ\": \"Guatemalan Quetzal\",\n    \"GYD\": \"Guyanaese Dollar\",\n    \"HKD\": \"Hong Kong Dollar\",\n    \"HNL\": \"Honduran Lempira\",\n    \"HRK\": \"Croatian Kuna\",\n    \"HTG\": \"Haitian Gourde\",\n    \"HUF\": \"Hungarian Forint\",\n    \"HUX\": \"Hungarian Forint Official Rate\",\n    \"IDR\": \"Indonesian Rupiah\",\n    \"ILS\": \"Israeli New Sheqel\",\n    \"INR\": \"Indian Rupee\",\n    \"IQD\": \"Iraqi Dinar\",\n    \"IRR\": \"Iranian Rial\",\n    \"ISK\": \"Icelandic Krona\",\n    \"JMD\": \"Jamaican Dollar\",\n    \"JOD\": \"Jordanian Dinar\",\n    \"JPY\": \"Japanese Yen\",\n    \"KES\": \"Kenyan Shilling\",\n    \"KGS\": \"Kyrgystani Som\",\n    \"KHR\": \"Cambodian Riel\",\n    \"KMF\": \"Comorian Franc\",\n    \"KPW\": \"North Korean Won\",\n    \"KRW\": \"South Korean Won\",\n    \"KWD\": \"Kuwaiti Dinar\",\n    \"KYD\": \"Caymanian Dollar\",\n    \"KZT\": \"Kazakhstani Tenge\",\n    \"LAK\": \"Laotian Kip\",\n    \"LBP\": \"Lebanese Pound\",\n    \"LKR\": \"Sri Lankan Rupee\",\n    \"LRD\": \"Liberian Dollar\",\n    \"LSL\": \"Lesotho Maloti\",\n    \"LYD\": \"Libyan Dinar\",\n    \"MAD\": \"Moroccan Dirham\",\n    \"MDL\": \"Moldovan Leu\",\n    \"MGA\": \"Malagasy Ariary\",\n    \"MKD\": \"Macedonian Denar\",\n    \"MMK\": \"Myanma Kyat\",\n    \"MNT\": \"Mongolian Tugrik\",\n    \"MOP\": \"Macanese Pataca\",\n    \"MRU\": \"Mauritanian Ouguiya\",\n    \"MUR\": \"Mauritian Rupee\",\n    \"MVR\": \"Maldivian Rufiyaa\",\n    \"MWK\": \"Malawian Kwacha\",\n    \"MXN\": \"Mexican Peso\",\n    \"MXV\": \"Mexican Unidad de Inversion\",\n    \"MYR\": \"Malaysian Ringgit\",\n    \"MZN\": \"Mozambican Metical\",\n    \"NAD\": \"Namibian Dollar\",\n    \"NGN\": \"Nigerian Naira\",\n    \"NIO\": \"Nicaraguan Cordoba\",\n    \"NOK\": \"Norwegian Krone\",\n    \"NPR\": \"Nepalese Rupee\",\n    \"NZD\": \"New Zealand Dollar\",\n    \"OMR\": \"Omani Rial\",\n    \"PAB\": \"Panamanian Balboa\",\n    \"PEN\": \"Peruvian Nuevo Sol\",\n    \"PGK\": \"Papua New Guinean Kina\",\n    \"PHP\": \"Philippine Peso\",\n    \"PKR\": \"Pakistani Rupee\",\n    \"PLN\": \"Polish Zloty\",\n    \"PYG\": \"Paraguayan Guarani\",\n    \"QAR\": \"Qatari Rial\",\n    \"RON\": \"Romanian Leu\",\n    \"RSD\": \"Serbian Dinar\",\n    \"RUB\": \"Russian Ruble\",\n    \"RWF\": \"Rwandan Franc\",\n    \"SAR\": \"Saudi Arabian Riyal\",\n    \"SBD\": \"Solomon Islands Dollar\",\n    \"SCR\": \"Seychellois Rupee\",\n    \"SDG\": \"Sudanese Pound\",\n    \"SEK\": \"Swedish Krona\",\n    \"SGD\": \"Singapore Dollar\",\n    \"SHP\": \"Saint Helena Pound\",\n    \"SLL\": \"Sierra Leonean Leone\",\n    \"SOS\": \"Somali Shilling\",\n    \"SRD\": \"Surinamese Dollar\",\n    \"SSP\": \"South Sudanese Pound\",\n    \"STN\": \"Sao Tomean Dobra\",\n    \"SVC\": \"Salvadoran Colon\",\n    \"SYP\": \"Syrian Pound\",\n    \"SZL\": \"Swazi Emalangeni\",\n    \"THB\": \"Thai Baht\",\n    \"TJS\": \"Tajikistani Somoni\",\n    \"TMT\": \"Turkmenistani Manat\",\n    \"TND\": \"Tunisian Dinar\",\n    \"TOP\": \"Tongan Pa'anga\",\n    \"TRY\": \"Turkish Lira\",\n    \"TTD\": \"Trinidad and Tobago Dollar\",\n    \"TWD\": \"Taiwan New Dollar\",\n    \"TZS\": \"Tanzanian Shilling\",\n    \"UAH\": \"Ukrainian Hryvnia\",\n    \"UGX\": \"Ugandan Shilling\",\n    \"USD\": \"United States Dollar\",\n    \"UYU\": \"Uruguayan Peso\",\n    \"UZS\": \"Uzbekistan Som\",\n    \"VES\": \"Venezuelan Bolivar\",\n    \"VND\": \"Vietnamese Dong\",\n    \"VUV\": \"Ni-Vanuatu Vatu\",\n    \"WST\": \"Samoan Tala\",\n    \"XAF\": \"CFA Franc BEAC\",\n    \"XCD\": \"East Caribbean Dollar\",\n    \"XDR\": \"Special Drawing Rights\",\n    \"XOF\": \"CFA Franc BCEAO\",\n    \"XPF\": \"CFP Franc\",\n    \"YER\": \"Yemeni Rial\",\n    \"ZAR\": \"South African Rand\",\n    \"ZMW\": \"Zambian Kwacha\"\n  },\n  \"ms\": 3\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cd5d18d-f5b6-4e81-8b88-0c4253dd7c4a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5f66d8ea-0c51-49f0-af2d-d92a93bc4e1d",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a14746d5-bcb6-4663-a27e-1648962611f3",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3db74755-1480-461a-8baf-bed162b92a32",
+          "name": "Fetch a list of 500+ supported cryptocurrencies",
+          "request": {
+            "name": "Fetch a list of 500+ supported cryptocurrencies",
+            "description": {
+              "content": "Fetch a list of 500+ supported cryptocurrencies",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "crypto",
+                "currencies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "238cb125-f402-400a-b990-d76af420abb9",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "crypto",
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"currencies\": {\n    \"1INCH\": \"1inch Network\",\n    \"AAVE\": \"Aave\",\n    \"ACA\": \"Acala Token\",\n    \"ACH\": \"Alchemy Pay\",\n    \"ADA\": \"Cardano\",\n    \"AERGO\": \"Aergo\"\n  },\n  \"ms\": 8\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42dfea8c-6b7e-4c25-a9c1-1b6b8479ee5f",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "crypto",
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "067a557a-3ccc-4c1e-943b-481da3f2efe3",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "crypto",
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8da559cf-34d9-4101-a63a-9362544f51e3",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "crypto",
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e24a0319-563b-4a54-ba9a-16f0c013bd08",
+          "name": "Fetch a list of 400+ supported cryptocurrency pairs",
+          "request": {
+            "name": "Fetch a list of 400+ supported cryptocurrency pairs",
+            "description": {
+              "content": "Fetch a list of 400+ supported cryptocurrency pairs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "crypto",
+                "pairs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "76ffff4f-84e4-42ab-8fb0-77a3ff49b444",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "crypto",
+                    "pairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pairs\": {\n    \"1INCH/BTC\": {\n      \"base\": \"1INCH\",\n      \"quote\": \"BTC\"\n    },\n    \"BTC/USD\": {\n      \"base\": \"BTC\",\n      \"quote\": \"USD\"\n    },\n    \"ETH/BTC\": {\n      \"base\": \"ETH\",\n      \"quote\": \"BTC\"\n    }\n  },\n  \"ms\": 8\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ba7cc84-8ced-419f-8ccb-657020175196",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "crypto",
+                    "pairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d14912e4-1e4a-4bcd-9d95-93cb3e912d25",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "crypto",
+                    "pairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cac1ce5c-3982-4849-8cbd-866818078c17",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "crypto",
+                    "pairs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f39649d2-2b03-47bd-94b0-046669c7c9e3",
+          "name": "Fetch one or more (up to 10) real-time prices for supported cryptocurrency pairs",
+          "request": {
+            "name": "Fetch one or more (up to 10) real-time prices for supported cryptocurrency pairs",
+            "description": {
+              "content": "Fetch one or more (up to 10) real-time prices for supported cryptocurrency pairs",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "crypto",
+                "fetch-prices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pairs",
+                  "value": "<string>",
+                  "description": "(Required) Up to 10 target currency pairs, comma separated in XXX/YYY format"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29f5af90-2d6c-42b5-a92f-ca3ea5ca421f",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "crypto",
+                    "fetch-prices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pairs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"prices\": {\n    \"BTC/USD\": 20624.21,\n    \"ETH/BTC\": 0.075316\n  },\n  \"ms\": 8\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "08f886fd-1533-45f6-b4a4-b179298800ab",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "crypto",
+                    "fetch-prices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pairs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a47957c0-3375-4fec-8685-f7218b46ed2f",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "crypto",
+                    "fetch-prices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pairs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cb39dbca-cf45-4f4b-8453-1414f90f690f",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "crypto",
+                    "fetch-prices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pairs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c81eb29e-6a31-4ec6-9063-3cb504b6b39e",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "crypto",
+                    "fetch-prices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pairs",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0d74c53-3fea-40a5-83e5-d7b91ffd0680",
+          "name": "Fetch recent API usage data. Includes current period start, end, usage and quota remaining",
+          "request": {
+            "name": "Fetch recent API usage data. Includes current period start, end, usage and quota remaining",
+            "description": {
+              "content": "Fetch recent API usage data. Includes current period start, end, usage and quota remaining",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "usage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "063d9dad-8003-4d7a-8dc0-7ada122423e0",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"usage\": {\n    \"2021-01-24\": 247,\n    \"2021-01-25\": 312,\n    \"2021-01-26\": 23,\n    \"2021-01-27\": 159,\n    \"2021-01-28\": 0,\n    \"2021-01-29\": 45,\n    \"2021-01-30\": 92,\n    \"2021-01-31\": 240,\n    \"2021-02-01\": 1204,\n    \"2021-02-02\": 34,\n    \"2021-02-03\": 1245,\n    \"2021-02-04\": 4,\n    \"2021-02-05\": 0,\n    \"2021-02-06\": 53,\n    \"2021-02-07\": 3245\n  },\n  \"monthly_quota\": 500000,\n  \"current_period\": {\n    \"start\": \"2021-02-03\",\n    \"end\": \"2021-03-02\",\n    \"remaining_quota\": 495453,\n    \"usage\": 4547\n  },\n  \"ms\": 3\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7aa817aa-b4c2-473b-84e8-75025ad0265f",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1a53a403-3737-49a8-aa2f-ae0e32575967",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fastforex.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "21ebedd0-b145-4426-996e-0948c752f094",
+    "name": "fastFOREX.io admin plan-one API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Foreign & cryptocurrency exchange rate API\n\nContact Support:\n Email: support@fastforex.io",
+      "type": "text/plain"
+    }
+  }
+}

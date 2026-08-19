@@ -1,0 +1,192 @@
+{
+  "item": [
+    {
+      "id": "88c6f00e-47f7-4ed5-b727-0d1af51616bd",
+      "name": "admin",
+      "description": {
+        "content": "Account admin",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1fcca2f1-4c02-4cfe-bb8c-97a9194737ae",
+          "name": "Fetch recent API usage data. Includes current period start, end, usage and quota remaining",
+          "request": {
+            "name": "Fetch recent API usage data. Includes current period start, end, usage and quota remaining",
+            "description": {
+              "content": "Fetch recent API usage data. Includes current period start, end, usage and quota remaining",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "usage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe39793c-7aca-45fe-8c3f-16393936b21b",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"usage\": {\n    \"2021-01-24\": 247,\n    \"2021-01-25\": 312,\n    \"2021-01-26\": 23,\n    \"2021-01-27\": 159,\n    \"2021-01-28\": 0,\n    \"2021-01-29\": 45,\n    \"2021-01-30\": 92,\n    \"2021-01-31\": 240,\n    \"2021-02-01\": 1204,\n    \"2021-02-02\": 34,\n    \"2021-02-03\": 1245,\n    \"2021-02-04\": 4,\n    \"2021-02-05\": 0,\n    \"2021-02-06\": 53,\n    \"2021-02-07\": 3245\n  },\n  \"monthly_quota\": 500000,\n  \"current_period\": {\n    \"start\": \"2021-02-03\",\n    \"end\": \"2021-03-02\",\n    \"remaining_quota\": 495453,\n    \"usage\": 4547\n  },\n  \"ms\": 3\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98f4e9a1-17ed-4bf9-a58b-f240340c648d",
+              "name": "Not Authorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4a799968-a134-431d-a1b0-f0b5c7134bf7",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fastforex.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "77bd3cee-e247-4820-b660-59c13bae445b",
+    "name": "fastFOREX.io admin API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Foreign & cryptocurrency exchange rate API\n\nContact Support:\n Email: support@fastforex.io",
+      "type": "text/plain"
+    }
+  }
+}

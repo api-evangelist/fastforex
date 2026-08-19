@@ -1,0 +1,201 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "fastFOREX.io admin fx API",
+    "version": "2.3.2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fx",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /fx/pairs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/fx/pairs"
+          },
+          "docs": "List approx 2,300 supported FX pairs"
+        },
+        {
+          "info": {
+            "name": "GET /fx/pairs/historical-limits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/fx/pairs/historical-limits",
+            "params": [
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 duration, such as P1D (daily). Defaults to P1D. Options are P1D, PT1H, PT1M."
+              },
+              {
+                "name": "price",
+                "value": "",
+                "type": "query",
+                "description": "bid or ask. Defaults to bid."
+              }
+            ]
+          },
+          "docs": "FX pairs earliest available historical data point for the supplied interval (P1D default)"
+        },
+        {
+          "info": {
+            "name": "GET /fx/pairs/quote-sizes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/fx/pairs/quote-sizes"
+          },
+          "docs": "List of FX trading pairs with non-standard quote sizes"
+        },
+        {
+          "info": {
+            "name": "GET /fx/currencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/fx/currencies"
+          },
+          "docs": "List of supported trading pair currency symbols and descriptions"
+        },
+        {
+          "info": {
+            "name": "GET /fx/quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/fx/quote",
+            "params": [
+              {
+                "name": "pairs",
+                "value": "",
+                "type": "query",
+                "description": "Up to 10 target currency pairs, comma separated in XXXYYY or XXX/YYY format"
+              }
+            ]
+          },
+          "docs": "Live bid & ask quote for 1 or more (up to 10 in a single request) FX trading pairs."
+        },
+        {
+          "info": {
+            "name": "GET /fx/quote/time-series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/fx/quote/time-series",
+            "params": [
+              {
+                "name": "pair",
+                "value": "",
+                "type": "query",
+                "description": "Trading pair, such as EURUSD"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Time-series start. Supported formats: YYYY-MM-DD (UTC). YYYY-MM-DD HH:MM:SS (UTC), ISO8601 with timezone offset. Timestamp in milliseconds. Supply this or end."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "Time-series end. Supported formats: YYYY-MM-DD (UTC). YYYY-MM-DD HH:MM:SS (UTC), ISO8601 with timezone offset. Timestamp in milliseconds. Supply this or start."
+              },
+              {
+                "name": "dtmfmt",
+                "value": "",
+                "type": "query",
+                "description": "Desired datetime response format. Defaults to match your request. Can be [ISO] ISO8601 datetime including timezone offset, [TSP] UNIX Timestamp in milliseconds, or [UTCYMD] 'YYYY-MM-DD HH:MM:SS' (UTC)."
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 duration, such as P1D (daily). Defaults to P1D. Options are P1D, PT1H, PT1M."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of data points to return. Default varies upon duration."
+              }
+            ]
+          },
+          "docs": "bid/ask time-series data for a given FX trading pair and interval. Values are the closing bid/ask for the interval. Supports a range of datetime formats and timezone offsets. Datetime format in the response will try to match your request - unless specified explicitly."
+        },
+        {
+          "info": {
+            "name": "GET /fx/ohlc/time-series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastforex.io/fx/ohlc/time-series",
+            "params": [
+              {
+                "name": "pair",
+                "value": "",
+                "type": "query",
+                "description": "Trading pair, such as EURUSD"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Time-series start. Supported formats: YYYY-MM-DD (UTC). YYYY-MM-DD HH:MM:SS (UTC), ISO8601 with timezone offset. Timestamp in milliseconds. Supply this or end."
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query",
+                "description": "Time-series end. Supported formats: YYYY-MM-DD (UTC). YYYY-MM-DD HH:MM:SS (UTC), ISO8601 with timezone offset. Timestamp in milliseconds. Supply this or start."
+              },
+              {
+                "name": "dtmfmt",
+                "value": "",
+                "type": "query",
+                "description": "Desired datetime response format. Defaults to match your request. Can be [ISO] ISO8601 datetime including timezone offset, [TSP] UNIX Timestamp in milliseconds, or [UTCYMD] 'YYYY-MM-DD HH:MM:SS' (UTC)."
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query",
+                "description": "ISO8601 duration, such as P1D (daily). Defaults to P1D. Options are P1D, PT1H, PT1M."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of data points to return. Default varies upon duration."
+              }
+            ]
+          },
+          "docs": "Fetch a set of OHLC time-series data points for a given FX trading pair and interval. Values are based on the BID price. Supports a range of datetime formats and timezone offsets. Datetime format in the response will try to match your request - unless specified explicitly."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
