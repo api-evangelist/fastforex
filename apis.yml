@@ -36,6 +36,8 @@ apis:
   humanURL: https://www.fastforex.io/docs
   baseURL: https://api.fastforex.io
   tags:
+  - Admin
+  tags_raw:
   - admin
   properties:
   - type: OpenAPI
@@ -54,6 +56,8 @@ apis:
   humanURL: https://www.fastforex.io/docs
   baseURL: https://api.fastforex.io
   tags:
+  - Crypto
+  tags_raw:
   - crypto
   properties:
   - type: OpenAPI
@@ -72,6 +76,8 @@ apis:
   humanURL: https://www.fastforex.io/docs
   baseURL: https://api.fastforex.io
   tags:
+  - Currency
+  tags_raw:
   - currency
   properties:
   - type: OpenAPI
@@ -90,6 +96,8 @@ apis:
   humanURL: https://www.fastforex.io/docs
   baseURL: https://api.fastforex.io
   tags:
+  - FX
+  tags_raw:
   - fx
   properties:
   - type: OpenAPI
