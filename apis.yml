@@ -108,7 +108,7 @@ apis:
   humanURL: https://www.fastforex.io/docs
   baseURL: https://api.fastforex.io
   tags:
-  - fx
+  - FX
   tags_raw:
   - fx
   properties:
