@@ -44,7 +44,7 @@ tags:
   - Real-Time Data
 apis:
 - aid: fastforex:fastforex-admin-api
-  name: FastForex admin API
+  name: FastForex Admin API
   description: Account admin
   humanURL: https://www.fastforex.io/docs
   baseURL: https://api.fastforex.io
@@ -64,7 +64,7 @@ apis:
   - type: FinOps
     url: finops/fastforex-finops.yml
 - aid: fastforex:fastforex-crypto-api
-  name: FastForex crypto API
+  name: FastForex Crypto API
   description: Digital currencies, pairs & prices
   humanURL: https://www.fastforex.io/docs
   baseURL: https://api.fastforex.io
@@ -84,7 +84,7 @@ apis:
   - type: FinOps
     url: finops/fastforex-finops.yml
 - aid: fastforex:fastforex-currency-api
-  name: FastForex currency API
+  name: FastForex Currency API
   description: Physical currencies, rates and conversions
   humanURL: https://www.fastforex.io/docs
   baseURL: https://api.fastforex.io
@@ -104,7 +104,7 @@ apis:
   - type: FinOps
     url: finops/fastforex-finops.yml
 - aid: fastforex:fastforex-fx-api
-  name: FastForex fx API
+  name: FastForex Fx API
   description: Realtime FX trading pairs - instruments, prices and history
   humanURL: https://www.fastforex.io/docs
   baseURL: https://api.fastforex.io

@@ -166,14 +166,14 @@ components:
       example:
         base: USD
         quote: BTC
-    ResponseTime:
-      type: number
-      format: int32
-      description: Server response time in milliseconds
     CryptoCurrencyPairList:
       type: string
       pattern: '[A-Z0-9]{3,6}/[A-Z0-9]{3,6}(,[A-Z0-9]{3,6}/[A-Z0-9]{3,6})*'
       description: A comma-separated list of crypto pairs
+    ResponseTime:
+      type: number
+      format: int32
+      description: Server response time in milliseconds
   securitySchemes:
     api_key:
       type: apiKey
