@@ -151,6 +151,10 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    CryptoCurrencyPairList:
+      type: string
+      pattern: '[A-Z0-9]{3,6}/[A-Z0-9]{3,6}(,[A-Z0-9]{3,6}/[A-Z0-9]{3,6})*'
+      description: A comma-separated list of crypto pairs
     AnyCurrencyPair:
       type: object
       description: Defines a currency trading pair.
@@ -166,10 +170,6 @@ components:
       example:
         base: USD
         quote: BTC
-    CryptoCurrencyPairList:
-      type: string
-      pattern: '[A-Z0-9]{3,6}/[A-Z0-9]{3,6}(,[A-Z0-9]{3,6}/[A-Z0-9]{3,6})*'
-      description: A comma-separated list of crypto pairs
     ResponseTime:
       type: number
       format: int32
