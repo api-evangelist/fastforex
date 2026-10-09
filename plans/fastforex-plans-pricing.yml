@@ -1,3 +1,7 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (undated — the file carries no date and git cannot supply one), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
 name: FastForex Plans and Pricing
 description: Pricing plans for the FastForex currency exchange rate API, covering real-time rates, historical data, FX trading pairs, and cryptocurrency pricing.
 url: https://www.fastforex.io/hub/2026-new-plans-new-features-new-data
@@ -92,3 +96,35 @@ billing:
   annual_description: Save with annual billing - get two or more months free when paying yearly
   topup_unit: 1000000
   topup_price_usd: 18
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - subscription
+  units: []
+  plans:
+  - name: Free Trial
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: One
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Extra
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Premium
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
