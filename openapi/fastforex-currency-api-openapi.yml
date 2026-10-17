@@ -1086,30 +1086,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Date:
-      type: string
-      pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}'
-      description: UTC/GMT date YYYY-MM-DD
-    Duration:
-      type: string
-      description: ISO8601 Duration. https://en.wikipedia.org/wiki/ISO_8601#Durations
-    ApiUsage:
-      type: number
-      format: int32
-      description: The number of API calls consumed by this request
-    TimestampMillis:
-      type: number
-      format: int64
-      description: Milliseconds since Jan 1 1970 (unix timestamp with millisecond precision)
-      example: 1739305030072
-    DateTime:
-      type: string
-      pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}'
-      description: UTC/GMT datetime YYYY-MM-DD HH:MM:SS
-    Currency:
-      type: string
-      pattern: '[A-Z]{3}'
-      description: Three-letter ISO 4217 currency code
     IsoDateTimeZone:
       type: string
       pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(Z?|[+-][0-9]{2}:00)'
@@ -1119,20 +1095,44 @@ components:
       type: string
       pattern: '[A-Z]{3}(,[A-Z]{3})*'
       description: A comma-separated list of three-letter ISO 4217 currency codes
-    ResponseTime:
-      type: number
-      format: int32
-      description: Server response time in milliseconds
-    AnyCurrency:
-      type: string
-      pattern: '[A-Z0-9]{3,6}'
-      description: Currency code for a physical or digital/cryptocurrency
     DateTimes:
       description: A datetime value. If no timezone offset supplied, UTC/GMT is assumed.
       oneOf:
       - $ref: '#/components/schemas/DateTime'
       - $ref: '#/components/schemas/IsoDateTimeZone'
       - $ref: '#/components/schemas/TimestampMillis'
+    TimestampMillis:
+      type: number
+      format: int64
+      description: Milliseconds since Jan 1 1970 (unix timestamp with millisecond precision)
+      example: 1739305030072
+    AnyCurrency:
+      type: string
+      pattern: '[A-Z0-9]{3,6}'
+      description: Currency code for a physical or digital/cryptocurrency
+    DateTime:
+      type: string
+      pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}'
+      description: UTC/GMT datetime YYYY-MM-DD HH:MM:SS
+    Currency:
+      type: string
+      pattern: '[A-Z]{3}'
+      description: Three-letter ISO 4217 currency code
+    Date:
+      type: string
+      pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}'
+      description: UTC/GMT date YYYY-MM-DD
+    ApiUsage:
+      type: number
+      format: int32
+      description: The number of API calls consumed by this request
+    ResponseTime:
+      type: number
+      format: int32
+      description: Server response time in milliseconds
+    Duration:
+      type: string
+      description: ISO8601 Duration. https://en.wikipedia.org/wiki/ISO_8601#Durations
   securitySchemes:
     api_key:
       type: apiKey
