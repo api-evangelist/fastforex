@@ -34,6 +34,14 @@ modified: '2026-06-13'
 specificationVersion: '0.23'
 type: Index
 tags:
+  - Foreign Exchange
+  - Financial Data
+  - Exchange Rates
+  - Cryptocurrency
+  - FX Trading
+  - Historical Data
+  - Real-Time Data
+tags_raw:
   - Currency Exchange
   - Forex
   - Financial Data
@@ -69,7 +77,7 @@ apis:
   humanURL: https://www.fastforex.io/docs
   baseURL: https://api.fastforex.io
   tags:
-  - Crypto
+  - Cryptocurrency
   tags_raw:
   - crypto
   properties:
@@ -109,9 +117,10 @@ apis:
   humanURL: https://www.fastforex.io/docs
   baseURL: https://api.fastforex.io
   tags:
-  - FX
+  - Foreign Exchange
   tags_raw:
   - fx
+  - FX
   properties:
   - type: OpenAPI
     url: openapi/fastforex-fx-api-openapi.yml
