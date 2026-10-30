@@ -64,31 +64,168 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-FastForex is a fast, reliable REST API providing real-time and historical currency exchange rates for 160+ world currencies, 500+ cryptocurrencies, and 2,300+ FX trading pairs.
+FastForex is a fast, reliable REST API providing real-time and historical currency exchange rates for 160+ world currencies, 500+ cryptocurrencies, and 2,300+ FX trading pairs. Features include currency conversion, many-to-one and multi-rate lookups, OHLC candlestick data, bid/ask pricing, WebSocket streaming, and up to 55 years of historical data. Average response time of 21ms with 100% uptime SLA.
 
-**Website:** https://www.fastforex.io  
-**Documentation:** https://www.fastforex.io/docs  
-**GitHub:** https://github.com/fastforex  
-**Blog:** https://www.fastforex.io/hub  
-**X:** https://x.com/fastforex_io  
+**Areas:** Foreign Exchange · Financial Data · Exchange Rates · Cryptocurrency · FX Trading · Historical Data · Real-Time Data
 
-## APIs.json
+## FastForex on APIs.io
 
-This repository contains an [APIs.json 0.19](https://apisjson.org) profile for FastForex, cataloging its public API surface, plans, rate limits, and FinOps guidance.
+Everything profiled for FastForex is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/fastforex/](https://apis.io/providers/fastforex/)** — or go straight to one of the APIs or properties below.
 
-- `apis.yml` - Main APIs.json index
-- `plans/fastforex-plans-pricing.yml` - Pricing plans (One, Extra, Premium)
-- `rate-limits/fastforex-rate-limits.yml` - API call quotas and rate limit details
-- `finops/fastforex-finops.yml` - Cost optimization and budget planning guidance
+### APIs (4)
 
-## Key Features
+- [FastForex Admin API](https://apis.io/apis/fastforex/fastforex-admin-api/) — Account admin
+- [FastForex Crypto API](https://apis.io/apis/fastforex/fastforex-crypto-api/) — Digital currencies, pairs & prices
+- [FastForex Currency API](https://apis.io/apis/fastforex/fastforex-currency-api/) — Physical currencies, rates and conversions
+- [FastForex Fx API](https://apis.io/apis/fastforex/fastforex-fx-api/) — Realtime FX trading pairs - instruments, prices and history
 
-- 160+ world currencies with real-time mid-market rates
-- 500+ cryptocurrencies with live pricing
-- 2,300+ FX trading pairs with bid/ask quotes
-- OHLC candlestick data for trading applications
-- WebSocket streaming (Premium plan)
-- Up to 55 years of historical exchange rate data
-- Average API response time of 21ms
-- Base URL: `https://api.fastforex.io`
-- Authentication via `X-API-Key` header
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [fastforex](https://apis.io/servers/fastforex/fastforex/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Fastforex Agentic Access](https://apis.io/agentic-access/fastforex/fastforex-agentic-access/)
+
+#### JSON Schema (6)
+
+The data models the API reads and writes.
+
+- [ConvertResponse](https://apis.io/schemas/fastforex/convert-response/)
+- [Currency](https://apis.io/schemas/fastforex/currency/)
+- [FetchMultiResponse](https://apis.io/schemas/fastforex/fetch-multi-response/)
+- [FetchOneResponse](https://apis.io/schemas/fastforex/fetch-one-response/)
+- [FxQuoteResponse](https://apis.io/schemas/fastforex/fx-quote-response/)
+- [OhlcTimeSeriesResponse](https://apis.io/schemas/fastforex/ohlc-time-series-response/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Fastforex Context](https://apis.io/jsonld/fastforex/fastforex-context/)
+
+#### Examples (6)
+
+Example requests and responses.
+
+- [Convert](https://apis.io/examples/fastforex/convert/)
+- [Fetch Multi](https://apis.io/examples/fastforex/fetch-multi/)
+- [Fetch One](https://apis.io/examples/fastforex/fetch-one/)
+- [Fx Quote](https://apis.io/examples/fastforex/fx-quote/)
+- [Historical](https://apis.io/examples/fastforex/historical/)
+- [Ohlc Time Series](https://apis.io/examples/fastforex/ohlc-time-series/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [fastFOREX.io admin API](https://apis.io/collections/fastforex/open-fastforex-admin-api/)
+- [fastFOREX.io admin crypto API](https://apis.io/collections/fastforex/open-fastforex-crypto-api/)
+- [fastFOREX.io admin currency API](https://apis.io/collections/fastforex/open-fastforex-currency-api/)
+- [fastFOREX.io admin fx API](https://apis.io/collections/fastforex/open-fastforex-fx-api/)
+- [fastFOREX.io admin plan-extra API](https://apis.io/collections/fastforex/open-fastforex-plan-extra-api/)
+- [fastFOREX.io admin plan-one API](https://apis.io/collections/fastforex/open-fastforex-plan-one-api/)
+- [fastFOREX.io admin plan-premium API](https://apis.io/collections/fastforex/open-fastforex-plan-premium-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [FastForex — jsonschema rules](https://apis.io/rules/fastforex/fastforex-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Fastforex Authentication](https://apis.io/security/fastforex/fastforex-authentication/)
+- [Fastforex Domain Security](https://apis.io/security/fastforex/fastforex-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Fastforex Plans Pricing](https://apis.io/plans/fastforex/fastforex-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Fastforex Rate Limits](https://apis.io/rate-limits/fastforex/fastforex-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Fastforex Finops](https://apis.io/finops/fastforex/fastforex-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.fastforex.io)
+- [Documentation](https://www.fastforex.io/docs)
+- [Pricing](https://www.fastforex.io/hub/2026-new-plans-new-features-new-data)
+- [Blog](https://www.fastforex.io/hub)
+
+## API Evangelist rating
+
+**Kin Score 31.5** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 54.7 |
+| Contract governance | 9.8 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 18.4 |
+
+**Agent readiness 40.5** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | verified |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 21.3** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/fastforex/](https://apis.io/providers/fastforex/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for FastForex: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/fastforex/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
